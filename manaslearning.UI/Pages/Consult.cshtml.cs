@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using manaslearning.UI.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 
 namespace manaslearning.UI.Pages
 {
     public class ConsultModel : PageModel
     {
+        private readonly IConfiguration _configuration;
+
+        public ConsultModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public ConsultationSettings Settings { get; private set; }
+
         public void OnGet()
         {
-
+            Settings = ConsultationSettings.From(_configuration);
         }
     }
 }

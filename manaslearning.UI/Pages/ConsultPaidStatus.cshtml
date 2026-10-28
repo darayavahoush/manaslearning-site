@@ -1,0 +1,51 @@
+@page "/consult/paid/status"
+@model manaslearning.UI.Pages.ConsultPaidStatusModel
+@{
+    Layout = "_LayoutForPages";
+    ViewBag.Title = "Consultation Payment";
+    ViewBag.MetaDescription = "Payment status for your Manas Learning consultation.";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = DateTime.UtcNow.ToString();
+}
+
+<section class="pt-100 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto text-center">
+                @if (Model.Paid)
+                {
+                    <h1 class="display-6 font-weight-bold text-grad">Payment received</h1>
+                    <p>Thank you. Choose a time for your consultation below.</p>
+                    <button type="button" class="theme-btn-three"
+                            data-cal-link="@Model.Settings.PaidCalLink"
+                            data-cal-config='{"layout":"month_view"}'>
+                        Pick a time
+                    </button>
+                    <p class="mt-4 small text-muted">
+                        Order id: @Model.OrderId<br />
+                        Not ready to book now? Save this link to come back and pick a time later:<br />
+                        <a href="@Model.ReturnUrl">@Model.ReturnUrl</a>
+                    </p>
+                }
+                else
+                {
+                    <h1 class="display-6 font-weight-bold text-grad">Payment status</h1>
+                    <p>@Model.Message</p>
+                    @if (!string.IsNullOrEmpty(Model.OrderId))
+                    {
+                        <p class="small text-muted">Order id: @Model.OrderId</p>
+                    }
+                    <a class="theme-btn-three" href="/consult">Back to consultations</a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @if (Model.Paid)
+    {
+        <partial name="_CalEmbed" model="Model.Settings.CalOrigin" />
+    }
+}

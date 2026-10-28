@@ -1,23 +1,61 @@
-﻿@page "/consult"
+@page "/consult"
 @model manaslearning.UI.Pages.ConsultModel
 @{
     Layout = "_LayoutForPages";
-    ViewBag.Title = "Consult";
-    ViewBag.MetaDescription = "Consult";
+    ViewBag.Title = "Book a Consultation";
+    ViewBag.MetaDescription = "Book a free 15 minute consultation, an IEP consultation, or a paid consultation to clarify your doubts with the Manas Learning team.";
     ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
     ViewBag.Url = Url.PageLink();
-    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+    ViewBag.ModifiedDate = DateTime.UtcNow.ToString();
 }
 
-
-<!-- maintenance mode -->
-<section>
+<section class="pt-100 pb-100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-4 font-weight-bold text-grad">Something exciting is coming your way!</h1>
-                @*<p>A Full package Digital Creative Agency Specializing in: Video Production, Web Design, Branding, Brand Strategy, Content Marketing and Aerial Cinematography. We are an insight and behavior driven creative marketing agency.</p>*@
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h1 class="display-5 font-weight-bold text-grad">Book a Consultation</h1>
+                <p>Pick the session that fits where you are. You will see the times our team is available and get a calendar invite once you book.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 p-4 text-center">
+                    <h3>Free consultation</h3>
+                    <p class="text-muted mb-1">15 minutes &middot; Free</p>
+                    <p class="flex-grow-1">A quick call to understand your child's needs and how we can help. You will be matched with whichever team member is free at the time you choose.</p>
+                    <button type="button" class="theme-btn-three"
+                            data-cal-link="@Model.Settings.FreeCalLink"
+                            data-cal-config='{"layout":"month_view"}'>
+                        Pick a time
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 p-4 text-center">
+                    <h3>IEP consultation</h3>
+                    <p class="text-muted mb-1">30 minutes</p>
+                    <p class="flex-grow-1">For families who have completed an assessment. We go through the report and the educational plan for your child.</p>
+                    <button type="button" class="theme-btn-three"
+                            data-cal-link="@Model.Settings.IepCalLink"
+                            data-cal-config='{"layout":"month_view"}'>
+                        Pick a time
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 p-4 text-center">
+                    <h3>Clarify your doubts</h3>
+                    <p class="text-muted mb-1">Paid &middot; &#8377;@Model.Settings.PaidAmount.Replace(".00", "")</p>
+                    <p class="flex-grow-1">A one-to-one session to get your questions answered. You pay securely through Paytm first, then choose your time.</p>
+                    <form method="post" asp-page="/ConsultPaid">
+                        <button type="submit" class="theme-btn-three">Pay and book</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <partial name="_CalEmbed" model="Model.Settings.CalOrigin" />
+}

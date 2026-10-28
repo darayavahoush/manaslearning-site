@@ -1,0 +1,42 @@
+@page "/consult/paid"
+@model manaslearning.UI.Pages.ConsultPaidModel
+@{
+    Layout = "_LayoutForPages";
+    ViewBag.Title = "Paid Consultation";
+    ViewBag.MetaDescription = "Pay for a one-to-one consultation with the Manas Learning team.";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = DateTime.UtcNow.ToString();
+}
+
+<section class="pt-100 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center">
+                @if (!string.IsNullOrEmpty(Model.TxnToken))
+                {
+                    <p>Taking you to the secure Paytm payment page...</p>
+                    <form method="post" action="@Model.PaymentUrl" name="paytm">
+                        <input type="hidden" name="mid" value="@Model.Mid">
+                        <input type="hidden" name="orderId" value="@Model.OrderId">
+                        <input type="hidden" name="txnToken" value="@Model.TxnToken">
+                        <noscript><button type="submit" class="theme-btn-three">Continue to payment</button></noscript>
+                    </form>
+                    <script type="text/javascript">document.paytm.submit();</script>
+                }
+                else
+                {
+                    <h1 class="display-6 font-weight-bold text-grad">Paid consultation</h1>
+                    @if (!string.IsNullOrEmpty(Model.Error))
+                    {
+                        <div class="alert alert-danger">@Model.Error</div>
+                    }
+                    <p>A one-to-one session to clarify your doubts. Pay securely through Paytm, then choose your time.</p>
+                    <form method="post">
+                        <button type="submit" class="theme-btn-three">Pay &#8377;@Model.Settings.PaidAmount.Replace(".00", "") and book</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</section>
