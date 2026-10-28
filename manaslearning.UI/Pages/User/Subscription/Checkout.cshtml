@@ -1,0 +1,278 @@
+﻿@page "/u/purchase/checkout/{itemOid}/{quantity}"
+@model manaslearning.UI.Pages.User.Subscription.CheckoutModel
+@{
+    ViewData["Title"] = "Subscriptions"; // TODO: Update this title
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml"; // TODO: Create new layout without menu links for checkout
+}
+
+<!-- Note: For this page no breadcrumb -->
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <form method="post" autocomplete="off">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Checkout</h2>
+                </div>
+                <div class="col-md-7 mt-2">
+                    <div class="d-address">
+                        <div class="feature-box f-style-4 h-100">
+                            <div class="divider"></div>
+                            @if (Model.IsAddressAvailable)
+                            {
+                                <div class="row">
+                                    <div class="col-md-12 mt-2">
+                                        Add/Edit your billable address. This will appear on the invoice for your order.
+                                    </div>
+                                </div>
+                                @if (Model?.Address != null)
+                                {
+                                    <h5 class="pt-3 mb-3">Sold To</h5>
+                                    <div class="row">
+                                        <div class="col-md-6 list-address">
+                                            <ul class="list-unstyled">
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.Name))
+                                                {
+                                                    <li>@Model.Address.Name</li>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.AddressLine1))
+                                                {
+                                                    <li>@Model.Address.AddressLine1</li>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.AddressLine2))
+                                                {
+                                                    <li>@Model.Address.AddressLine2</li>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.AddressLine3))
+                                                {
+                                                    <li>@Model.Address.AddressLine3</li>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.City))
+                                                {
+                                                    <li>@Model.Address.City</li>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.State)
+                                               || !string.IsNullOrWhiteSpace(Model.Address.ZipCode))
+                                                {
+                                                    <li>@($"{@Model.Address.State}, {@Model.Address.ZipCode}")</li>
+                                                }
+                                                @if (!string.IsNullOrWhiteSpace(Model.Address.Country))
+                                                {
+                                                    <li>@Model.Address.Country</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        @*<div class="col-md-6">
+                                <ul class="list-unstyled">
+                                <li><strong>Primary Contact</strong></li>
+                                <li>user1@gmail.com</li>
+                                <li>9988774455</li>
+                                </ul>
+                                </div>*@
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="row mt-3">
+                                    <div class="col-md-12 list-no-address">
+                                        Add your billable address. This will appear on the invoice for your order.
+                                    </div>
+                                </div>
+                            }
+                            <input type="hidden" asp-for="Param1" value="@Model.Address?.Oid" />
+                            <input type="hidden" asp-for="Param2" value="@Model.Param2" />
+                            <input type="hidden" id="hfIsAddressAvailable" value="@Model.IsAddressAvailable.ToString().ToLower()" />
+                            <p class="mt-3 mb-0"><button class="btn btn-sm btn-outline-primary btn-ae-address" type="button"> @(Model.IsAddressAvailable ? "Edit" : "Add") </button></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="feature-box f-style-4 h-100">
+                            <div class="divider"></div>
+                            <h5 class="py-4">Items in this order</h5>
+                            <table class="table table-hover table-subscriptions align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Price (INR)</th>
+                                        <th scope="col" style="width: 8.75rem !important;">Quantity</th>
+                                        <th scope="col">Subtotal (INR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white">
+                                        <td>
+                                            <div>@Model.Item?.AssessmentName</div>
+                                            <small class="text-black-50">₹@(Model.Item.ItemPrice.ToString("F2")) / assessment / user</small>
+                                        </td>
+                                        <td>₹@(Model.Item.ItemPrice.ToString("F2"))</td>
+                                        <td>
+                                            <input type="hidden" id="Item_ItemPrice" value="@Model.Item.ItemPrice" />
+                                            <input type="hidden" id="Item_GSTRate" value="@Model.Item.GSTRate" />
+                                            <input class="form-control form-control-sm it-io-qu" asp-for="Param3" type="number" min="1" step="1" pattern="[0-9]" value="@Model.Param3" />
+                                        </td>
+                                        <td class="it-io-st">₹@(Model.SubTotal.ToString("F2"))</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 mt-2">
+                    <div class="feature-box f-style-4 p-3" style="background-color: rgba(248, 248, 248, 0.5);">
+                        <h5 class="pt-3 pb-2">Summary</h5>
+                        <div class="clearfix">
+                            <span class="float-left">Price:</span>
+                            <span class="float-right it-io-qu-2">@Model.Item.ItemPrice.ToString("F2")</span>
+                        </div>
+                        <div class="clearfix">
+                            <span class="float-left">Quantity:</span>
+                            <span class="float-right it-io-qu-2">@Model.Param3</span>
+                        </div>
+                        <div class="clearfix">
+                            <span class="float-left">Subtotal:</span>
+                            <span class="float-right it-io-st-2">₹@(Model.SubTotal.ToString("F2"))</span>
+                        </div>
+                        <div class="clearfix">
+                            <span class="float-left">Estimated taxes: <i class="bi bi-info-circle-fill text-black-50" data-toggle="tooltip" data-placement="top" title="@(Model.Item.GSTRate.ToString("F2"))% GST"></i></span>
+                            <span class="float-right it-io-et">₹@(Model.Tax.ToString("F2"))</span>
+                        </div>
+                        <div class="clearfix">
+                            <span class="float-left font-weight-bold">Total:</span>
+                            <span class="float-right font-weight-bold it-io-to">₹@(Model.Total.ToString("F2"))</span>
+                        </div>
+                        <div class="mt-3">
+                            <p>By clicking Place order you agree to our terms and conditions.</p>
+                            <p>For information on how your data will be handled, see the <a class="d-inline" href="/privacy-policy" target="_blank">privacy notice</a>.</p>
+                            <p>Please read the entire <a class="d-inline" href="/terms-of-service" target="_blank">agreement</a> before accepting terms and conditions.</p>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+                        {
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Warning!</strong> @Model.StatusMessage
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        }
+                        <div class="mb-3">
+                            <div class="d-placeorder">
+                                <!-- TODO: disable this button if address is in edit mode -->
+                                @if (Model.IsAddressAvailable && Model.Param3 > 0) //Param3 - Quantity
+                                {
+                                    <button class="btn btn-sm btn-primary btn-block btn-place-order" type="submit"> Place Order </button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-sm btn-primary btn-block btn-place-order" type="button" disabled> Place Order </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+    <!--end of row-->
+    </form>
+    </div>
+    <!--end of container-->
+</section>
+<!-- modal -->
+<!-- add student modal -->
+<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addressModalLabel">Address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-dark">
+                <div class="row mb-3">
+                    <div class="col-md-12 text-muted">
+                        Enter your billable address. This will appear on the invoice for your order.
+                    </div>
+                </div>
+                <form id="addressForm">
+                    <div class="form-group mb-1">
+                        <label>Name</label><sapn class="text-danger"> * </sapn>
+                        <input class="form-control form-control-sm mb-1 it-na" type="text" maxlength="50" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Please enter name.</span>
+                            <span class="d-none">Special characters are not allowed.</span>
+                            <span class="d-none">Max. 50 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>Address line 1</label><sapn class="text-danger"> * </sapn>
+                        <input class="form-control form-control-sm mb-1 it-al1" type="text" maxlength="200" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Please enter address line 1.</span>
+                            <span class="d-none">Special characters are not allowed.</span>
+                            <span class="d-none">Max. 200 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>Address line 2 (Optional)</label>
+                        <input class="form-control form-control-sm mb-1 it-al2" type="text" maxlength="200" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Special characters are not allowed.</span>
+                            <span class="d-none">Max. 200 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>Address line 3 (Optional)</label>
+                        <input class="form-control form-control-sm mb-1 it-al3" type="text" maxlength="200" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Special characters are not allowed.</span>
+                            <span class="d-none">Max. 200 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>City</label><sapn class="text-danger"> * </sapn>
+                        <input class="form-control form-control-sm mb-1 it-ci" type="text" maxlength="50" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Please enter city.</span>
+                            <span class="d-none">Special characters are not allowed.</span>
+                            <span class="d-none">Max. 50 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>State</label><sapn class="text-danger"> * </sapn>
+                        <input class="form-control form-control-sm mb-1 it-st" type="text" maxlength="50" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Please enter state.</span>
+                            <span class="d-none">Only alphabets allowed.</span>
+                            <span class="d-none">Max. 50 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>Postal Code</label><sapn class="text-danger"> * </sapn>
+                        <input class="form-control form-control-sm mb-1 it-zc" type="text" maxlength="10" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Please enter postal code.</span>
+                            <span class="d-none">Only numbers are allowed.</span>
+                            <span class="d-none">Min. 6 digits required.</span>
+                            <span class="d-none">Max. 10 digits allowed.</span>
+                        </div>
+                    </div>
+                    <div class="form-group mb-1">
+                        <label>Country</label><sapn class="text-danger"> * </sapn>
+                        <input class="form-control form-control-sm mb-1 it-co" type="text" maxlength="50" value="" autocomplete="off">
+                        <div class="invalid-feedback">
+                            <span class="d-none">Please enter country.</span>
+                            <span class="d-none">Only alphabets allowed.</span>
+                            <span class="d-none">Max. 50 characters allowed.</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p>MANAS Learning respects your privacy. See our <a class="d-inline" href="/privacy-policy" target="_blank">privacy policy</a>.</p>
+                    </div>
+                    <div class="float-right">
+                        <button class="btn btn-sm btn-secondary px-3 mr-1" data-dismiss="modal"> Cancel </button>
+                        <button class="btn btn-sm btn-primary btn-s-address px-3" type="button"> Save </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

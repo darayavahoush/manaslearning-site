@@ -1,0 +1,56 @@
+﻿@page "/free-assessments"
+@model manaslearning.UI.Pages.FreeAssessmentsModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForAssessmentPages.cshtml";
+    ViewBag.Title = "Free Assessment";
+    ViewBag.MetaDescription = "Provides a menu of different free assessments available with a brief description for the parents to determine based on their child’s requirement. Free Assessmets: Learning Test, Hyperactivity and Attention Test (Age below 6),  Hyperactivity and Attention Test (Age above 6), Motor Skills Test, Sensitivity and Communication Test, Anxiety Test, Avoiding School Test, and Sadness Test.";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- heading -->
+<section class="portfolio pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-9 mx-auto">
+                <!-- title -->
+                <div class="title text-center">
+                    <span class="pre-title">Self tests</span>
+                    <p class="mb-0 text-dark fs-2">
+                        Below are tests to assess your child with simple questions regarding your child's basic activities. Simply answer the questions and get a result for your reference. If you wish to get a detailed report, kindly use our paid assessment. Submit your information for a free consultation.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @{ 
+                var index = 1;
+            }
+            @foreach (var item in Model.freeAssessments)
+            {
+                var fadeInResult = index % 3;
+                var fadeInCSSClass = "fadeInRight";
+                if(fadeInResult == 1)
+                {
+                    fadeInCSSClass = "fadeInLeft";
+                }
+                else if (fadeInResult == 2)
+                {
+                    fadeInCSSClass = "fadeInDown";
+                }
+                <div class="col-12 col-md-4 px-2 mb-3">
+                    <div class="feature-box f-style-2 h-100 border icon-primary wow @fadeInCSSClass bg-light text-dark">
+                        <h3 class="feature-box-title"><br />@Html.Raw(item.AssessmentTitle)</h3>
+                        <div class="divider divider-dotted mb-3"></div>
+                        <p class="feature-box-desc mb-4">@item.AssessmentDescription</p>
+                        <div class="text-center">
+                            <a href="/self-test/learning-test/@item.AssessmentId" class="btn btn-sm btn-grad">Start Test</a>
+                        </div>
+                    </div>
+                </div>
+                index++;
+            }
+        </div>
+    </div>
+</section>

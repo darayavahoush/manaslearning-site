@@ -1,0 +1,376 @@
+﻿@page "/u/students"
+
+@using manaslearning.Models;
+@model manaslearning.UI.Pages.User.StudentsModel
+@{
+    ViewData["Title"] = "Students";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-sm-5 pt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-1 order-md-2">
+                <div class="card card-sm">
+                    <div class="card-header card-header-table bg-light">
+                        <div>
+                            <button type="button" class="btn btn-primary btn-add-student float-right">Add Student</button>
+                        </div>
+                        @*<form class="d-flex align-items-center">
+                                <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                                <select class="custom-select">
+                                    <option value="name" selected="">Name</option>
+                                    <option value="email">Parent Name</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone-number">Phone Number</option>
+                                </select>
+                            </form>*@
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <div class="table-responsive-sm">
+                            <table class="table table-hover table-students align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Student Name</th>
+                                        <th scope="col">Parent's Name</th>
+                                        <th scope="col">Date of Birth</th>
+                                        <th scope="col">Phone Number</th>
+                                        <th scope="col" class="text-center width-5">Info</th>
+                                        <th scope="col" class="text-center width-5">Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white">
+                                        <td colspan="7" class="text-center">
+                                            <div class="my-3">
+                                                <img class="img-add-student cursor-pointer" src="/user/icons/add.svg" width="32" height="32" />
+                                            </div>
+                                            <div class="text-center mb-2">
+                                                Add students to start.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input id="hfRecordId" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<!-- add student modal -->
+<div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addStudentModalLabel">Add Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-student">
+                    <!-- Name -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-name" class="col-form-label float-left float-sm-right">Student Name:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control mb-0" maxlength="50" id="student-name">
+                            <small>Max. 50 characters allowed.</small>
+                        </div>
+                    </div>
+                    <!-- Parent Name -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-parent-name" class="col-form-label float-left float-sm-right">Parent's Name:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control mb-0" maxlength="50" id="student-parent-name">
+                            <small>Max. 50 characters allowed.</small>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group row mb-0">
+                        <div class="col-sm-3">
+                            <label for="student-email" class="col-form-label float-left float-sm-right">Email:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control mb-0 mb-sm-3" maxlength="256" id="student-email">
+                        </div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-phone" class="col-form-label float-left float-sm-right">Phone:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="tel" class="form-control mb-0" maxlength="10" id="student-phone">
+                            <small>10 digit mobile number.</small>
+                        </div>
+                    </div>
+                    <!-- Zip -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-zip" class="col-form-label float-left float-sm-right">PIN Code:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control mb-0" maxlength="10" id="student-zip">
+                            <small>6 digit zip/pin code.</small>
+                        </div>
+                    </div>
+                    <!-- Languages can speak -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-can-speak" class="col-form-label float-left float-sm-right">Languages can speak:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="student-can-speak" multiple="multiple">
+                                @if (Model.languages != null)
+                                {
+                                    foreach (var item in Model.languages)
+                                    {
+                                        <option value="@item.LanguageId">@item.LanguageName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- DOB -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-date-of-birth" class="col-form-label float-left float-sm-right">Date of Birth:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control mb-0" id="student-date-of-birth">
+                            <small>Must be between 01/01/1950 and 31/12/@(DateTime.Now.Year - 2).</small>
+                        </div>
+                    </div>
+                    <!-- Class -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-class" class="col-form-label float-left float-sm-right">Class:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-class">
+                                <option value="-1">Select</option>
+                                @if (Model.studentClasses != null)
+                                {
+                                    foreach (var item in Model.studentClasses)
+                                    {
+                                        <option value="@item.ClassId">@item.ClassName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Parent Education -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-parent-education" class="col-form-label float-left float-sm-right">Parent's Education:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-parent-education">
+                                <option value="-1">Select parent education</option>
+                                @if (Model.qualifications != null)
+                                {
+                                    foreach (var item in Model.qualifications)
+                                    {
+                                        <option value="@item.QualificationId">@item.QualificationName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- First Language -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-first-language" class="col-form-label float-left float-sm-right">First Language:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-first-language">
+                                <option value="-1">Select a language</option>
+                                @if (Model.languages != null)
+                                {
+                                    foreach (var item in Model.languages)
+                                    {
+                                        <option value="@item.LanguageId">@item.LanguageName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Second Language -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-second-language" class="col-form-label float-left float-sm-right">Second Language:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-second-language">
+                                <option value="-1">Select a language</option>
+                                @if (Model.languages != null)
+                                {
+                                    foreach (var item in Model.languages)
+                                    {
+                                        <option value="@item.LanguageId">@item.LanguageName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Third Language -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-third-language" class="col-form-label float-left float-sm-right">Third Language:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-third-language">
+                                <option value="-1">Select a language</option>
+                                @if (Model.languages != null)
+                                {
+                                    foreach (var item in Model.languages)
+                                    {
+                                        <option value="@item.LanguageId">@item.LanguageName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Mother Tongue -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-mother-tongue" class="col-form-label float-left float-sm-right">Mother Tongue:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-mother-tongue">
+                                <option value="-1">Select mother tongue</option>
+                                @if (Model.languages != null)
+                                {
+                                    foreach (var item in Model.languages)
+                                    {
+                                        <option value="@item.LanguageId">@item.LanguageName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Gender -->
+                    <!-- Third Language -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-gender" class="col-form-label float-left float-sm-right">Gender:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-gender">
+                                <option value="-1">Select gender</option>
+                                @if (Model.genders != null)
+                                {
+                                    foreach (var item in Model.genders)
+                                    {
+                                        <option value="@item.GenderId">@item.GenderName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- School -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-school-type" class="col-form-label float-left float-sm-right">School:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-school-type">
+                                <option value="-1">Select school</option>
+                                @if (Model.languages != null)
+                                {
+                                    foreach (var item in Model.schoolTypes)
+                                    {
+                                        <option value="@item.SchoolTypeId">@item.SchoolTypeName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Syllabus -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-syllabus" class="col-form-label float-left float-sm-right">Syllabus:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select class="form-control custom-select" id="student-syllabus">
+                                <option value="-1">Select syllabus</option>
+                                @if (Model.syllabusTypes != null)
+                                {
+                                    foreach (var item in Model.syllabusTypes)
+                                    {
+                                        <option value="@item.SyllabusTypeId">@item.SyllabusTypeName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div class="row mb-0 mb-sm-3 d-none" id="divErrorMessagesRow">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-9">
+                        <div id="divErrorMessage" class="alert alert-danger"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary btn-save-student">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- studen info modal -->
+<div class="modal fade" id="studentInfoModal" tabindex="-1" aria-labelledby="studentInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentInfoModalLabel">Student Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-sm table-hover table-student-info mb-0">
+                    <tbody>
+                        <tr><td>Student Name:</td><td></td></tr>
+                        <tr><td>Parent's Name:</td><td>
+                        <tr><td>Phone Number</td><td></td></tr>
+                        <tr><td>PIN Code</td><td></td></tr>
+                        <tr><td>Student can speak:</td><td></td></tr>
+                        <tr><td>Date fo Birth:</td><td></td></tr>
+                        <tr><td>Class:</td><td></td></tr>
+                        <tr><td>Parent's Education:</td><td></td></tr>
+                        <tr><td>First Language:</td><td></td></tr>
+                        <tr><td>Second Language:</td><td></td></tr>
+                        <tr><td>Third Language:</td><td></td></tr>
+                        <tr><td>Mother Tongue:</td><td></td></tr>
+                        <tr><td>Gender:</td><td></td></tr>
+                        <tr><td>School:</td><td></td></tr>
+                        <tr><td>Syllabus:</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title | MANAS Learning</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/logo/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/logo/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/logo/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/site.webmanifest">
+    <meta name="msapplication-config" content="~/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CPlayfair+Display:400,400i,700,700i%7CRoboto:400,400i,500,700" rel="stylesheet">
+    <!-- Plugins CSS -->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/vendor/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- Theme CSS -->
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Page loading spinner-->
+    <div class="preloader">
+        <img src="/images/preloader.svg" alt="Pre-loader">
+    </div>
+    <main>
+        @RenderBody()
+    </main>
+    <!--Global JS-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="~/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--Template Functions-->
+    <script src="~/js/functions.js"></script>
+    <script src="~/user/js/register.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

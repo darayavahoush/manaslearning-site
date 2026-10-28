@@ -1,0 +1,27 @@
+﻿@inherits LayoutComponentBase
+
+<div class="mb-3">
+    <InputFile OnChange="@OnInputFileChange" multiple />
+    <div class="my-2"><small>Upload <strong>Tab delimited</strong> file to create users or update licenses.</small></div>
+</div>
+<div class="mb-3">
+    @if (FileUploadState == UploadState.InProgress)
+    {
+        <div>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Uploading...
+        </div>
+    }
+    else if (FileUploadState == UploadState.Complete)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="bi bi-check-circle-fill"></i> Complete!
+        </div>
+    }
+    else if (FileUploadState == UploadState.Error)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-x-circle-fill"></i> @errorMessage
+        </div>
+    }
+</div>

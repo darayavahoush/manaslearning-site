@@ -1,0 +1,73 @@
+﻿@page "/child-academic-problems/understanding-your-childs-difficulty-with-executive-functions"
+@model manaslearning.UI.Pages.ChildAcademicProblems.ExecutiveFunctionModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Understanding Your Child's Difficulty with Executive Function";
+    ViewBag.MetaDescription = "Executive functions are those mental skills of our brain, like thinking, memory, focus, organization, and self-control. These functions help us plan, organize our thoughts, concentrate, set goals, make decisions, control impulses, prioritize, and remember.";
+    ViewBag.MetaKeywords = "what is executive function, signs of executive functioning issues, trouble with executive function, executive function disorder, executive function";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/14/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 executive-functions-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Children with Executive Function Difficulties</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Understanding Your Child's Difficulty With Executive Function</h2>
+                            <p class="fs-1">
+                                Executive functions are those mental skills of our brain, like thinking, memory, focus, organization, and self-control. These functions help us plan, organize our thoughts, concentrate, set goals, make decisions, control impulses, prioritize, and remember. Problems in these executive functions can affect academics, behavior, memory, and attention.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Poor in organizing and planning daily activities and thoughts and don’t know how to prioritize tasks and ideas.</li>
+                                <li>Forget what they have heard or read and loses their things frequently.</li>
+                                <li>Trouble following different directions or order of steps of doing things.</li>
+                                <li>Problem in controlling their feelings, impulses and behaviour.</li>
+                                <li>Confusion in switching focus from one task to another and trouble in starting and/or complete a job.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

@@ -1,0 +1,653 @@
+﻿@page ""
+@model IndexModel
+@{
+    Layout = "_Layout_Main";
+    ViewBag.Title = "Child Learning Problems | Remedial Education & Assessments for Children | MANAS Learning";
+    ViewBag.MetaDescription = "MANAS Learning offers comprehensive remedial education for children with learning problems (Reading, Writing, Math Skills, etc.). Enroll in Assessment tests and assist the special children effectively!";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("06/22/2022", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- Hero Banner -->
+<div class="hero-banner-one pt-100 pb-60 ">
+    <!-- Carousel -->
+    <div class="container">
+        <div class="row">
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+                </div>
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-7 pt-100">
+                                <h1 class="hero-heading font-recoleta">
+                                    <span class="coming-soon-title">PHONICS JUNGLE</span><span class="coming-soon-alt-text d-inline-block position-relative">Learning App</span><div class="d-inline-block position-relative pt-md-4 pt-2" style="color: #000000;">Coming Soon</div>
+                                </h1>
+                                <div class="col-lg-10 col-md-12 col-sm-12 pt-40 button-group d-sm-flex align-items-center style-two">
+                                </div>
+                            </div>
+                            <div class="col-sm-5  order-first order-md-last ">
+                                <img src="~/main/images/assets/phonics-jungle-app-coming-soon.png" alt="Phoncs Jungle Learning App">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-7 pt-100">
+                                <h1 class="hero-heading font-recoleta">
+                                    I'm in the 5<sup>th</sup> grade struggling with <span class="d-inline-block position-relative">Dyslexia</span>
+                                </h1>
+                                <div class="col-lg-10 col-md-12 col-sm-12 pt-40 button-group d-sm-flex align-items-center style-two">
+                                    <a href="@UrlConstants.PAGE_FREE_ASSESSMENTS" class="theme-btn-one">Take Free Assessment</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-5  order-first order-md-last ">
+                                <img src="~/main/images/assets/bannerimg1.png" alt="Child Reading Problems">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item  ">
+                        <div class="row">
+                            <div class="col-sm-7 pt-90">
+                                <h1 class="hero-heading font-recoleta mb-15">
+                                    I'm an employee with <span class="d-inline-block position-relative">ADHD</span>
+                                </h1>
+                                <div class="col-lg-10 col-md-12 col-sm-12 pt-35 button-group d-sm-flex align-items-center style-two">
+                                    <a href="@UrlConstants.PAGE_FREE_ASSESSMENTS" class="theme-btn-one">Take Free Assessment</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 order-first order-md-last">
+                                <img src="~/main/images/assets/bannerimg2.png" alt="Child Attention Problems" class="illustration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-7 pt-80">
+                                <h1 class="hero-heading font-recoleta mb-15">
+                                    I'm a father with <span class="d-inline-block position-relative">Dyscalculia</span> and find Math and Calculation difficult 
+                                </h1>
+                                <div class="col-lg-10 col-md-12 col-sm-12 pt-35 button-group d-sm-flex align-items-center style-two">
+                                    <a href="@UrlConstants.PAGE_FREE_ASSESSMENTS" class="theme-btn-one">Take Free Assessment</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 order-first order-md-last">
+                                <img src="~/main/images/assets/bannerimg3.png" alt="Child Struggling with Math" class="illustration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-7 pt-80">
+                                <h1 class="hero-heading font-recoleta mb-15">
+                                    I know a friend who has <span class="d-inline-block position-relative">Dysgraphia</span>
+                                </h1>
+                                <div class="col-lg-10 col-md-12 col-sm-12 pt-35 button-group d-sm-flex align-items-center style-two">
+                                    <a href="@UrlConstants.PAGE_FREE_ASSESSMENTS" class="theme-btn-one">Take Free Assessment</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 order-first order-md-last">
+                                <img src="~/main/images/assets/bannerimg4.png" alt="Child Writing Problems" class="illustration">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Carousel -->
+</div>
+<!-- End Hero Banner -->
+<!-- ML Why MANAS -->
+<div class="ml-feature-section-one dark-layout pb-4">
+    <div class="bg-wrapper pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12 ms-auto" data-aos="fade-right">
+                    <div class="title-style-one">
+                        <h2 class="title">Why choose us? </h2>
+                    </div>
+                    <p class="meta-info-text text-md">We accept and understand the struggles of learning disabilities and neuro divergence and bring out the best in your child.</p>
+                    <p class="meta-info-text text-md">We believe our differences make us unique and every child has a different way of learning. We work to nourish these learning differences effectively to unlock the hidden talents and creativity among children.</p>
+                    <p class="meta-info-text text-md">MANAS Learning brings out the genius in your child through fun explorative practices that encourage academic experiences and child development. Find out what works best for your child as they engage in productive personalized classes to overcome various learning disabilities and build social skills.</p>
+                </div>
+                <div class="col-xxl-12 ms-auto" data-aos="fade-right">
+                    <div class="title-style-one">
+                        <h5 class="title-mid">MANAS Learning stands for</h5>
+                    </div>
+                    <p class="meta-info-text text-md">
+                        <span>M</span>ultisensory, <span>A</span>ctivity Based, <span>N</span>eurological, <span>A</span>daptive, and <span>S</span>cientific learning; which is child centric, based on different learning disabilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ACE section -->
+<div class="ml-feature-section-nine pt-80 pb-100 mt-40 md-pt-60 md-pb-60 border-top">
+    <div class="container">
+        <div class="title-style-seven text-center pb-10 lg-pb-20">
+            <h2 class="title">Assess - Classes - Expert </h2>
+            <p>Make your child ACE with MANAS Learning</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <a href="#" class="theme-btn-three" data-bs-toggle="modal" data-bs-target="#myModal1">
+                    <div class="card-style-nine nineone md-mb-10 md-pb-20">
+                        <div class="img-holder d-flex align-items-center justify-content-center">
+                            <img src="~/main/images/assets/assess-img.png" alt="Child Assessment">
+                        </div>
+                        <h3>Assess</h3>
+                        <p>Assess your child to understand your child’s level in reading, writing, spelling, math, attention, etc.</p>
+                        <a href="#" class="theme-btn-three" data-bs-toggle="modal" data-bs-target="#myModal1">
+                            Learn more <i class="fas fa-angle-right"></i>
+                        </a>
+
+                    </div>
+                </a>
+                <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content box1 p-3">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header border-bottom-0">
+                                <h4 class="modal-title">Assess</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <img class="modalimg" src="~/main/images/assets/assess-img.png" alt="Child Classroom">
+                                <p>
+                                    Assess your child's specific learning disabilities with simple tests. Determine the differences in learning abilities and identify their strengths.
+                                </p>
+                                <p>
+                                    It is especially important to understand the learning styles and severity of the learning disability in a child. Each child has a different level of perception. Assessing these different abilities help to identify problems like Dyslexia, Dysgraphia, Dyscalculia, Dysorthographia, Dyspraxia, etc. To extend an effective educational plan and helpful techniques to a child, we must understand and accept the strengths and weaknesses. It is crucial to provide personalized classes that target the specific learning disabilities of the kid and nourish their strengths.
+                                </p>
+                                <p>
+                                    Concentration, memory, and attention also play key roles in fuelling academic performances. Every individual has varied neural functioning that impacts developmental processes. Assessment done via specifically designed tests by experts can help to recognize the child’s performance. These results can be eventually utilized to curate special instructions and accordingly customized sessions that guide a child better.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="#" class="theme-btn-three" data-bs-toggle="modal" data-bs-target="#myModal2">
+                    <div class="card-style-nine ninetwo md-mb-10 md-pb-20">
+                        <div class="img-holder d-flex align-items-center justify-content-center">
+                            <img src="~/main/images/assets/classes-img.png" alt="Child Classroom">
+                        </div>
+                        <h3>Classes</h3>
+                        <p class="pe-xxl-5">Subscribe to our classes to bring out the genius in your child.</p>
+                        <a href="#" class="theme-btn-three" data-bs-toggle="modal" data-bs-target="#myModal2"> Learn more <i class="fas fa-angle-right"></i></a>
+
+                    </div>
+                </a>
+                <div class="modal fade" id="myModal2">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content box2 p-3">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header border-bottom-0">
+                                <h4 class="modal-title">Classes</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <img class="modalimg" src="~/main/images/assets/classes-img.png" alt="Child Classroom">
+                                <p>
+                                    Join our classes to aim at better learning that brings out the best in your child.
+                                </p>
+                                <p>
+                                    Often children tend to lag in skills that they should have acquired in their early years, due to different learning disabilities. In conventional classrooms, the methods of teaching and the perception levels of children are generalized. Thus, children tend to lack in reading, writing, math, spelling, etc. Often, some children lose interest in academics. At MANAS Learning, classes are personalized as per the child’s learning styles. Based on the previously conducted assessments, a child gets an individualized educational plan with fun activities. We create sessions based on the strengths and weaknesses of the child.
+                                </p>
+                                <p>
+                                    The IEPs are specifically curated to help a child’s severity of Dyslexia, Dysgraphia, Dyscalculia, Visual Perception disorder, Auditory processing disorder, ADHD, Autism, etc. The focus is to nourish the strengths to engage and inspire. The aim is to deliver age-based skills and basic knowledge than syllabus-based education. One-on-one classes help personalize and focus on the child. Multi-sensory methods are blended into exciting games and activities redefining learning for children.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="#" class="theme-btn-three" data-bs-toggle="modal" data-bs-target="#myModal3">
+                    <div class="card-style-nine ninethree md-mb-10 md-pb-20">
+                        <div class="img-holder d-flex align-items-center justify-content-center">
+                            <img src="~/main/images/assets/expert-img.png" alt="Free Expert Consultation">
+                        </div>
+                        <h3>Expert</h3>
+                        <p class="pe-xxl-5">Get a free consultation from our experts to help your child excel in academics.</p>
+                        <a href="#" class="theme-btn-three" data-bs-toggle="modal" data-bs-target="#myModal3">Learn more <i class="fas fa-angle-right"></i></a>
+
+                    </div>
+                </a>
+                <div class="modal fade" id="myModal3">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content box3 p-3">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header border-bottom-0">
+                                <h4 class="modal-title">Expert</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <img class="modalimg" src="~/main/images/assets/expert-img.png" alt="Free Expert Consultation">
+                                <p>
+                                    Engage in rewarding learning experiences with our experts. Our specialists work dedicatedly for every child and nurture the best in them.
+                                </p>
+                                <p>
+                                    Our team of specialists, teachers, psychologists, and educational experts understand the prevalence of learning disabilities, the effect of neuro divergence, and the needs of children. Our personal educators are highly trained and experienced in best pedagogy. All classes are curated to match the level of learning of a child.
+                                </p>
+                                <p>
+                                    Dyslexia, Dysgraphia, Dyscalculia, Dysorthographia, Dyspraxia, AHDH, and other disabilities are taken into consideration to design potentially functional experiences. 
+
+                                    It is our prime motto to understand, empathize, and assist children and their unique abilities. The specially curated learning program is scientifically proven and tested to provide skill-based learning into simple and effective techniques put forth in friendly and open sessions. You can also consult our experts to discuss the progress of your child, learn feedback, and discuss strategies for betterment. We are here to help you and your child adapt to newer and worthwhile mannerisms of learning and growing together in a healthy and aspiring ambiance.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End ACE section -->
+<!-- ML Statistics -->
+<div class="ml-feature-section-one dark-layout ">
+    <div class="bg-wrapper">
+        <div class="container">
+            <div class="counter-section-one pt-40 md-mt-30">
+                <div class="inner-container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 p-2" data-aos="fade-up">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">7</span>+</div>
+                                <p class="theme-mb-0">Years of experience in child & educational psychology</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 p-2" data-aos="fade-up" data-aos-delay="100">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">20</span>k+</div>
+                                <p class="theme-mb-0">Student assessed and counlled</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 p-2" data-aos="fade-up" data-aos-delay="200">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">1500</span>+</div>
+                                <p class="theme-mb-0">Students under remedial classes</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 p-2" data-aos="fade-up" data-aos-delay="300">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">98</span>%</div>
+                                <p class="theme-mb-0">Success rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End ML Statistics -->
+<!-- Blog Section -->
+@*<div class="blog-section-three lg-mt-100">
+    <div class="container">
+    <div class="row">
+    <div class="col-xxl-11 m-auto">
+    <div class="row align-items-center mb-50 lg-mb-20">
+    <div class="title-style-one">
+    <h3 class="title">Our Blog</h3>
+    </div>
+    </div>
+    <div class="row gx-xl-5">
+    <div class="col-md-4">
+    <article class="blog-meta-three mt-40">
+    <div class="img-meta"><img src="~/main/images/blog/blog1.png" alt=""></div>
+    <div class="post-meta">
+    <div class="date">23 Apr, 2021</div>
+    <a href="blog-detailsV3.html" class="title">A Discount Cartridge dsu is Better Ever.</a>
+    <a href="blog-detailsV3.html" class="theme-btn-three">
+    Know more <i class="fas fa-angle-right"></i>
+    </a>
+    </div>
+    </article>
+    </div>
+    <div class="col-md-4">
+    <article class="blog-meta-three mt-40">
+    <div class="img-meta"><img src="~/main/images/blog/blog2.png" alt=""></div>
+    <div class="post-meta">
+    <div class="date">15 may, 2021</div>
+    <a href="blog-detailsV3.html" class="title">A Discount Cartridge dsu is Better Ever.</a>
+    <a href="blog-detailsV3.html" class="theme-btn-three">
+    Know more <i class="fas fa-angle-right"></i>
+    </a>
+    </div>
+    </article>
+    </div>
+    <div class="col-md-4">
+    <article class="blog-meta-three mt-40">
+    <div class="img-meta"><img src="~/main/images/blog/blog3.png" alt=""></div>
+    <div class="post-meta">
+    <div class="date">25 july, 2021</div>
+    <a href="blog-detailsV3.html" class="title">A Discount Cartridge dsu is Better Ever.</a>
+    <a href="blog-detailsV3.html" class="theme-btn-three">
+    Know more <i class="fas fa-angle-right"></i>
+    </a>
+    </div>
+    </article>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>*@
+<!-- End Blog Section -->
+<!-- ML Testinmonials -->
+<div class="feedback-section-four bg-white pt-0">
+    <div class="container">
+        <div class="feedback-section-four-inner pt-50">
+            <div class="title-style-nine text-center">
+                <h2 class="title">Are you wondering why your child is struggling?</h2>
+                <p class="text-md pt-30 lg-pt-20">
+                    3 out of 10 children struggle with a learning disability making it hard to read, write, spell, memorize, pay attention, and sometimes behave appropriately. However, an extremely low percentage of the children are properly identified with their specific learning disabilities and provided with necessary solutions at home or in schools.
+                </p>
+                <p class="text-md pt-0 pb-2">
+                    Child's learning problems are quite common and need to be addressed. We find various kinds of challenges that kids face some of the severe ones are Dyslexia, Dysgraphia, Dyscalculia, Dysorthographia, Dyspraxia, Lack of Attention and Memory problems, ADHD, ASD and Behaviour issues, etc.
+                </p>
+                <p class="text-md pt-0 pb-2">
+                    These conditions are inborn, often genetic, and persist throughout life. Hence, the need to identify the signs of learning differences among children becomes more important.
+                </p>
+                <p class="text-md pt-0 pb-2">
+                    At MANAS Learning we do not restrict our support to academics but provide holistic emotional wellness.
+                </p>
+                <p class="text-md pt-0 pb-2">
+                    We encourage all parents and children to take tests and assess their levels of learning and emotional wellbeing to harness strengths and push them to overcome weaknesses through fun learning techniques and therapies.
+                </p>
+            </div>
+            <div class="feedback_slider_four pt-60 pb-60">
+                <div class="item">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-6 order-md-last">
+                            <div class="feedback-wrapper">
+                                <!-- <div class="icon d-flex align-items-center justify-content-center"><img src="~/main/images/icon/icon_33.svg" alt=""></div> -->
+                                <blockquote class="font-recoleta">
+                                    "My 12 year old son struggles with reading. I’ve been searching for a helpful course but no classes in my city could guide him efficiently. Since he joined MANAS Learning, his reading comprehension has gradually improved."
+                                </blockquote>
+                                <h6 class="name">Father of Iqbal <br><span>Grade 4</span></h6>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 order-md-first">
+                            <div class="image-container">
+                                <img src="~/main/images/assets/test1.png" alt="Reading Assessment Test">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-6 order-md-last">
+                            <div class="feedback-wrapper">
+                                <!-- <div class="icon d-flex align-items-center justify-content-center"><img src="~/main/images/icon/icon_33.svg" alt=""></div> -->
+                                <blockquote class="font-recoleta">
+                                    "Despite being good at studies, my 13-year old daughter has difficulties with spellings. I came across MANAS Learning by chance and it has been a blessing. Now we both know all rules and have improved vocabulary."
+                                </blockquote>
+                                <h6 class="name">Father of Ananya<br><span>Grade 5</span></h6>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 order-md-first">
+                            <div class="image-container">
+                                <img src="~/main/images/assets/test2.png" alt="Writing Assessment Test">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-6 order-md-last">
+                            <div class="feedback-wrapper">
+                                <!-- <div class="icon d-flex align-items-center justify-content-center"><img src="~/main/images/icon/icon_33.svg" alt=""></div> -->
+                                <blockquote class="font-recoleta">
+                                    "Math was my son’s nightmare, despite excelling in other subjects and sports. Teachers helped him with extra classes but nothing seemed to work. Assistance from MANAS has been a great solution. He’s performing better and is gaining confidence too."
+                                </blockquote>
+                                @*<h6 class="name">Father of Iqbal <br><span>Grade 5</span></h6>*@
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 order-md-first">
+                            <div class="image-container">
+                                <img src="~/main/images/assets/test3.png" alt="Academic Skills Test">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-6 order-md-last">
+                            <div class="feedback-wrapper">
+                                <!-- <div class="icon d-flex align-items-center justify-content-center"><img src="~/main/images/icon/icon_33.svg" alt=""></div> -->
+                                <blockquote class="font-recoleta">
+                                    "My daughter has issues socializing due to previous traumas and also has poor memory. She didn’t have friends and is very reserved. Ongoing 4 months at MANAS Learning, she developed better social skills and memory. She’s not only studying better but also has new friends. I’m very happy with her progress."
+                                </blockquote>
+                                @*<h6 class="name">Father of Ananya<br><span>Grade 5</span></h6>*@
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 order-md-first">
+                            <div class="image-container">
+                                <img src="~/main/images/assets/test4.png" alt="Math Assessment Test">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-6 order-md-last">
+                            <div class="feedback-wrapper">
+                                <!-- <div class="icon d-flex align-items-center justify-content-center"><img src="~/main/images/icon/icon_33.svg" alt=""></div> -->
+                                <blockquote class="font-recoleta">
+                                    "Due to lots of bullying and trauma at school, my 8-year old daughter struggled with writing. We started getting complains on her behavior too. Exploring many specialized classes, we found MANAS. She progressed excellently within a week, could write better in just 2 months, and expresses herself better. She gets all A’s now, thanks a ton!"
+                                </blockquote>
+                                @*<h6 class="name">Father of Ananya<br><span>Grade 5</span></h6>*@
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6 order-md-first">
+                            <div class="image-container">
+                                <img src="~/main/images/assets/test5.png" alt="Spelling Assessment Test">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End ML Testinmonials -->
+<!-- ML Talk to Experts  -->
+<div class="ml-text-block-eleven lg-mt-10">
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 ms-auto">
+                    <div class="text-wrapper">
+                        <div class="title-style-nine pt-40 pb-45 lg-pb-30">
+                            <h2 class="title">Talk to our experts</h2>
+                        </div>
+                        <p class="meta-info-text">
+                            To bring out the best in your child, patience, empathy, and acceptance are the key. Conversations with our experts can help you understand your child better and provide the best-curated programs and support that your child needs.
+                        </p>
+                        <p class="meta-info-text">
+                            Consult us to inspire a love for learning.
+                        </p>
+                        @*<a href="@UrlConstants.PAGE_EXPERTS" class="theme-btn-four">Get Started Now!</a>*@
+                        <a class="theme-btn-four" href="tel:(+91) 934-215-7217">Get Started Now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left-img-meta">
+            <img src="~/main/images/assets/calltoaction1.png" alt="Talk to our Experts">
+        </div>
+    </div>
+</div>
+<!-- End ML Talk to Experts -->
+<!-- ML FAQ's -->
+<div class="ml-text-block-eleven bg-white pt-60 pb-60 lg-mt-60">
+    <div class="container">
+        <div class="title-style-nine">
+            <h2 class="title text-center">Frequently Asked Questions</h2>
+            <div class="row text-left">
+                <div class=" col-lg-6  pt-70 text-left" data-aos="fade-left">
+                    <img src="/main/images/assets/faqs.svg" alt="MANAS Learning - Frequently Asked Questions">
+                </div>
+                <div class=" col-lg-6 pt-70" data-aos="fade-left">
+                    <div class="accordion accordion-style-four" id="accordionOne">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How can I help my child who is struggling to learn basics at school?
+                            </button>
+                        </div>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    Children struggling to learn is quite a common problem. Getting your child's skills assessed and identifying the issues affecting your child's academics is the first step. It is important to understand what is causing the struggle. The learning process can be affected by the individual learning styles, intelligence, interaction and activities involved at school, attention, memory and general discipline. Talk to your child’s teacher s/he can give you a better insight into your child's learning styles. Direct teaching, interactive methods based on your child’s strengths and weaknesses can help your child eventually.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="headingTwo">
+                            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                My child's reading skills are not to his grade level. What can I do?
+                            </button>
+                        </div>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    Every child has a different comprehension level, having said that there are bare minimum standards to assess your child’s reading level. Assess your child’s reading level identify your child’s strengths and weaknesses. Teaching phonics and phonemic awareness helps in reading a lot. Cultivate a habit of reading storybooks from a very young age. Reading bedtime stories for your children is a fun and happy way to spend time together.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                My son is bright in all subjects but fails in math. Why is it so and what can be done?
+                            </button>
+                        </div>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    We use distinct parts of the brain and different types of intelligence for processing language, concept and logic. Academics are learned skills that do not come automatically like talking or walking. Get your child assessed to understand your child’s skill level, learning style and dominant intelligences. Once your child’s issues are identified it becomes quite easy to provide specific targeted support in the form of classes, activities and teaching methods, which engage your child and fulfill their needs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                How can I help my daughter improve spellings?
+                            </button>
+                        </div>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    Children often struggle with simple spellings, which can impact their reading and writing capabilities. English is a difficult language as one letter makes different sounds and many spelling for the same sound. If your child is poor in spellings in all languages, please get her/him tested. Teaching phonological awareness, syllabication and spelling rules and practicing these in different types of games is the best way to teach children to spell. This style of teaching to spelling helps children sharpen their decoding and encoding skills of a language, so they do not have to byheart spellings but naturally spell them.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                My child scores poorly in class but I can’t find out why?
+                            </button>
+                        </div>
+                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    The best thing to be is to consult the teachers at school to learn about your child’s learning behaviors and problem areas. There are plenty of tests and psychological assessments that can help you understand why your child is poor in academics. This generation of children needs a lot of engagement and interaction, check your child’s screen time and the teaching methods in the class.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="heading6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                My teenage son has very illegible handwriting. How do I help him?
+                            </button>
+                        </div>
+                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    Children quite often tend to struggle with writing due to inefficient fine motor skills. Provide a proper tripod grip, make the child understand the importance of legible handwriting. Teach letter formation and proper posture while writing. Give writing activities that will challenge and excite your teenager. Hand and palm exercises help reduce the fatigue caused by writing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="heading7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                What should I do to help my son with better communication skills?
+                            </button>
+                        </div>
+                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    Communication plays a significant role in our lives. There is a huge difference between talking and communicating. Listening plays a huge part in communication. There are special classes for teaching communication skills. Practicing how talk in front of a mirror, participating in cultural activities and debate clubs can help. ab Improving language and vocabulary goes a long way in improving communication. What to say, when to say and how much to say are the key to effective communication. Confidence and clarity also are important for excellent communication.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="heading8">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                My child studies all day but cannot remember it. What can help?
+                            </button>
+                        </div>
+                        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionOne">
+                            <div class="accordion-body">
+                                <p>
+                                    Children, in general, do not have memory issues other than if there is some type of brain damage or some type of accident. Memory issues in children are due to problems in the executive function of the brain. It is not that the children do not remember what they study but it’s that they do not register what they are studying. The number of hours studied is not important but effective studying is important. Attention and organizational skills play an important role in memory. Please get your child tested.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End ML FAQ's -->
+<!-- ML Subscribe -->
+@*<div class="fancy-banner-eight pt-100 pb-150  lg-pb-100">
+    <div class="container">
+    <div class="row">
+    <div class="col-xxl-8 col-xl-9 col-lg-7 pb-60 m-auto">
+    <div class="title-style-two  white-vr text-center pe-xxl-2 ps-xxl-2">
+    <h2 class="title">Join 60,000 subscribers who receieve free parenting news. Sign up now</h2>
+    </div>
+    </div>
+    </div>
+    <form action="#" class="m-auto ">
+    <input type="email" placeholder="Enter your email get started">
+    <button>Subscribe Now</button>
+    </form>
+    </div>
+    </div>*@
+<!-- ML Subscribe -->

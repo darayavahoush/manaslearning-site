@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>30dbfd1f-29a1-4d67-bede-40516dbe3bb4</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Identity.Web" Version="1.23.1" />
+		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
+		<PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.3.0" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\manaslearning.Helpers\manaslearning.Helpers.csproj" />
+		<ProjectReference Include="..\manaslearning.Models\manaslearning.Models.csproj" />
+		<ProjectReference Include="..\manaslearning.Shared\manaslearning.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="SpreadsheetGear2017.Core">
+			<HintPath>ExternalLibraries\SpreadsheetGear2017.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="SpreadsheetGear2017.Drawing">
+			<HintPath>ExternalLibraries\SpreadsheetGear2017.Drawing.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\manaslearning.Business\manaslearning.Business.csproj" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+	</ItemGroup>
+
+</Project>

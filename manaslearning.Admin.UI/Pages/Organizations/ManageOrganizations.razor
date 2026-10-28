@@ -1,0 +1,40 @@
+﻿@page "/manage-organizations"
+@using BlazorBootstrap
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+@inherits ParentComponentBase
+
+<PageTitle>Organizations</PageTitle>
+<div class="float-end">
+    <Button Color="ButtonColor.Success" @onclick="OnShowOffcanvasClick"><Icon Name="IconName.Plus" /> New Organization </Button>
+</div>
+<br />
+<Grid @ref="organizationGrid" TItem="OrganizationInfo" class="table table-hover" DataProvider="OrganizationsDataProvider" PageSize="100">
+    <GridColumn TItem="OrganizationInfo" Context="org" HeaderText="Id" SortKeySelector="@(item => item.OrganizationId)">
+        @org.OrganizationId
+    </GridColumn>
+    <GridColumn TItem="OrganizationInfo" Context="org" HeaderText="Name" SortKeySelector="@(item => item.Name)">
+        @org.Name
+    </GridColumn>
+    <GridColumn TItem="OrganizationInfo" Context="org" HeaderText="DisplayName" SortKeySelector="@(item => item.DisplayName)" IsDefaultSortColumn="true">
+        @org.DisplayName
+    </GridColumn>
+    <GridColumn TItem="OrganizationInfo" Context="org" HeaderText="IsActive" SortKeySelector="@(item => item.IsActive)">
+        @org.IsActive
+    </GridColumn>
+    <GridColumn TItem="OrganizationInfo" Context="org" HeaderText="Users">
+        <a href="/manage-users/@org.Oid">Users</a>
+    </GridColumn>
+    <GridColumn TItem="OrganizationInfo" Context="org" HeaderText="Edit">
+        <Button Color="ButtonColor.Primary" Size="Size.Small" @onclick="(async () => await EditOrganization(org.Oid))"><Icon Name="IconName.PencilSquare" /> Edit </Button>
+    </GridColumn>
+</Grid>
+
+<CascadingValue Value="@organizationOid" IsFixed="true">
+<Offcanvas @ref="offcanvas" Title="Organization" UseBackdrop="false">
+   <BodyTemplate>      
+       <CreateUpdateOrganization OnOrganizationChanged="HandleOrganizationChanged" />
+   </BodyTemplate>
+</Offcanvas>
+</CascadingValue>

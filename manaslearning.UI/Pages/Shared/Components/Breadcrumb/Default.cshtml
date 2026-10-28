@@ -1,0 +1,75 @@
+﻿@using manaslearning.UI.Models
+@model BreadcrumbViewModel
+
+<nav aria-label="breadcrumb" role="navigation" class="bg-primary all-text-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col">
+                @if (Model != null && Model.Items != null)
+                {
+                    if (!Model.IsResponsive)
+                    {
+                        <ol class="breadcrumb">
+                            @foreach (var item in @Model.Items)
+                            {
+                                if (!item.IsActive)
+                                {
+                                    <li class="breadcrumb-item">
+                                        <a href="@item.Href">@item.Title</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="breadcrumb-item active" aria-current="page">@item.Title</li>
+                                }
+                            }
+                        </ol>
+                    }
+                    else
+                    {
+                        <ol class="breadcrumb">
+                            @{
+                                foreach (var item in @Model.Items)
+                                {
+                                    if (!item.IsActive)
+                                    {
+                                        <li class="breadcrumb-item d-none d-md-block d-lg-block d-xl-block d-xxl-block">
+                                            <a href="@item.Href">@item.Title</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="breadcrumb-item d-none d-md-block d-lg-block d-xl-block d-xxl-block active" aria-current="page">@item.Title</li>
+                                    }
+                                }
+                                var lastItem = Model.Items.LastOrDefault();
+                                var previousToLastItemIndex = 0;
+                                if (Model.Items.Length <= 1)
+                                {
+                                    previousToLastItemIndex = 0;
+                                }
+                                else
+                                {
+                                    previousToLastItemIndex = Model.Items.Length - 2;
+                                }
+                                var previousToLastItem = Model.Items[previousToLastItemIndex];
+                                if (lastItem != null)
+                                {
+                                    <li class="breadcrumb-item responsive d-block d-sm-none">
+                                        <a class="line-height-1" href="@previousToLastItem.Href">
+                                            <i class="bi bi-arrow-left-short mr-1"></i>@lastItem.Title
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ol>
+                    }
+
+                }
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</nav>

@@ -1,0 +1,20 @@
+﻿@page "/u/error"
+@model manaslearning.UI.Pages.User.ErrorModel
+@{
+    Layout = "_LayoutForUser";
+    ViewData["Title"] = "Error";
+}
+
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h2 class="display-1 font-weight-bold text-grad">Aaaah!</h2>
+                <h3 class="mb-4">Something went wrong</h3>
+                <p>Brace yourself till we get the error fixed.</p>
+                <p>You may also refresh the page or try again later.</p>
+                <a class="btn btn-sm btn-outline-light" href="@UrlConstants.USER_DASHBOARD">Back to home!</a>
+            </div>
+        </div>
+    </div>
+</section>

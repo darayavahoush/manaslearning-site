@@ -1,0 +1,96 @@
+﻿@page "/u/orders-payments-overview"
+@model manaslearning.UI.Pages.User.Subscription.OrdersModel
+@{ ViewData["Title"] = "Orders & Payments";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml"; }
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <div id="divMessage"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Orders & Payments</h2>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <div class="card card-sm border-top-0">
+                    <div>
+                        <div class="list-group list-group-flush">
+                            <div class="table-responsive-sm">
+                                <table class="table table-hover tab-subscription align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Order Number</th>
+                                            <th scope="col">Purchased Date</th>
+                                            <th scope="col">Assessment</th>
+                                            <th scope="col" class="text-right">Quantity</th>
+                                            <th scope="col" class="text-right">Total</th>
+                                            <th scope="col">Payment Status</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Orders != null && Model.Orders.Any())
+                                        {
+                                            foreach (var item in Model.Orders)
+                                            {
+                                                <tr class="bg-white">
+                                                    <td>
+                                                        @item.OrderNumber
+                                                    </td>
+                                                    <td>
+                                                        @item.PurchasedDate
+                                                    </td>
+                                                    <td>
+                                                        @item.ProductName
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @item.Quantity
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @item.CurrencySymbol@item.TotalAmount.ToString("F2")
+                                                    </td>
+                                                    <td>
+                                                        @item.OrderStatusName
+                                                    </td>
+                                                    <td>
+                                                        @if (@item.OrderStatusName == "Pending" && @item.PaymentStatusName == "Pending")
+                                                        {
+                                                            <a class="btn btn-primary btn-xs" href="@UrlConstants.USER_PAYMENT_STATUS/@item.PaymentTransactionOid"> Check Status </a>
+                                                        }
+                                                        else if (@item.OrderStatusName == "Pending")
+                                                        {
+                                                            <a class="btn btn-primary btn-xs" href="/u/showpaymentpage?orderOid=@item.OrderOid"> Retry Payment </a>
+                                                        }
+                                                        else if (item.OrderStatusName == "Completed")
+                                                        {
+                                                            <a class="mr-2" href="~/u/bill-overview/@item.OrderOid"><img src="~/user/icons/document.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="View Order Details" alt="View Order Details" /></a>
+                                                            <a href="#" data-bind="@item.OrderOid" class="send-invoice-email"> <img src="~/images/email.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="" alt="Email Invoice" data-original-title="Email Invoice"></a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr class="bg-white">
+                                                <td colspan="8" class="text-center">
+                                                    <div class="mt-3">You do not have any orders to display.</div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

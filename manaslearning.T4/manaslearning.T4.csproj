@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="itext7" Version="7.1.14" />
+    <PackageReference Include="itext7.pdfhtml" Version="3.0.3" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\ConfirmEmailChangeTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfirmEmailChangeTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\EmailVerificationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EmailVerificationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\PasswordUpdateConfirmationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PasswordUpdateConfirmationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ResetPasswordTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResetPasswordTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\EmailVerificationTemplate.tt">
+      <LastGenOutput>EmailVerificationTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Templates\ResetPasswordTemplate.tt">
+      <LastGenOutput>ResetPasswordTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Templates\InvoiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SignupTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\ConfirmEmailChangeTemplate.tt">
+      <LastGenOutput>ConfirmEmailChangeTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Templates\PasswordUpdateConfirmationTemplate.tt">
+      <LastGenOutput>PasswordUpdateConfirmationTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Templates\SignupTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ConfirmEmailChangeTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

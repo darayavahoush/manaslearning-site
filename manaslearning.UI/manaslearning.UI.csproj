@@ -1,0 +1,259 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>4a3e8867-6133-4c22-9b17-41c9c286f292</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\fonts\**" />
+    <Compile Remove="wwwroot\img\**" />
+    <Content Remove="wwwroot\fonts\**" />
+    <Content Remove="wwwroot\img\**" />
+    <EmbeddedResource Remove="wwwroot\fonts\**" />
+    <EmbeddedResource Remove="wwwroot\img\**" />
+    <None Remove="wwwroot\fonts\**" />
+    <None Remove="wwwroot\img\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200723040314_CreateIdentitySchema.cs" />
+    <Compile Remove="Migrations\20200723040314_CreateIdentitySchema.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataTransferObjects\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\vendor\animate\" />
+    <Folder Include="wwwroot\vendor\font-awesome\fonts\" />
+    <Folder Include="wwwroot\vendor\multiselect\" />
+    <Folder Include="wwwroot\vendor\sweet-alert\" />
+    <Folder Include="wwwroot\vendor\wow\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\main\fonts\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <None Include="wwwroot\main\fonts\font-awesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\main\fonts\font-awesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\main\fonts\font-awesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\main\fonts\font-awesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\main\fonts\font-awesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\main\fonts\font-awesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\main\fonts\gordita\gordita_black-webfont.woff2" />
+    <None Include="wwwroot\main\fonts\gordita\gordita_bold-webfont.woff2" />
+    <None Include="wwwroot\main\fonts\gordita\gordita_light-webfont.woff2" />
+    <None Include="wwwroot\main\fonts\gordita\gordita_medium-webfont.woff2" />
+    <None Include="wwwroot\main\fonts\gordita\gordita_regular-webfont.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-Black.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-Bold.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-Light.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-Medium.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-Regular.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-SemiBold.woff2" />
+    <None Include="wwwroot\main\fonts\recoleta\Recoleta-Thin.woff2" />
+    <None Include="wwwroot\main\images\icon\icon_01.svg" />
+    <None Include="wwwroot\main\images\icon\icon_02.svg" />
+    <None Include="wwwroot\main\images\icon\icon_03.svg" />
+    <None Include="wwwroot\main\images\icon\icon_04.svg" />
+    <None Include="wwwroot\main\images\icon\icon_05.svg" />
+    <None Include="wwwroot\main\images\icon\icon_06.svg" />
+    <None Include="wwwroot\main\images\icon\icon_07.svg" />
+    <None Include="wwwroot\main\images\icon\icon_08.svg" />
+    <None Include="wwwroot\main\images\icon\icon_10.svg" />
+    <None Include="wwwroot\main\images\icon\icon_100.svg" />
+    <None Include="wwwroot\main\images\icon\icon_101.svg" />
+    <None Include="wwwroot\main\images\icon\icon_103.svg" />
+    <None Include="wwwroot\main\images\icon\icon_104.svg" />
+    <None Include="wwwroot\main\images\icon\icon_105.svg" />
+    <None Include="wwwroot\main\images\icon\icon_11.svg" />
+    <None Include="wwwroot\main\images\icon\icon_12.svg" />
+    <None Include="wwwroot\main\images\icon\icon_13.svg" />
+    <None Include="wwwroot\main\images\icon\icon_14.svg" />
+    <None Include="wwwroot\main\images\icon\icon_15.svg" />
+    <None Include="wwwroot\main\images\icon\icon_16.svg" />
+    <None Include="wwwroot\main\images\icon\icon_17.svg" />
+    <None Include="wwwroot\main\images\icon\icon_18.svg" />
+    <None Include="wwwroot\main\images\icon\icon_19.svg" />
+    <None Include="wwwroot\main\images\icon\icon_20.svg" />
+    <None Include="wwwroot\main\images\icon\icon_22.svg" />
+    <None Include="wwwroot\main\images\icon\icon_23.svg" />
+    <None Include="wwwroot\main\images\icon\icon_24.svg" />
+    <None Include="wwwroot\main\images\icon\icon_25.svg" />
+    <None Include="wwwroot\main\images\icon\icon_26.svg" />
+    <None Include="wwwroot\main\images\icon\icon_27.svg" />
+    <None Include="wwwroot\main\images\icon\icon_28.svg" />
+    <None Include="wwwroot\main\images\icon\icon_29.svg" />
+    <None Include="wwwroot\main\images\icon\icon_30.svg" />
+    <None Include="wwwroot\main\images\icon\icon_31.svg" />
+    <None Include="wwwroot\main\images\icon\icon_32.svg" />
+    <None Include="wwwroot\main\images\icon\icon_33.svg" />
+    <None Include="wwwroot\main\images\icon\icon_34.svg" />
+    <None Include="wwwroot\main\images\icon\icon_35.svg" />
+    <None Include="wwwroot\main\images\icon\icon_36.svg" />
+    <None Include="wwwroot\main\images\icon\icon_37.svg" />
+    <None Include="wwwroot\main\images\icon\icon_38.svg" />
+    <None Include="wwwroot\main\images\icon\icon_39.svg" />
+    <None Include="wwwroot\main\images\icon\icon_40.svg" />
+    <None Include="wwwroot\main\images\icon\icon_41.svg" />
+    <None Include="wwwroot\main\images\icon\icon_42.svg" />
+    <None Include="wwwroot\main\images\icon\icon_43.svg" />
+    <None Include="wwwroot\main\images\icon\icon_44.svg" />
+    <None Include="wwwroot\main\images\icon\icon_45.svg" />
+    <None Include="wwwroot\main\images\icon\icon_46.svg" />
+    <None Include="wwwroot\main\images\icon\icon_47.svg" />
+    <None Include="wwwroot\main\images\icon\icon_48.svg" />
+    <None Include="wwwroot\main\images\icon\icon_49.svg" />
+    <None Include="wwwroot\main\images\icon\icon_50.svg" />
+    <None Include="wwwroot\main\images\icon\icon_51.svg" />
+    <None Include="wwwroot\main\images\icon\icon_52.svg" />
+    <None Include="wwwroot\main\images\icon\icon_53.svg" />
+    <None Include="wwwroot\main\images\icon\icon_54.svg" />
+    <None Include="wwwroot\main\images\icon\icon_55.svg" />
+    <None Include="wwwroot\main\images\icon\icon_56.svg" />
+    <None Include="wwwroot\main\images\icon\icon_57.svg" />
+    <None Include="wwwroot\main\images\icon\icon_58.svg" />
+    <None Include="wwwroot\main\images\icon\icon_59.svg" />
+    <None Include="wwwroot\main\images\icon\icon_60.svg" />
+    <None Include="wwwroot\main\images\icon\icon_61.svg" />
+    <None Include="wwwroot\main\images\icon\icon_62.svg" />
+    <None Include="wwwroot\main\images\icon\icon_63.svg" />
+    <None Include="wwwroot\main\images\icon\icon_64.svg" />
+    <None Include="wwwroot\main\images\icon\icon_65.svg" />
+    <None Include="wwwroot\main\images\icon\icon_66.svg" />
+    <None Include="wwwroot\main\images\icon\icon_67.svg" />
+    <None Include="wwwroot\main\images\icon\icon_68.svg" />
+    <None Include="wwwroot\main\images\icon\icon_69.svg" />
+    <None Include="wwwroot\main\images\icon\icon_70.svg" />
+    <None Include="wwwroot\main\images\icon\icon_71.svg" />
+    <None Include="wwwroot\main\images\icon\icon_72.svg" />
+    <None Include="wwwroot\main\images\icon\icon_73.svg" />
+    <None Include="wwwroot\main\images\icon\icon_74.svg" />
+    <None Include="wwwroot\main\images\icon\icon_75.svg" />
+    <None Include="wwwroot\main\images\icon\icon_76.svg" />
+    <None Include="wwwroot\main\images\icon\icon_77.svg" />
+    <None Include="wwwroot\main\images\icon\icon_78.svg" />
+    <None Include="wwwroot\main\images\icon\icon_79.svg" />
+    <None Include="wwwroot\main\images\icon\icon_80.svg" />
+    <None Include="wwwroot\main\images\icon\icon_81.svg" />
+    <None Include="wwwroot\main\images\icon\icon_82.svg" />
+    <None Include="wwwroot\main\images\icon\icon_83.svg" />
+    <None Include="wwwroot\main\images\icon\icon_84.svg" />
+    <None Include="wwwroot\main\images\icon\icon_85.svg" />
+    <None Include="wwwroot\main\images\icon\icon_86.svg" />
+    <None Include="wwwroot\main\images\icon\icon_87.svg" />
+    <None Include="wwwroot\main\images\icon\icon_89.svg" />
+    <None Include="wwwroot\main\images\icon\icon_90.svg" />
+    <None Include="wwwroot\main\images\icon\icon_91.svg" />
+    <None Include="wwwroot\main\images\icon\icon_92.svg" />
+    <None Include="wwwroot\main\images\icon\icon_93.svg" />
+    <None Include="wwwroot\main\images\icon\icon_94.svg" />
+    <None Include="wwwroot\main\images\icon\icon_95.svg" />
+    <None Include="wwwroot\main\images\icon\icon_96.svg" />
+    <None Include="wwwroot\main\images\icon\icon_97.svg" />
+    <None Include="wwwroot\main\images\icon\icon_98.svg" />
+    <None Include="wwwroot\main\images\icon\icon_99.svg" />
+    <None Include="wwwroot\main\images\icon\menu_icon_01.svg" />
+    <None Include="wwwroot\main\images\icon\menu_icon_02.svg" />
+    <None Include="wwwroot\main\images\icon\menu_icon_04.svg" />
+    <None Include="wwwroot\main\images\icon\menu_icon_05.svg" />
+    <None Include="wwwroot\main\images\icon\menu_icon_06.svg" />
+    <None Include="wwwroot\main\images\shape\popular-tag-w.svg" />
+    <None Include="wwwroot\main\images\shape\popular-tag.svg" />
+    <None Include="wwwroot\main\images\shape\shape_01.svg" />
+    <None Include="wwwroot\main\images\shape\shape_02.svg" />
+    <None Include="wwwroot\main\images\shape\shape_03.svg" />
+    <None Include="wwwroot\main\images\shape\shape_04.svg" />
+    <None Include="wwwroot\main\images\shape\shape_05.svg" />
+    <None Include="wwwroot\main\images\shape\shape_06.svg" />
+    <None Include="wwwroot\main\images\shape\shape_07.svg" />
+    <None Include="wwwroot\main\images\shape\shape_08.svg" />
+    <None Include="wwwroot\main\images\shape\shape_09.svg" />
+    <None Include="wwwroot\main\images\shape\shape_10.svg" />
+    <None Include="wwwroot\main\images\shape\shape_11.svg" />
+    <None Include="wwwroot\main\images\shape\shape_12.svg" />
+    <None Include="wwwroot\main\images\shape\shape_13.svg" />
+    <None Include="wwwroot\main\images\shape\shape_14.svg" />
+    <None Include="wwwroot\main\images\shape\shape_16.svg" />
+    <None Include="wwwroot\main\images\shape\shape_17.svg" />
+    <None Include="wwwroot\main\images\shape\shape_18.svg" />
+    <None Include="wwwroot\main\images\shape\shape_19.svg" />
+    <None Include="wwwroot\main\images\shape\shape_20.svg" />
+    <None Include="wwwroot\main\images\shape\shape_21.svg" />
+    <None Include="wwwroot\main\images\shape\shape_22.svg" />
+    <None Include="wwwroot\main\images\shape\shape_23.svg" />
+    <None Include="wwwroot\main\images\shape\shape_24.svg" />
+    <None Include="wwwroot\main\images\shape\shape_25.svg" />
+    <None Include="wwwroot\main\images\shape\shape_26.svg" />
+    <None Include="wwwroot\main\images\shape\shape_27.svg" />
+    <None Include="wwwroot\main\images\shape\shape_31.svg" />
+    <None Include="wwwroot\main\images\shape\shape_32.svg" />
+    <None Include="wwwroot\main\images\shape\shape_33.svg" />
+    <None Include="wwwroot\main\images\shape\shape_34.svg" />
+    <None Include="wwwroot\main\images\shape\shape_35.svg" />
+    <None Include="wwwroot\main\images\shape\shape_36.svg" />
+    <None Include="wwwroot\main\images\shape\shape_37.svg" />
+    <None Include="wwwroot\main\images\shape\shape_38.svg" />
+    <None Include="wwwroot\main\images\shape\shape_39.svg" />
+    <None Include="wwwroot\main\images\shape\shape_40.svg" />
+    <None Include="wwwroot\main\images\shape\shape_41.svg" />
+    <None Include="wwwroot\main\images\shape\shape_42.svg" />
+    <None Include="wwwroot\main\images\shape\shape_43.svg" />
+    <None Include="wwwroot\main\images\shape\shape_44.svg" />
+    <None Include="wwwroot\main\images\shape\shape_45.svg" />
+    <None Include="wwwroot\main\images\shape\shape_46.svg" />
+    <None Include="wwwroot\main\images\shape\shape_47.svg" />
+    <None Include="wwwroot\main\images\shape\shape_48.svg" />
+    <None Include="wwwroot\main\images\shape\shape_49.svg" />
+    <None Include="wwwroot\main\images\shape\shape_50.svg" />
+    <None Include="wwwroot\main\images\shape\shape_51.svg" />
+    <None Include="wwwroot\main\images\shape\shape_52.svg" />
+    <None Include="wwwroot\main\images\shape\shape_53.svg" />
+    <None Include="wwwroot\main\images\shape\shape_54.svg" />
+    <None Include="wwwroot\main\images\shape\shape_56.svg" />
+    <None Include="wwwroot\main\images\shape\shape_57.svg" />
+    <None Include="wwwroot\main\images\shape\shape_58.svg" />
+    <None Include="wwwroot\main\images\shape\shape_59.svg" />
+    <None Include="wwwroot\main\images\shape\shape_60.svg" />
+    <None Include="wwwroot\main\images\shape\shape_61.svg" />
+    <None Include="wwwroot\main\images\shape\shape_62.svg" />
+    <None Include="wwwroot\main\images\shape\shape_63.svg" />
+    <None Include="wwwroot\main\lib\animated-headline-master\main.js" />
+    <None Include="wwwroot\main\lib\bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\main\lib\fancybox\dist\jquery.fancybox.min.js" />
+    <None Include="wwwroot\main\lib\slick\slick.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
+    <PackageReference Include="Azure.Identity" Version="1.4.0" />
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.2.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.18.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.1.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SendGrid" Version="9.24.1" />
+	<PackageReference Include="PaytmChecksum" Version="1.0.0" />
+	<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\manaslearning.Business\manaslearning.Business.csproj" />
+    <ProjectReference Include="..\manaslearning.Helpers\manaslearning.Helpers.csproj" />
+    <ProjectReference Include="..\manaslearning.Models\manaslearning.Models.csproj" />
+    <ProjectReference Include="..\manaslearning.Payment\manaslearning.Payment.csproj" />
+    <ProjectReference Include="..\manaslearning.Shared\manaslearning.Shared.csproj" />
+    <ProjectReference Include="..\manaslearning.T4\manaslearning.T4.csproj" />
+  </ItemGroup>
+
+</Project>

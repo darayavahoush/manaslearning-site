@@ -1,0 +1,23 @@
+﻿@page "/account/confirm-email"
+@model ConfirmEmailModel
+@{
+    Layout = "_LayoutForLoginLogout";
+    ViewData["Title"] = "Confirm email";
+}
+
+<h1>@ViewData["Title"]</h1>
+@if (Model.UserEmailWasConfirmedBefore)
+{
+    <p>You have already a registered email. Please <a href="/Login">click here</a> to login with register email.</p>
+}
+else
+{
+    @if (Model.IsEmailConfirmed)
+    {
+        <p>Thank you for confirming your email. <a href="/Login">click here</a> to login</p>
+    }
+    else
+    {
+        <p> Error confirming your email.</p>
+    }
+}

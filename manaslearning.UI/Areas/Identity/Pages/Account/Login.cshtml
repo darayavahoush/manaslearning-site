@@ -1,0 +1,102 @@
+﻿@page "/login"
+@model LoginModel
+
+@{
+    Layout = "_LayoutForLoginLogout";
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    body {
+        background: rgb(151,199,78);
+        background: linear-gradient(90deg, rgba(151,199,78,0.83) 0%, rgba(42,185,165,0.83) 50%), url("/images/login-bg.jpg") no-repeat top center;
+    }
+</style>
+<section class="p-0 d-flex align-items-center">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-5 mx-auto my-5">
+                <div class="row h-100 m-1">
+                    <div class="col-12 col-md-10 col-lg-9 col-xl-8 text-left mx-auto d-flex align-items-center bg-white p-3 border-radius-3">
+                        <div class="w-100">
+                            <div class="text-center mb-3">
+                                <a href="/">
+                                    <img src="~/images/logo/favicon/mstile-150x150.png" width="48" height="48" alt="MANAS Learning" />
+                                </a>                                
+                            </div>
+                            <h4 class="text-center">Sign into your account!</h4>
+                            <hr />
+                            @*<h5 class="font-weight-light">Nice to see you! Please log in with your account.</h5>*@
+                            <form id="account" method="post">
+                                <div class="form mt-4">
+                                    <div>
+                                        @if (Model.IsLoginAttemptFailed)
+                                        {
+                                            <div class="alert alert-danger" role="alert">
+                                                <i class="bi bi-x-circle-fill mr-2"></i> The email or password you entered is incorrect.
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">Email address</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.Email" class="form-control form-control-sm mb-1" placeholder="E-mail" autocomplete="off">
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="text-left mb-2">Password</p>
+                                            <a class="text-muted small mb-2" asp-page="./ForgotPassword">Lost password? Click Here.</a>
+                                        </div>
+                                        <span class="form-group">
+                                            <input asp-for="Input.Password" class="form-control form-control-sm mb-1" placeholder="*********">
+                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div class="form-group mb-0">
+                                            <div class="custom-control custom-checkbox mr-sm-2">
+                                                <input class="custom-control-input" asp-for="Input.RememberMe" />
+                                                <label class="custom-control-label" asp-for="Input.RememberMe">
+                                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center no-gutters m-0">
+                                        <div class="col-6 col-md-8"><span class="text-muted">Don't have an account? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Signup</a></span></div>
+                                        <div class="col-6 col-md-4 text-right"><button type="submit" class="btn btn-sm btn-dark">Login</button></div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="divider my-3"><span class="p-3"> OR </span></div>
+                            @if ((Model.ExternalLogins?.Count ?? 0) != 0)
+                            {
+                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                    <div class="d-flex d-inline">
+                                        @foreach (var provider in Model.ExternalLogins)
+                                        {
+                                            @if (provider.Name == "Google")
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-outline-danger w-100 my-2 mr-2" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="bi bi-google mr-2"></i> @provider.DisplayName</button>
+                                            }
+                                            else if (provider.Name == "Facebook")
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-primary-bootstrap w-100 my-2" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="bi bi-facebook mr-2"></i>@provider.DisplayName</button>
+                                            }
+                                        }
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

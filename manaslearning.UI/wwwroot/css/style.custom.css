@@ -1,0 +1,101 @@
+﻿.ps {
+    border-radius: 5px;
+    box-shadow: 0px 0px 30px rgb(200 196 219 / 30%);
+    padding: 30px 35px 20px 40px;
+    text-align: left;
+}
+
+    .ps .cost {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.875rem;
+        font-weight: 600;
+        padding: 20px 0 0px 0;
+        color: #222222;
+    }
+
+    .ps .psuc {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.875rem;
+        font-weight: 600;
+        color: #82c560;
+    }
+
+    .ps .psid {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.8;
+        color: #8f9397;
+    }
+
+        .ps .psid span {
+            font-weight: bold;
+            color: #222;
+        }
+
+    .ps .pstime {
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 2.9;
+        color: #8f9397;
+    }
+
+@media (max-width: 767px) {
+    .payment-section .btn {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* students - multi select dropdown */
+div#addStudentModal .dropdown-item {
+    display: block;
+    width: auto !important;
+    padding: 5px 0 5px 10px !important;
+    clear: both;
+    font-weight: 500;
+    color: #8f9397 !important;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    margin: 0 !important;
+}
+
+.div-assessment-report-page-size {
+    float: left;
+}
+
+    .div-assessment-report-page-size select {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: transparent;
+        padding: 8px;
+        color: #333;
+    }
+
+@media (max-width: 767.98px) {
+    .div-assessment-report-page-size {
+        float: none;
+        text-align: center;
+    }
+}
+
+/* width */
+.width-5 {
+    width: 5rem !important;
+}
+
+
+/* assessments */
+.section-user-assessments .feature-box.f-style-1, .section-assessments .feature-box.f-style-1 {
+    padding: 20px;
+    box-shadow: 0px 0px 40px rgb(83 88 93 / 10%) !important;
+}
+
+.section-user-assessments .feature-box .feature-box-icon, .section-assessments .feature-box .feature-box-icon {
+    font-size: 50px;
+    padding: 0 0 20px 0 !important;
+    line-height: 24px;
+}
+

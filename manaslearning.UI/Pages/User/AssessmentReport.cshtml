@@ -1,0 +1,164 @@
+﻿@page "/u/assessments/reports"
+
+@using manaslearning.Models;
+@model manaslearning.UI.Pages.User.AssessmentReportModel
+@{
+    ViewData["Title"] = "Assessment Reports";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-sm-5 pt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-1 order-md-2">
+                <div class="card card-sm">
+                    <div class="card-header card-header-table bg-light d-flex justify-content-between align-items-center">
+                        <div>
+                            @*<h5>Recent Assessments</h5>*@
+                        </div>
+                        <form class="d-flex align-items-center">
+                            <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                            <div class="btn-group">
+                                <button type="button" class="custom-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @Model.SortByColumnDisplayName
+                                </button>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-route-p="@(Model.CurrentPageNumber)" asp-route-sc="1" asp-route-ps="@(Model.SelectedPageSize)">Assessment</a>
+                                    <a class="dropdown-item" asp-route-p="@(Model.CurrentPageNumber)" asp-route-sc="2" asp-route-ps="@(Model.SelectedPageSize)">Class</a>
+                                    <a class="dropdown-item" asp-route-p="@(Model.CurrentPageNumber)" asp-route-sc="3" asp-route-ps="@(Model.SelectedPageSize)">Parent Name</a>
+                                    <a class="dropdown-item" asp-route-p="@(Model.CurrentPageNumber)" asp-route-sc="4" asp-route-ps="@(Model.SelectedPageSize)">Student Name</a>
+                                    <a class="dropdown-item" asp-route-p="@(Model.CurrentPageNumber)" asp-route-sc="5" asp-route-ps="@(Model.SelectedPageSize)">Time Stamp</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <div class="table-responsive">
+                            <table class="table align-items-center" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Assessment</th>
+                                        <th scope="col">Class</th>
+                                        <th scope="col">Parent Name</th>
+                                        <th scope="col">Student Name</th>
+                                        <th scope="col">Time Stamp</th>
+                                        <th class="text-center" scope="col">Status</th>
+                                        <th class="text-center" scope="col">View</th>
+                                    </tr>
+                                </thead>
+                                @if (Model.StudentAssessmentInfos == null || Model.StudentAssessmentInfos.Count() == 0)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7" class="text-center">
+                                                <a href="@UrlConstants.USER_ASSESSMENTS">
+                                                    <div class="my-3">
+                                                        <img class="img-start-assessment" src="/user/icons/add.svg" width="32" height="32" />
+                                                    </div>
+                                                    <div class="text-center mb-2">
+                                                        Start new assessment.
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                else
+                                {
+                                    <tbody>
+                                        @foreach (var item in Model.StudentAssessmentInfos)
+                                        {
+                                            <tr class="bg-white">
+                                                <td>@item.AssessmentName</td>
+                                                <td>@item.StudentClass</td>
+                                                <td>@item.ParentName</td>
+                                                <th scope="row">
+                                                    <div class="media align-items-center">
+                                                        <div class="media-body">
+                                                            <span class="h6 mb-0">@item.StudentName</span>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <td>@item.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")</td>
+                                                <td class="text-center">
+                                                    @if (item.StatusId == (int)AssessmentStatus.InProgress)
+                                                    {
+                                                        <img src="~/user/icons/in-progress.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="In-Progress" alt="In-Progress" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/user/icons/checked.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="Completed" alt="Completed" />
+                                                    }
+                                                </td>
+                                                <td class="text-center">
+                                                    @if (item.StatusId == (int)AssessmentStatus.InProgress)
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="/u/assessments/@item.AssessmentMetaUrl/@item.AssessmentGuidId/@item.StudentId/5"><img src="~/user/icons/document.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="View Assessment Result" alt="View Assessment Result" /></a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-1 mt-3">
+                        <div class="div-assessment-report-page-size">
+                            <span class="mr-2 text-muted text-small text-nowrap">Show </span>
+                            <div class="btn-group">
+                                <button type="button" class="custom-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @Model.SelectedPageSize
+                                </button>
+                                <div class="dropdown-menu">
+                                    @foreach (var pageSize in Model.PageSizes)
+                                    {
+                                        <a class="dropdown-item" asp-route-p="@(Model.CurrentPageNumber)" asp-route-sc="@(Model.SortByColumnName)" asp-route-ps="@pageSize">@pageSize</a>
+                                    }
+                                </div>
+                            </div> entries
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-0 mt-3">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item @(Model.CurrentPageNumber <= 1? "disabled":"")">
+                                    <a class="page-link" asp-route-p="@(Model.CurrentPageNumber - 1)" asp-route-sc="@Model.SortByColumnName" asp-route-ps="@(Model.SelectedPageSize)" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item @(Model.CurrentPageNumber == 1 ? "active" : "") ">
+                                    <a class="page-link" asp-route-p="@(Model.CurrentPageNumber <= 1 ? 1 : Model.CurrentPageNumber - 1)" asp-route-sc="@Model.SortByColumnName" asp-route-ps="@(Model.SelectedPageSize)">@(Model.CurrentPageNumber <= 1 ? 1 : Model.CurrentPageNumber - 1)</a>
+                                </li>
+                                <li class="page-item @(Model.CurrentPageNumber > 1 ? "active" : "") @(Model.CurrentPageNumber == 1 && !Model.AllowNextPage ?"disabled":"")">
+                                    <a class="page-link" asp-route-p="@(Model.CurrentPageNumber <= 1 ? 2 : Model.CurrentPageNumber)" asp-route-sc="@Model.SortByColumnName" asp-route-ps="@(Model.SelectedPageSize)">@(Model.CurrentPageNumber <= 1 ? 2 : Model.CurrentPageNumber)</a>
+                                </li>
+                                <li class="page-item @((Model.CurrentPageNumber == 1 && !Model.AllowThirdPage) || !Model.AllowNextPage ? " disabled" : "") ">
+                                    <a class="page-link" asp-route-p="@(Model.CurrentPageNumber <= 1 ? 3 : Model.CurrentPageNumber + 1)" asp-route-sc="@Model.SortByColumnName" asp-route-ps="@(Model.SelectedPageSize)">@(Model.CurrentPageNumber <= 1 ? 3 : Model.CurrentPageNumber + 1)</a>
+                                </li>
+                                <li class="page-item @(!Model.AllowNextPage ? "disabled":"")">
+                                    <a class="page-link" asp-route-p="@(Model.CurrentPageNumber + 1)" asp-route-sc="@Model.SortByColumnName" asp-route-ps="@(Model.SelectedPageSize)">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+</section>
+<!--end of section-->

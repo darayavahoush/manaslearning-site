@@ -1,0 +1,46 @@
+﻿@page "/account/register-confirmation"
+@model RegisterConfirmationModel
+@{
+    Layout = "_LayoutForLoginLogout";
+    ViewData["Title"] = "Register confirmation";
+}
+
+<style>
+    body {
+        background: rgb(151,199,78);
+        background: linear-gradient(90deg, rgba(151,199,78,0.83) 0%, rgba(42,185,165,0.83) 50%), url("/images/login-bg.jpg") no-repeat top center;
+    }
+</style>
+<section class="p-0 d-flex align-items-center">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-5 mx-auto my-5">
+                <div class="row h-100 m-1">
+                    <div class="col-12 col-md-10 col-lg-9 col-xl-8 text-left mx-auto d-flex align-items-center bg-white p-3 border-radius-3">
+                        <div class="w-100">
+                            <div class="text-center mb-4">
+                                <img src="~/images/logo/favicon/mstile-150x150.png" width="48" height="48" alt="MANAS Learning" />
+                            </div>
+                            <h4>@ViewData["Title"]</h4>
+                            @{
+                                if (@Model.DisplayConfirmAccountLink)
+                                {
+                                    <p>
+                                        This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+                                        Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p>
+                                        Please check your email to confirm your account.
+                                    </p>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

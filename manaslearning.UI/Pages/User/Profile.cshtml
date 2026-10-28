@@ -1,0 +1,352 @@
+﻿@page "/u/profile"
+
+@using manaslearning.Models;
+@model manaslearning.UI.Pages.User.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    new
+    {
+        items = new BreadcrumbItem[] {
+            new BreadcrumbItem{ Title = "Home", Href = UrlConstants.USER_DASHBOARD },
+            new BreadcrumbItem{ Title = "Profile"}
+        }
+    }
+)
+
+<!-- Page Content -->
+<section class="bg-white py-sm-4">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+                <h1 class="h2">Account Settings</h1>
+            </div>
+            <!--end of col-->
+            <div class="col-auto text-right">
+                <a href="#" class="btn btn-success">Upgrade to Pro</a>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<section class="flush-with-above py-0">
+    <div class="bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#general" role="tab" aria-selected="true">General</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="billing-tab" data-toggle="tab" href="#billing" role="tab" aria-selected="false">Billing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="security-tab" data-toggle="tab" href="#security" role="tab" aria-selected="false">Security</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="notifications-tab" data-toggle="tab" href="#notifications" role="tab" aria-selected="false">Notifications</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </div>
+</section>
+<section class="flush-with-above pt-0 height-80 d-block">
+    <div class="tab-content">
+        <div class="tab-pane fade active show" id="general" role="tabpanel">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h5>Account Details</h5>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+                <div class="row">
+                    <div class="col-12 col-md-4 order-md-2">
+                        <div class="alert alert-info text-small" role="alert">
+                            <i class="icon-shield"></i>
+                            <span>
+                                Your information is always kept encrypted and can never be accessed by third parties.
+                            </span>
+                            <a href="/privacy-policy">See our privacy policy</a>
+                        </div>
+                    </div>
+                    <!--end of col-->
+                    <div class="col-12 col-md-8 order-md-1">
+                        <form class="form-general row" method="post" action="javascript:void(0);" onsubmit="updateProfile()" novalidate>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="first-name">
+                                        First Name:
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control mb-1" type="text" name="firstName" value="" id="first-name">
+                                    <small>Max. 50 characters allowed.</small>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid first name. Allowed special characters .(dot), - (hyphen or minus), and _ (underscore).
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="last-name">
+                                        Last Name:
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control mb-1" type="text" name="lastName" value="" id="last-name">
+                                    <small>Max. 50 characters allowed.</small>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid last name. Allowed special characters .(dot), - (hyphen or minus), and _ (underscore).
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="username">
+                                        Display Name:
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control mb-1" type="text" name="displayName" value="" id="display-name">
+                                    <small>This will be displayed on your profile.</small>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid display name. Allowed special characters .(dot), - (hyphen or minus), and _ (underscore).
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="emailaddress">
+                                        Email Address:
+                                    </label>
+                                    <input class="form-control mb-1" type="email" name="emailAddress" value="" id="email-address" disabled>
+                                    @*<small>Used to log in to your account</small>*@
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="emailaddress">
+                                        Phone Number:
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control mb-1" type="number" name="phoneNumber" value="" id="phone-number">
+                                    <small>Your phone number must be 10 digits.</small>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid phone number. Only numbers allowed.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 my-2">
+                                <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                        <input id="radio-teacher" name="radio1" type="radio" value="1" class="custom-control-input" disabled>
+                                        <label class="custom-control-label" for="radio-teacher">Teacher</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 my-2">
+                                <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                        <input id="radio-parent" name="radio1" type="radio" value="1" class="custom-control-input" disabled>
+                                        <label class="custom-control-label" for="radio-parent">Parent</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-save" type="button">Save changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </div>
+        <!--end of tab pane-->
+        <div class="tab-pane fade" id="billing" role="tabpanel">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h5>Payment Methods</h5>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <table class="table align-items-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Card Type</th>
+                                        <th scope="col">Card Number</th>
+                                        <th scope="col">Default Payment Method</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <img alt="Image" src="assets/img/logo-payment-visa.svg" class="avatar avatar-sm">
+                                        </th>
+                                        <td>
+                                            <span class="d-block">•••• •••• •••• 8372</span>
+                                            <small class="text-muted">Exp: 06/22</small>
+                                        </td>
+                                        <td>
+                                            <div class="custom-control custom-radio">
+                                                <input id="radio1" name="payment-default" type="radio" class="custom-control-input" checked="">
+                                                <label class="custom-control-label" for="radio1"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="icon-squared-cross"></i> Remove card</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <img alt="Image" src="assets/img/logo-payment-amex.svg" class="avatar avatar-sm avatar-square">
+                                        </th>
+                                        <td>
+                                            <span class="d-block">•••• •••• •••• 1225</span>
+                                            <small class="text-muted">Exp: 07/21</small>
+                                        </td>
+                                        <td>
+                                            <div class="custom-control custom-radio">
+                                                <input id="radio2" name="payment-default" type="radio" class="custom-control-input">
+                                                <label class="custom-control-label" for="radio2"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="icon-squared-cross"></i> Remove card</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-success">Add new card</button>
+                        </form>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </div>
+        <!--end of tab pane-->
+        <div class="tab-pane fade" id="notifications" role="tabpanel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info text-small mb-0" role="alert">
+                            <i class="icon-shield"></i>
+                            <span>
+                                We will never distribute your email address to third parties. Read about email communication in our privacy policy.
+                            </span>
+                            <a href="#">View privacy policy ›</a>
+                        </div>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <h5 class="mb-4">Notification Preferences</h5>
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-mention" checked="" id="notify-mention">
+                                    <label class="custom-control-label" for="notify-mention">Someone mentions me</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-request" checked="" id="notify-follow">
+                                    <label class="custom-control-label" for="notify-follow">Someone follows me</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-share" checked="" id="notify-share">
+                                    <label class="custom-control-label" for="notify-share">Someone shares my activty</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-message" checked="" id="notify-message">
+                                    <label class="custom-control-label" for="notify-message">Someone messages me</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-adds" checked="" id="notify-adds">
+                                    <label class="custom-control-label" for="notify-adds">Someone adds me to a project</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-sales" id="notify-sales">
+                                    <label class="custom-control-label" for="notify-sales">Sales and promotions</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-secondary mt-4" disabled="">Update preferences</button>
+                        </form>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <h5>Notification Frequency</h5>
+                            <div>
+                                <div class="custom-control custom-radio">
+                                    <input id="notify-daily" type="radio" class="custom-control-input" value="notify-daily" name="notify-frequency">
+                                    <label class="custom-control-label" for="notify-daily">Daily</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-radio">
+                                    <input id="notify-weekly" type="radio" class="custom-control-input" value="notify-weekly" name="notify-frequency" checked="">
+                                    <label class="custom-control-label" for="notify-weekly">Weekly</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-radio">
+                                    <input id="notify-monthly" type="radio" class="custom-control-input" value="notify-monthly" name="notify-frequency">
+                                    <label class="custom-control-label" for="notify-monthly">Monthly</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="custom-control custom-radio">
+                                    <input id="notify-never" type="radio" class="custom-control-input" value="notify-never" name="notify-frequency">
+                                    <label class="custom-control-label" for="notify-never">Never</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-secondary mt-4" disabled="">Update frequency</button>
+                        </form>
+                    </div>
+                    <!--end of col-->
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </div>
+    </div>
+    <!--end of tabs content-->
+</section>

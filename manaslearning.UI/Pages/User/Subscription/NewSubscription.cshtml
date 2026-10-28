@@ -1,0 +1,45 @@
+﻿@page "/u/catalog/n/{itemOid}"
+@model manaslearning.UI.Pages.User.Subscription.NewSubscriptionModel
+@{
+    ViewData["Title"] = "Subscriptions"; // TODO: Update this title
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>@Model.Item.AssessmentName</h2>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="feature-box f-style-4 h-100">
+                    <div class="divider"></div>
+                    <h5 class="pt-3 pb-2">License</h5>
+                    <p class="feature-box-desc pl-0 mt-2 mb-4">@Model.Item.ItemDescription</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Select license quantity</label>
+                                <input type="hidden" id="sn-param1" value="@Model.Item.Oid" />
+                                <input class="form-control col-4 col-sm-3" id="sn-param2" type="number" min="1" step="1" pattern="[0-9]" data-base-price="@Model.Item.ItemPrice" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Subtotal before applicable taxes</label>
+                                <strong class="d-block pb-2"> ₹<span class="sub-total">@Model.Item.ItemPrice.ToString("F2")</span> </strong>
+                                <button class="btn btn-primary btn-sm btn-sn-buy px-4 col-4 col-sm-3" href="/u/purchase/checkout/@Model.Item.Oid/1"> Buy </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>

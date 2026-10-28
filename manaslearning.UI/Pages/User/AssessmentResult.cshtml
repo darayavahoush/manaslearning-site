@@ -1,0 +1,24 @@
+﻿@page  "/u/assessments/{name}/result/{id}/{sid}/{lid}"
+
+@model manaslearning.UI.Pages.User.AssessmentResultModel
+@{
+    ViewData["Title"] = $"{@Model.Assessment.Name} Result";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<section class="assessment-section py-sm-5 pt-0 pb-3">
+    <div class="container assessment-container px-3 py-3">
+        <h2>Assessment Result</h2>
+        @if (Model?.StudentAssessmentResult?.MessageTranslation != null)
+        {
+            <p>@Model.StudentAssessmentResult?.MessageTranslation</p>
+        }
+        <p>@Model.StudentAssessmentResult?.Message</p>
+    </div>
+</section>

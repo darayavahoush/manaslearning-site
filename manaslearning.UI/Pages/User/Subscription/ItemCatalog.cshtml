@@ -1,0 +1,68 @@
+﻿@page "/u/catalog"
+@model manaslearning.UI.Pages.User.Subscription.ItemCatalogModel
+@{
+    ViewData["Title"] = "Purchase services";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Purchase services</h2>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2">
+            @{
+                int sno = 1;
+            }
+            @if (Model.Items != null && Model.Items.Any())
+            {
+                foreach (var item in Model.Items)
+                {
+                    @*<div class="col-sm-6 @(sno == 1 ? "mb-3" : "") mt-2">*@
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <div class="card-body pb-0">
+                                <h5 class="card-title mb-1">@item.AssessmentName</h5>
+                                <div class="card-text">
+                                    @if (item.HasLicense)
+                                    {
+                                        <span class="badge badge-success mb-2">YOU OWN THIS</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge mb-2">&nbsp;</span>
+                                    }
+                                    <p>@item.ItemDescription</p>
+                                    <p>₹@(item.ItemPrice.ToString("F2")) / assessment / user</p>
+                                </div>
+                            </div>
+                            <div class="card-footer border-top-0 bg-transparent  pt-0">
+                                @if (item.HasLicense)
+                                {
+                                    @*<a href="@UrlConstants.USER_PURCHASE_SERVICES/@item.Oid" class="btn btn-sm btn-primary">Buy Licenses</a>*@
+                                    <a href="@UrlConstants.USER_PURCHASE_CHECKOUT/@item.Oid/1" class="btn btn-sm btn-primary">Buy Licenses</a>
+                                }
+                                else
+                                {
+                                    <a href="@UrlConstants.USER_PURCHASE_CHECKOUT/@item.Oid/1" class="btn btn-sm btn-primary">Buy Licenses</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    sno++;
+                }
+            }
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>

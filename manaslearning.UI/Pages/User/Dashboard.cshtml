@@ -1,0 +1,186 @@
+﻿@page "/u/dashboard"
+@model manaslearning.UI.Pages.User.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<nav aria-label="breadcrumb" role="navigation" class="bg-primary all-text-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">
+                        <a href="@UrlConstants.USER_DASHBOARD">Dashboard</a>
+                    </li>
+                </ol>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</nav>
+<!--end of nav-->
+<!-- Page content -->
+<section class="pt-4 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3 mb-1 order-md-1">
+                <div class="card card-dashboard mb-3" style="max-width: 540px;--bg-opacity: 1;background-color: #F1786B;background-color: rgba(241, 120, 107,var(--bg-opacity));">
+                    <div class="row no-gutters">
+                        <div class="col-5 text-center my-auto border-right">
+                            <img class="px-3 px-sm-auto mb-1" src="~/user/icons/students.svg" width="64" height="64" alt="students" />
+                            <p class="card-text text-dark">Total</p>
+                        </div>
+                        <div class="col-7">
+                            <div class="card-body text-center">
+                                <h1 class="card-title mb-0">@Model.TotalStudentsCount</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.GenderwiseStudentCounts != null)
+            {
+                foreach (var item in Model.GenderwiseStudentCounts)
+                {
+                    <div class="col-6 col-md-3 mb-1 order-md-2">
+                        <div class="card card-dashboard mb-3" style="max-width: 540px;--bg-opacity: 1;background-color: #fbd984;background-color: rgba(251, 217, 132,var(--bg-opacity));">
+                            <div class="row no-gutters">
+                                <div class="col-5 text-center my-auto border-right">
+                                    <img class="px-3 px-sm-auto mb-1" src="~/user/icons/@item.IconName" width="64" height="64" alt="boy">
+                                    <p class="card-text text-dark">@item.GenderName</p>
+                                </div>
+                                <div class="col-7">
+                                    <div class="card-body text-center">
+                                        <h1 class="card-title mb-0">@item.Count</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+<!--end of section-->
+<section class="py-0 pt-1 mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-1 order-md-2">
+                <div class="card card-sm">
+                    <div class="card-header card-header-table bg-light d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>Recent Assessments</h5>
+                        </div>
+                        @*<form class="d-flex align-items-center">
+                                <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                                <select class="custom-select">
+                                    <option value="name" selected="">Student Name</option>
+                                    <option value="email">Parent's Name</option>
+                                    <option value="email">Class</option>
+                                    <option value="phone-number">Assessment</option>
+                                </select>
+                            </form>*@
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <div class="table-responsive-sm">
+                            <table class="table table-hover table-recent-assessments align-items-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Student Name</th>
+                                        <th scope="col">Parent's Name</th>
+                                        <th scope="col">Class</th>
+                                        <th scope="col">Assessment</th>
+                                        <th scope="col">Time Stamp</th>
+                                        <th class="text-center" scope="col">Status</th>
+                                        <th class="text-center" scope="col">View</th>
+                                    </tr>
+                                </thead>
+                                @if ((Model.RecentlyCompletedAssessments == null && Model.InProgressAssessments == null)
+                                   || (Model.RecentlyCompletedAssessments.Count() == 0 && Model.InProgressAssessments.Count() == 0))
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7" class="text-center">
+                                                <a href="@UrlConstants.USER_ASSESSMENTS">
+                                                    <div class="my-3">
+                                                        <img class="img-start-assessment" src="/user/icons/add.svg" width="32" height="32" />
+                                                    </div>
+                                                    <div class="text-center mb-2">
+                                                        Start new assessment.
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                else
+                                {
+                                    <tbody>
+                                        @if (Model.InProgressAssessments != null)
+                                        {
+                                            foreach (var item in Model.InProgressAssessments)
+                                            {
+                                                <tr class="bg-white">
+                                                    <th scope="row">
+                                                        <div class="media align-items-center">
+                                                            <div class="media-body">
+                                                                <span class="h6 mb-0">@item.StudentName</span>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>@item.ParentName</td>
+                                                    <td>@item.StudentClass</td>
+                                                    <td>@item.AssessmentName</td>
+                                                    <td>@item.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")</td>
+                                                    <td class="text-center">
+                                                        <img src="~/user/icons/in-progress.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="In-Progress" alt="In-Progress" />
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="/u/assessments/@item.AssessmentMetaUrl/@item.AssessmentGuidId/@item.StudentId/5"><img src="~/user/icons/play.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" data-original-title="Continue Assessment" alt="Continue Assessment" /></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        @if (Model.RecentlyCompletedAssessments != null)
+                                        {
+                                            @foreach (var item in Model.RecentlyCompletedAssessments)
+                                            {
+                                                <tr class="bg-white">
+                                                    <th scope="row">
+                                                        <div class="media align-items-center">
+                                                            <div class="media-body">
+                                                                <span class="h6 mb-0">@item.StudentName</span>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>@item.ParentName</td>
+                                                    <td>@item.StudentClass</td>
+                                                    <td>@item.AssessmentName</td>
+                                                    <td>@item.CreatedDate.ToLocalTime().ToString("MMM dd, yyyy")</td>
+                                                    <td class="text-center">
+                                                        <img src="~/user/icons/checked.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" title="Completed" alt="Completed" />
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="/u/assessments/@item.AssessmentMetaUrl/@item.AssessmentGuidId/@item.StudentId/5"><img src="~/user/icons/document.svg" width="24" height="24" data-toggle="tooltip" data-placement="top" data-original-title="View Assessment Result" alt="View Assessment Result" /></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<!--end of section-->

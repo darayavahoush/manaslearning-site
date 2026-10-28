@@ -1,0 +1,72 @@
+﻿@page "/child-academic-problems"
+@model manaslearning.UI.Pages.ChildAcademicProblems.IndexModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Learning about Child Academic Problems";
+    ViewBag.MetaDescription = "The child academic problems section has information about different developmental and emotional problems, including signs and symptoms.";
+    ViewBag.MetaKeywords = "child academic problems, academic concerns, academic concerns, child mental health, students with learning disabilities, behavioural or emotional issues, children's learning-related social skills, causes of academic problems";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/10/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <div class="innerpage-banner center bg-overlay-dark-7 index-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/"><i class="fa fa-angle-left"></i>Home</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Child Academic Problems</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Article Body -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-8 mb-1 mb-md-5">
+                    <p class="text-dark fs-1">
+                        Considering the importance of school and education in a child's development and life in general, the problems that children are facing today appear to be particularly significant. These problems can interfere and affect the acquisition, retention or application of specific skills or sets of information. That may involve difficulties in attention, memory, perception, language, problem-solving, or social interaction. These effects may be mild or severe, but with proper help, the children can reach their full potential. In this page, we provide different child academic problems and their signs. The signs mentioned in this site are for the reference to the parents to identify and understand child's issues; it's always better to consult a professional (Paediatrician, Psychologist or Psychiatrist).
+                    </p>
+                    <!-- All Topics -->
+                    @await Component.InvokeAsync("ChildAcademicProblems", new { showHeader = false })
+                </div>
+                <!-- Sidebar -->
+                <div class="col-md-4 sidebar">
+                    <div class="widget bg-light p-3 border-0 border-radius-3">
+                        <h4>Have any question? </h4>
+                        <p>
+                            Send us a mail if you have any queries regarding your child’s academic difficulties at <a class="text-primary" href="mailto:support@manaslearning.com">support@manaslearning.com</a>.
+                        </p> or call us at <i class="ml-1 mr-1 display-8 ti-headphone-alt"></i><a class="text-primary" href="tel:+919342157217">(+91) 934-215-7217</a>
+                    </div>
+                    <div class="widget border-0">
+                        <div class="fit-video">
+                            <div class="fluid-width-video-wrapper" style="padding-top: 56.25%;"><iframe src="https://www.youtube.com/embed/xoeZAXUZbqQ?start=17" allow="autoplay; encrypted-media" allowfullscreen="" name="fitvid0"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar end-->
+            </div>
+        </div>
+    </section>
+</article>

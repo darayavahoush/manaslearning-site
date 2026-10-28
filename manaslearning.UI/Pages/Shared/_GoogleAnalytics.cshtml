@@ -1,0 +1,14 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration _configuration
+
+@{
+    var gtagId = _configuration.GetValue<string>("GoogleAnalytics:gtagId");
+    var gtagUrl = $"https://www.googletagmanager.com/gtag/js?id={gtagId}";
+}
+<script rel="preconnect" async src="@gtagUrl"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '@gtagId');
+</script>

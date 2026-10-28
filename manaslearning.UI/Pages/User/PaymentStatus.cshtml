@@ -1,0 +1,75 @@
+﻿@page "/u/paymentstatus/{paymentTransactionOid}"
+@model manaslearning.UI.Pages.User.PaymentStatusModel
+@{
+    ViewData["Title"] = "Payment Status";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<section class="py-3 py-sm-3 pb-1 payment-section">
+    <div class="container">
+        <div class="row justify-content-sm-center">
+            <div class="col-12 col-sm-8 mb-3 mt-2">
+                <div class="ps text-center">
+                    <div class="card-body">
+                        @if (@Model.OrderStatus == "Completed" && @Model.PaymentStatus == "Success")
+                        {
+                            <img src="/images/success.svg" width="60" height="60">
+                            <h5 class="cost">@Model.AmountWithSymbol</h5>
+                            <span class="psuc">Payment successful</span>
+                            <div class="card-text mt-2">
+                                <p>
+                                    A payment receipt has been emailed to your registered email.
+                                </p>
+                                <p>
+                                    <div class="psid">Order ID: <span>@Model.OrderNumber</span></div>
+                                    <div class="pstime">@Model.TransactionDate</div>
+                                </p>
+                            </div>
+                            <a class="btn btn-primary  btn-add-student " href="@UrlConstants.USER_ASSESSMENTS/@Model.AssessmentMetaUrl/@Model.AssessmentOid.ToString()/info">Start Assessment</a>
+                            <a class="btn btn-primary btn-add-student " href="@UrlConstants.USER_LICENSES">Check Licenses</a>
+                            <a class="btn btn-primary btn-add-student " href="@UrlConstants.USER_ORDERS_AND_PAYMENTS">
+                                Check Orders & Payments
+                            </a>
+                        }
+                        else if (@Model.OrderStatus == "Pending" && @Model.PaymentStatus == "Failure")
+                        {
+                            <img src="/images/wrong.svg" width="60" height="60">
+                            <h5 class="cost">@Model.AmountWithSymbol</h5>
+                            <span class="poops">Transaction failed</span>
+                            <div class="card-text mt-2">
+                                <p>If the amount was deducted, it will be credited to your account within 7 to 8 days.</p>
+                                <p>
+                                    <div class="psid">Order ID: <span>@Model.OrderNumber</span></div>
+                                    <div class="pstime">@Model.TransactionDate</div>
+                                </p>
+                            </div>
+                            <a href="/u/showpaymentpage?orderOid=@Model.OrderOid" class="btn btn-danger">Retry Payment</a>
+                        }
+                        else if (@Model.OrderStatus == "Pending" && @Model.PaymentStatus == "Pending")
+                        {
+                            <img src="/images/pending.svg" width="60" height="60">                            
+                            <h5 class="cost">@Model.AmountWithSymbol</h5>
+                            <span class="psuc">Payment Status is Pending</span>
+                            <div class="card-text mt-2">
+                                <p>
+                                    Payment is pending for this order. Please check the payment status after some time.
+                                </p>
+                                <p>
+                                    <div class="psid">Order ID: <span>@Model.OrderNumber</span></div>
+                                    <div class="pstime">@Model.TransactionDate</div>
+                                </p>
+                            </div>
+                            <a class="btn btn-primary btn-add-student " href="@UrlConstants.USER_PAYMENT_STATUS/@Model.PaymentTransactionOid">Check Status</a>
+                            <a class="btn btn-primary btn-add-student " href="@UrlConstants.USER_LICENSES">Check Licenses</a>
+                            <a class="btn btn-primary btn-add-student " href="@UrlConstants.USER_ORDERS_AND_PAYMENTS">
+                                Check Orders & Payments
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>

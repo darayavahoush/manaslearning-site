@@ -1,0 +1,126 @@
+﻿/*
+***************************
+child academic problems 
+***************************
+*/
+
+/* index page */
+.no-webp .index-page-banner-background-image {
+    background: url("/images/bg/01.jpg") top no-repeat;
+    background-size: cover;
+}
+
+.webp .index-page-banner-background-image {
+    background: url("/images/bg/01.webp") top no-repeat;
+    background-size: cover;
+}
+
+/* attention and hyperactivity */
+.no-webp .attention-and-hyperactivity-page-banner-background-image {
+    background: url("/images/child-problems/01-banner-attention.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .attention-and-hyperactivity-page-banner-background-image {
+    background: url("/images/child-problems/01-banner-attention.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* reading */
+.no-webp .reading-page-banner-background-image {
+    background: url("/images/child-problems/02-banner-reading.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .reading-page-banner-background-image {
+    background: url("/images/child-problems/02-banner-reading.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* writing */
+.no-webp .writing-page-banner-background-image {
+    background: url("/images/child-problems/03-banner-writing.jpg") bottom no-repeat;
+    background-size: cover;
+}
+
+.webp .writing-page-banner-background-image {
+    background: url("/images/child-problems/03-banner-writing.webp") bottom no-repeat;
+    background-size: cover;
+}
+
+/* math */
+.no-webp .maths-page-banner-background-image {
+    background: url("/images/child-problems/04-banner-maths.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .maths-page-banner-background-image {
+    background: url("/images/child-problems/04-banner-maths.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* spelling */
+.no-webp .spelling-page-banner-background-image {
+    background: url("/images/child-problems/05-banner-spelling.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .spelling-page-banner-background-image {
+    background: url("/images/child-problems/05-banner-spelling.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* motor skills */
+.no-webp .motor-skills-page-banner-background-image {
+    background: url("/images/child-problems/06-banner-motor-skills.jpg") top no-repeat;
+    background-size: cover;
+}
+
+.webp .motor-skills-page-banner-background-image {
+    background: url("/images/child-problems/06-banner-motor-skills.webp") top no-repeat;
+    background-size: cover;
+}
+
+/* executive functions */
+.no-webp .executive-functions-page-banner-background-image {
+    background: url("/images/child-problems/07-banner-executive-functions.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .executive-functions-page-banner-background-image {
+    background: url("/images/child-problems/07-banner-executive-functions.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* non-verbal skills */
+.no-webp .nonverbal-page-banner-background-image {
+    background: url("/images/child-problems/08-banner-nonverbal.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .nonverbal-page-banner-background-image {
+    background: url("/images/child-problems/08-banner-nonverbal.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* listening skills */
+.no-webp .listening-skills-page-banner-background-image {
+    background: url("/images/child-problems/09-banner-listening-skills.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .listening-skills-page-banner-background-image {
+    background: url("/images/child-problems/09-banner-listening-skills.webp") center no-repeat;
+    background-size: cover;
+}
+
+/* visual skills */
+.no-webp .visual-skills-page-banner-background-image {
+    background: url("/images/child-problems/10-banner-visual-skills.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.webp .visual-skills-page-banner-background-image {
+    background: url("/images/child-problems/10-banner-visual-skills.webp") center no-repeat;
+    background-size: cover;
+}

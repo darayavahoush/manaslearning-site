@@ -1,0 +1,193 @@
+﻿@using System.Security.Claims
+@using manaslearning.Models
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"] | MANAS Learning</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/logo/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/logo/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/logo/favicon/favicon-16x16.png">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CPlayfair+Display:400,400i,700,700i%7CRoboto:400,400i,500,700" rel="stylesheet">
+    <!-- Plugins CSS -->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/vendor/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/vendor/multiselect/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- Theme CSS -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!-- Custom -->
+    <link href="~/css/style.custom.css" rel="stylesheet" />
+    <link href="~/user/css/user.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column h-100">
+    <!-- Page loading spinner-->
+    <div class="preloader">
+        <img src="/images/preloader.svg" alt="Pre-loader">
+    </div>
+    <!-- header Start -->
+    <header class="header-static navbar-sticky navbar-dark bg-dark">
+        <!-- Logo Nav Start -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="@UrlConstants.USER_DASHBOARD">
+                    <img src="~/main/images/logo/manas-logo-2.png" alt="" width="300">
+                </a>
+                <!-- Menu opener button -->
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> </span>
+                </button>
+                <!-- Main Menu Start -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Menu item Dashboard -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.USER_DASHBOARD" id="dashboardMenu" aria-haspopup="true" aria-expanded="false"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        </li>
+                        <!-- Menu item Assessments -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.USER_ASSESSMENTS" id="consultMenu" aria-haspopup="true" aria-expanded="false"><i class="bi bi-check2-square"></i> Assessments</a>
+                        </li>
+                        <!-- Menu item Assessment Reports -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.USER_ASSESSMENTS_REPORTS" id="consultMenu" aria-haspopup="true" aria-expanded="false"><i class="bi bi-file-arrow-down"></i> Reports</a>
+                        </li>
+                        <!-- Menu item Students -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.USER_STUDENTS" id="studentsMenu" aria-haspopup="true" aria-expanded="false"><i class="bi bi-people"></i> Students</a>
+                        </li>
+                        <!-- Menu item StudentClasses -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.USER_STUDENTCLASSES" id="studentClassesMenu" aria-haspopup="true" aria-expanded="false"><i class="bi bi-people"></i> Classes</a>
+                        </li>
+                        <!-- Menu item Users -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.USER_USERS" id="usersMenu" aria-haspopup="true" aria-expanded="false"><i class="bi bi-people"></i> Users</a>
+                        </li>                        
+                        <!-- Menu item Billing -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="billingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-credit-card"></i> Billing</a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="billingMenu">
+                                <li>
+                                    <a class="dropdown-item" href="@UrlConstants.USER_PURCHASE_SERVICES"> Purchase Services</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="@UrlConstants.USER_LICENSES"> Licenses</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="@UrlConstants.USER_ORDERS_AND_PAYMENTS"> Orders & Payments</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Menu item User -->
+                        <li class="nav-item dropdown">
+                            @{
+                                var displayName = "";
+                                var email = "";
+                                if (User != null && User.Identity != null)
+                                {
+                                    var claimsIdentity = (ClaimsIdentity)User.Identity;
+                                    displayName = claimsIdentity.Claims.FirstOrDefault<Claim>(c => c.Type == CustomClaimTypes.DisplayName)?.Value;
+                                    email = claimsIdentity.Claims.FirstOrDefault<Claim>(c => c.Type == ClaimTypes.Email)?.Value;
+                                }
+                            }
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                                <li>
+                                    <span class="dropdown-item">Hi, @displayName</span>
+                                </li>
+                                <li>
+                                    <span class="dropdown-item text-lowercase">@email</span>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="@UrlConstants.USER_ACCOUNT_MANAGE_INDEX" target="_blank"><i class="bi bi-gear"></i> Account Settings</a>
+                                </li>
+                                <li>
+                                    <form id="logout_form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/login", new { area = "" })" method="post">
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="document.getElementById('logout_form').submit();"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Menu item 4 Simulation Tools -->
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="/simulation-tools" id="consultMenu" aria-haspopup="true" aria-expanded="false">Simulation Tools</a>
+                            </li>*@
+                    </ul>
+                </div>
+                <!-- Main Menu End -->
+            </div>
+        </nav>
+        <!-- Logo Nav End -->
+    </header>
+    <!--header End-->
+    <main>
+        @RenderBody()
+    </main>
+    <!--footer-->
+    <footer class="footer bg-light mt-auto">
+        <div class="divider"></div>
+        <!--footer copyright -->
+        <div class="footer-copyright py-3">
+            <div class="container">
+                <div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+                    <!-- copyright text -->
+                    <div class="copyright-text">© @DateTime.Now.Year All Rights Reserved by <a href="/"> MANAS Learning.</a></div>
+                    <!-- copyright links-->
+                    @*<div class="copyright-links primary-hover mt-3 mt-md-0">
+                        <ul class="list-inline">
+                        <li class="list-inline-item pl-2"><a class="list-group-item-action" href="/" target="_blank">Home</a></li>
+                        <li class="list-inline-item pl-2"><a class="list-group-item-action" href="/about-us" target="_blank">About Us</a></li>
+                        <li class="list-inline-item pl-2"><a class="list-group-item-action" href="/contact-us" target="_blank">Contact Us</a></li>
+                        <li class="list-inline-item pl-2"><a class="list-group-item-action" href="/privacy-policy" target="_blank">Privacy Policy</a></li>
+                        <li class="list-inline-item pl-2"><a class="list-group-item-action pr-0" href="/terms-of-service" target="_blank">Terms of Service</a></li>
+                        </ul>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--modal-->
+    <div class="modal fade text-left" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="responseModal" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="responseModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Message place holder.
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Global JS-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="~/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/vendor/sweet-alert/sweetalert.js"></script>
+    <script src="~/vendor/multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/lib/moment.js/moment.js"></script>
+    <!--Template Functions-->
+    <script src="~/js/functions.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/user/js/assessments.js"></script>
+    <script src="~/user/js/students.js"></script>
+    <script src="~/user/js/studentclasses.js"></script>
+    <script src="~/user/js/users.js"></script>
+    <script src="~/user/js/profile.js"></script>
+    <script src="~/user/js/subscription-index.js"></script>
+    <script src="~/user/js/subscription-new.js"></script>
+    <script src="~/user/js/checkout.js"></script>
+    <script src="~/user/js/order.js"></script>
+</body>
+</html>

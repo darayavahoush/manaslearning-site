@@ -1,0 +1,73 @@
+﻿@page "/child-academic-problems/understanding-your-childs-writing-problems"
+@model manaslearning.UI.Pages.ChildAcademicProblems.WritingModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Understanding writing problems in children";
+    ViewBag.MetaDescription = "Is your child struggling with writing - messy handwriting, put their ideas into writing, or both? Learn about common writing problems in children.";
+    ViewBag.MetaKeywords = "child struggling with writing, messy handwriting, learn about writing problems in children, common handwriting problems, writing problems";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/12/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 writing-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Common Writing Problems in Children</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Understanding Your Child’s Trouble With Writing</h2>
+                            <p class="fs-1">
+                                Writing problems don’t mean poor handwriting. Some children have a problem in expressing themselves in written format or may look like lazy to write. It is sometimes challenging to understand the problem. Think of it like a spoilt keyboard on a laptop or phone.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Difficulty in copying from board, doing homework and completing notes.</li>
+                                <li>Problem in writing and thinking at the same time.</li>
+                                <li>Gives lot of excuses for writing, hand paining while writing.</li>
+                                <li>Poor legibility, does not give proper space between words, sentences and wrong syntax.</li>
+                                <li>Very slow in writing in class as well as exams, prefer to answer short questions like true/false, one word, fill in the blanks and multiple choice, avoids answering big/long questions.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

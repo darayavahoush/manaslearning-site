@@ -1,0 +1,45 @@
+﻿@using BlazorBootstrap
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+@inherits ParentComponentBase
+
+<EditForm EditContext="@editContext" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit" novalidate>
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="@organizationForm.Name" />
+        <ValidationMessage class="invalid-feedback" For="@(() => organizationForm.Name)" />
+    </div>
+    <div class="mb-3">
+        <label for="displayName" class="form-label">Display Name</label>
+        <InputText class="form-control" @bind-Value="@organizationForm.DisplayName" />
+        <ValidationMessage class="invalid-feedback" For="@(() => organizationForm.DisplayName)" />
+    </div>
+    <div class="mb-3">
+        <label for="organizationType" class="form-label">Organization Type</label>
+        <InputSelect class="form-select" @bind-Value="@organizationForm.OrganizationType">
+            <option value="">Choose...</option>
+            <option value="1">School</option>
+            <option value="2">Hospital</option>
+            <option value="3">Individual</option>
+        </InputSelect>
+        <ValidationMessage class="invalid-feedback" For="@(() => organizationForm.OrganizationType)" />
+    </div>
+    <div class="form-check mb-3" style="cursor:pointer;">
+        <InputCheckbox class="form-check-input" id="isActive" @bind-Value="@organizationForm.IsActive" />
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+    <div class="mb-3">
+        <Button Color="ButtonColor.Primary" Type="ButtonType.Submit" Loading="@isLoading" LoadingText="Saving..." Disabled="@(formInvalid || isLoading)">Save Organization</Button>
+    </div>
+</EditForm>
+
+<Toasts class="p-3" Messages="messages" Placement="ToastsPlacement.TopCenter" AutoHide="false" />
+
+<ConfirmDialog @ref="dialog"
+               Title="Are you sure you want to save this?"
+               Message1="This will save the details enterd in the form."
+               Message2="Do you want to proceed?"
+               OnYes="OnYesAsync"
+               OnNo="OnNoAsync"></ConfirmDialog>

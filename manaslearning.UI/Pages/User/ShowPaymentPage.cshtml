@@ -1,0 +1,16 @@
+﻿@page "/u/showpaymentpage"
+@model manaslearning.UI.Pages.User.ShowPaymentPage
+@{
+    ViewData["Title"] = "ShowPaymentPage";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+<section>
+    <form method="post" action="@Model.PaymentUrl" name="paytm">
+        <div>
+            <input type="hidden" name="mid" value="@Model.Mid">
+            <input type="hidden" name="orderId" value="@Model.OrderId">
+            <input type="hidden" name="txnToken" value="@Model.TxnToken">
+        </div>
+        <script type="text/javascript">document.paytm.submit();</script>
+    </form>
+</section>

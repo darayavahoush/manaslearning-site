@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id" content="400371600185-sf3fum3c9a0ftl2l26pl2j8ji5efi3th.apps.googleusercontent.com">
+    <title>MANAS Learning</title>
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta name="keywords" content="MANAS, Learning Disability, ADHD, Specific, Test, Testing, Nonverbal, Non Verbal, Math, Maths, Autism, Dyslexia, Cause, Language, Symptoms, Assessment, Adults, Cognitive, ICD 10, Hannah Hays, Intellectual, School Student, DSM 5, Scholarship, Specialist, Sense of Direction, Screening Process, IQ, EQ, IEP, Chennai, Tamil Nadu, India. LD, ld, remedial, classes, special education, resource room, psychology, child psychology,  orton, OG, child psychology, dysgraphia, dyscalculia, dyspraxia, Apd, auditory processing disorder, non verbal learning disabilities, executive function, visual perception disorder. And, autism, high functioning">
+    <meta itemprop="name" content="@ViewBag.Title">
+    <meta itemprop="description" content="@ViewBag.MetaDescription">
+    <meta itemprop="keywords" content="MANAS, Learning Disability, ADHD, Specific, Test, Testing, Nonverbal, Non Verbal, Math, Maths, Autism, Dyslexia, Cause, Language, Symptoms, Assessment, Adults, Cognitive, ICD 10, Hannah Hays, Intellectual, School Student, DSM 5, Scholarship, Specialist, Sense of Direction, Screening Process, IQ, EQ, IEP, Chennai, Tamil Nadu, India. LD, ld, remedial, classes, special education, resource room, psychology, child psychology,  orton, OG, child psychology, dysgraphia, dyscalculia, dyspraxia, Apd, auditory processing disorder, non verbal learning disabilities, executive function, visual perception disorder. And, autism, high functioning">
+    <meta itemprop="image" content="@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png">
+    <meta property="og:image" content="@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png">
+    <link rel="canonical" href="@ViewBag.Url">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="@ViewBag.Url">
+    <meta property="og:site_name" content="MANAS Learning">
+    <meta property="og:title" content="@ViewBag.Title">
+    <meta property="og:description" content="@ViewBag.MetaDescription">
+    <meta property="og:image" content="@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png">
+    <meta property="article:modified_time" content="@ViewBag.ModifiedDate">
+    <meta name="googlebot" content="code">
+    <meta name="robots" content="index, follow">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/logo/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/logo/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/logo/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/site.webmanifest">
+    <meta name="msapplication-config" content="~/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Google Font -->
+    <link rel="preload" href="~/vendor/themify-icons/fonts/themify.woff?-fvbane" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="~/vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CPlayfair+Display:400,400i,700,700i%7CRoboto:400,400i,500,700" as="style">
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <environment include="Development">
+        <!-- Plugins CSS -->
+        <link href="~/vendor/themify-icons/css/themify-icons.css" rel="stylesheet" />
+        <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/vendor/animate/animate.min.css" rel="stylesheet" />
+        <link href="~/vendor/fancybox/css/jquery.fancybox.min.css" rel="stylesheet" />
+        <link href="~/vendor/owlcarousel/css/owl.carousel.min.css" rel="stylesheet" />
+        <!-- Theme CSS -->
+        <link href="~/css/style.css" rel="stylesheet" />
+        <link href="~/css/webp.css" rel="stylesheet" />
+    </environment>
+    <environment include="Production">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="false" />
+    </environment>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <partial name="_GoogleAnalytics" />
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "url": "@ViewBag.BaseAddress",
+        "logo": "@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png",
+        "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "Chennai, Tamilnadu, India",
+        "postalCode": "600103",
+        "streetAddress": "Sapphire, Olympia Opaline, Navalur, OMR"
+        },
+        "telephone": "+91-934-215-7217",
+        "contactPoint" : [
+        { "@@type" : "ContactPoint",
+        "telephone" : "+91-934-215-7217",
+        "contactType" : "customer service"
+        } ]
+        }
+    </script>
+</head>
+<body>
+    <!-- Page loading spinner-->
+    <div class="preloader">
+        <img src="/images/preloader.svg" alt="Pre-loader">
+    </div>
+    <!-- header Start -->
+    <header class="navbar-sticky navbar-transparent navbar-primary">
+        <!-- Search -->
+        @*<div class="top-search collapse bg-light" id="search-open" data-parent="#search">
+            <div class="container">
+            <div class="row position-relative">
+            <div class="col-md-8 mx-auto py-5">
+            <form>
+            <div class="input-group">
+            <input class="form-control border-radius-right-0 border-right-0" type="text" name="search" autofocus="" placeholder="What are you looking for?">
+            <button type="button" class="btn btn-grad border-radius-left-0 mb-0">Search</button>
+            </div>
+            </form>
+            <p class="small mt-2 mb-0"><strong>e.g.</strong>Template, Wizixo, WordPress theme </p>
+            </div>
+            <a class="position-absolute top-0 right-0 mt-3 mr-3" data-toggle="collapse" href="#search-open"><i class="fa fa-window-close"></i></a>
+            </div>
+            </div>
+            </div>*@
+        <!-- End Search -->
+        <!-- Logo Nav Start -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="/">
+                    <img src="~/main/images/logo/manas-logo-1.png" alt="" width="300">
+                </a>
+                <!-- Menu opener button -->
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> </span>
+                </button>
+                <!-- Main Menu Start -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Menu item 1 Services -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/services" id="servicesMenu" aria-haspopup="true" aria-expanded="false">Services</a>
+                        </li>
+                        <!-- Menu item 2 Assessment -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assessments" id="assessmentsMenu" aria-haspopup="true" aria-expanded="false">Assessments</a>
+                        </li>
+                        <!-- Menu item 3 Blog -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@UrlConstants.PAGE_BLOG" id="blogMenu" aria-haspopup="true" aria-expanded="false" target="_blank">Blog</a>
+                        </li>
+                        <!-- Menu item 3 Consult -->
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="/consult" id="consultMenu" aria-haspopup="true" aria-expanded="false">Consult</a>
+                            </li>*@
+                        <!-- Menu item 4 Login -->
+                        <partial name="_LoginPartial" />
+                        <!-- Menu item 4 Simulation Tools -->
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="/simulation-tools" id="consultMenu" aria-haspopup="true" aria-expanded="false">Simulation Tools</a>
+                            </li>*@
+                    </ul>
+                </div>
+                <!-- Main Menu End -->
+                <!-- Header Extras Start-->
+                @*<div class="navbar-nav">
+                    extra item Search
+                    <div class="nav-item search border-0 pl-3 pr-0 px-lg-2" id="search">
+                    <a class="nav-link" data-toggle="collapse" href="#search-open"><i class="ti-search"> </i></a>
+                    </div>
+                    extra item Btn
+                    <div class="nav-item border-0 d-none d-lg-inline-block align-self-center">
+                    <a href="#" class=" btn btn-sm btn-grad text-white mb-0">Buy Now!</a>
+                    </div>
+                    </div>*@
+                <!-- Header Extras End-->
+            </div>
+        </nav>
+        <!-- Logo Nav End -->
+    </header>
+    <!--header End-->
+    <!--Main Banner -->
+    <section class="height-500 p-0 bg-grad pattern-overlay-1">
+        <div class="container h-100">
+            <div class="row d-flex h-100">
+                <div class="col-sm-10 col-md-10 justify-content-center align-self-center align-items-start mx-auto all-text-white mt-5 mt-md-0">
+                    <div class="text-center">
+                        <h5 class="display-6 display-xl-3 p-0 cd-headline loading-bar">
+                            <span class="pt-0">Is your child </span>
+                            <span class="cd-words-wrapper pt-0">
+                                <b class="is-visible">weak in Maths?</b>
+                                <b>poor in reading?</b>
+                                <b>bad in writing?</b>
+                                <b>depressed?</b>
+                                <b>anxious?</b>
+                            </span>
+                        </h5>
+                        <p class="mb-4 display-8 display-xl-7 font-weight-normal ">We help your child overcome their weakness by engaging in fun learning to become confident and successful in life.</p>
+                        @*<a class="btn btn-sm btn-dark mb-5" href="/about">Read more</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Main Banner -->
+    <main>
+        @RenderBody()
+    </main>
+    <!--footer-->
+    <footer class="footer footer-dark pt-6 position-relative">
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer widget 1 -->
+                    <div class="col-md-3 col-sm-6 order-sm-1">
+                        <div class="widget address">
+                            <a href="/" class="footer-logo mb-3 d-block">
+                                <img src="~/main/images/logo/manas-logo-1.png" alt="" width="300">
+                            </a>
+
+                            @*<p>MANAS Learning; an innovative Internet marketing solutions company that offers comprehensive web development, SMO services, SEO strategies and various other types of Internet marketing related services. </p>*@
+                        </div>
+                    </div>
+                    <!-- Footer widget 2 -->
+                    <div class="col-md-2 col-sm-4 order-sm-3">
+                        <div class="widget">
+                            @*<h6>Other Links</h6>
+                                <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/assessments">Assessments</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/consult">Consult</a></li>
+                                </ul>*@
+                        </div>
+                    </div>
+                    <!-- Footer widget 3 -->
+                    <div class="col-6 col-md-2 col-sm-4 order-sm-4">
+                        <div class="widget">
+                            <h6>Quick Links</h6>
+                            <ul class="nav flex-column">
+                                <li class="nav-item pb-1"><a class="nav-link" href="/about-us">About Us</a></li>
+                                <li class="nav-item py-1"><a class="nav-link" href="/contact-us">Contact Us</a></li>
+                                <li class="nav-item py-1"><a class="nav-link" href="/">Home</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Footer widget 4 -->
+                    <div class="col-6 col-md-2 col-sm-4 order-sm-5">
+                        <div class="widget">
+                            <h6>Company</h6>
+                            <ul class="nav flex-column primary-hover">
+                                <li class="nav-item pb-1"><a class="nav-link" href="/terms-of-service">Terms of Service</a></li>
+                                <li class="nav-item py-1"><a class="nav-link" href="/privacy-policy">Privacy Policy</a></li>
+                                <li class="nav-item py-1"><a class="nav-link" href="@UrlConstants.CANCELLATION_AND_REFUND_POLICY">Cancellation and Refund Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Footer widget 5 -->
+                    <div class="col-md-3 col-sm-6 order-sm-2">
+                        <div class="widget address" style="background-image: url('/images/world-map.png'); background-position: 50% 20px; background-repeat: no-repeat; background-size: contain;">
+                            <ul class="list-unstyled">
+                                <li class="media mb-3"><i class="mr-3 display-8 ti-map-alt"></i>Sapphire, Olympia Opaline, Navalur, OMR, Chennai, Tamilnadu, India - 600103.</li>
+                                <li class="media mb-3"><i class="mr-3 display-8 ti-headphone-alt"></i> <a href="tel:+919342157217">(+91) 934-215-7217</a></li>
+                                <li class="media mb-3"><i class="mr-3 display-8 ti-email"></i> <a href="mailto:support@manaslearning.com">support@manaslearning.com</a></li>
+                                @*<li class="media mb-3">
+                                    <i class="mr-3 display-8 ti-time"></i>
+                                    <p>Mon - Fri: <strong>09:00 - 21:00</strong> <br>Sat &amp; Sun: <strong>Closed</strong></p>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider mt-3"></div>
+        <!--footer copyright -->
+        <div class="footer-copyright py-3">
+            <div class="container">
+                <div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+                    <!-- copyright text -->
+                    <div class="copyright-text">© @DateTime.Now.Year All Rights Reserved by <a href="/"> MANAS Learning.</a></div>
+                    <!-- Social Links -->
+                    <ul class="social-icons si-border round si-colored-bg-on-hover py-3 py-md-0">
+                        <li class="social-icons-item social-facebook">
+                            <a class="social-icons-link" href="https://www.facebook.com/Manas-Learning-111297630602454"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="social-icons-item social-instagram">
+                            <a class="social-icons-link" href="https://www.instagram.com/manaslearning/"><i class="fa fa-instagram"></i></a>
+                        </li>
+                        <li class="social-icons-item social-youtube">
+                            <a class="social-icons-link" href="https://www.youtube.com/channel/UCfbSovbwrkJ2zDF-eZgkO0g"><i class="fa fa-youtube"></i></a>
+                        </li>
+                        <li class="social-icons-item social-twitter">
+                            <a class="social-icons-link" href="https://twitter.com/ManasLearning"><i class="fa fa-twitter"></i></a>
+                        </li>
+                    </ul>
+                    <!-- copyright links-->
+                    @*<div class="btn-group dropup dropdown">
+                        <a class="dropdown-toggle btn btn-outline-secondary" href="#" role="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="dropdown-item-icon" src="assets/images/flags/uk.svg" alt=""> English </a>
+                        <div class="dropdown-menu mt-2 shadow" aria-labelledby="dropdownLanguage" style="">
+                        <span class="dropdown-item-text text-dark">Select language</span>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-dark" href="#"><img class="dropdown-item-icon" src="assets/images/flags/sp.svg" alt=""> Español</a>
+                        <a class="dropdown-item text-dark" href="#"><img class="dropdown-item-icon" src="assets/images/flags/fr.svg" alt=""> Français</a>
+                        <a class="dropdown-item text-dark" href="#"><img class="dropdown-item-icon" src="assets/images/flags/gr.svg" alt=""> Deutsch</a>
+                        </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Authentication -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <environment include="Development">
+        <!--Global JS-->
+        <script src="~/vendor/jquery/jquery.min.js"></script>
+        <script src="~/vendor/popper.js/umd/popper.min.js"></script>
+        <script src="~/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!--Vendors-->
+        <script src="~/vendor/animated-headline/main.js"></script>
+        <script src="~/vendor/fancybox/js/jquery.fancybox.min.js"></script>
+        <script src="~/vendor/jquery-appear/jquery.appear.js"></script>
+        <script src="~/vendor/owlcarousel/js/owl.carousel.min.js"></script>
+        <script src="~/vendor/wow/wow.min.js"></script>
+        <!--Template Functions-->
+        <script src="~/js/functions.js"></script>
+        <script src="~/js/site.js"></script>
+    </environment>
+    <environment include="Production">
+        <script src="~/js/site.min.js" asp-append-version="false"></script>
+    </environment>
+    <!-- Messenger -->
+    <partial name="_FreshChatMessengerScript" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

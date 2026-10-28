@@ -1,0 +1,100 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/vendor/font-awesome/css/font-awesome.min.css",
+      "wwwroot/vendor/themify-icons/css/themify-icons.css",
+      "wwwroot/vendor/animate/animate.min.css",
+      "wwwroot/vendor/fancybox/css/jquery.fancybox.min.css",
+      "wwwroot/vendor/owlcarousel/css/owl.carousel.min.css",
+      "wwwroot/lib/bootstrap-icons/font/bootstrap-icons.min.css",
+      "wwwroot/css/style.css",
+      "wwwroot/css/webp.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/vendor/jquery/jquery.min.js",
+      "wwwroot/vendor/popper.js/umd/popper.min.js",
+      "wwwroot/vendor/bootstrap/dist/js/bootstrap.min.js",
+      "wwwroot/vendor/jquery-easing/jquery.easing.min.js",
+      "wwwroot/vendor/animated-headline/main.js",
+      "wwwroot/vendor/fancybox/js/jquery.fancybox.min.js",
+      "wwwroot/vendor/jquery-appear/jquery.appear.js",
+      "wwwroot/vendor/owlcarousel/js/owl.carousel.min.js",
+      "wwwroot/vendor/wow/wow.min.js",
+      "wwwroot/vendor/modernizr/modernizr-custom.js",
+      "wwwroot/js/functions.js",
+      "wwwroot/js/site.js",
+      "wwwroot/js/private/assessments.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/site2.min.js",
+    "inputFiles": [
+      "wwwroot/vendor/jquery/jquery.min.js",
+      "wwwroot/vendor/popper.js/umd/popper.min.js",
+      "wwwroot/vendor/bootstrap/dist/js/bootstrap.min.js",
+      "wwwroot/vendor/jquery-easing/jquery.easing.min.js",
+      "wwwroot/vendor/fancybox/js/jquery.fancybox.min.js",
+      "wwwroot/vendor/jquery-countTo/jquery.countTo.js",
+      "wwwroot/vendor/jquery-appear/jquery.appear.js",
+      "wwwroot/vendor/wavify/wavify.js",
+      "wwwroot/vendor/fitvids/jquery.fitvids.js",
+      "wwwroot/vendor/owlcarousel/js/owl.carousel.min.js",
+      "wwwroot/vendor/wow/wow.min.js",
+      "wwwroot/vendor/modernizr/modernizr-custom.js",
+      "wwwroot/js/functions.js",
+      "wwwroot/js/global.js",
+      "wwwroot/js/contact-us.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  // main layout
+  {
+    "outputFileName": "wwwroot/css/main.min.css",
+    "inputFiles": [
+      "wwwroot/main/fonts/recoleta/stylesheet.css",
+      "wwwroot/main/fonts/gordita/stylesheet.css",
+      "wwwroot/main/lib/bootstrap/css/bootstrap.min.css",
+      "wwwroot/main/css/navbar.css",
+      "wwwroot/main/css/framework.css",
+      "wwwroot/main/fonts/bootstrap-icons/font-css.css",
+      "wwwroot/main/fonts/font-awesome/css/all.min.css",
+      "wwwroot/main/lib/fancybox/dist/jquery.fancybox.min.css",
+      "wwwroot/main/lib/slick/slick.css",
+      "wwwroot/main/css/animate.min.css",
+      "wwwroot/main/css/custom-animation.css",
+      "wwwroot/main/lib/animated-headline-master/style.css",
+      "wwwroot/main/css/style.css",
+      "wwwroot/main/css/responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.min.js",
+      //"wwwroot/lib/bootstrap/js/bootstrap.bundle.js",
+      "wwwroot/main/lib/slick/slick.min.js",
+      "wwwroot/main/lib/jquery.counterup.min.js",
+      "wwwroot/main/lib/jquery.waypoints.min.js",
+      "wwwroot/main/lib/fancybox/dist/jquery.fancybox.min.js",
+      "wwwroot/main/js/theme.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

@@ -1,0 +1,32 @@
+﻿@page "/manage-users/{organizationOid?}"
+@using BlazorBootstrap
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+@inherits ParentComponentBase
+
+<PageTitle>Organization Users</PageTitle>
+
+<Grid TItem="OrganizationUserInfo" class="table table-hover" DataProvider="OrganizationUsersDataProvider" PageSize="100">
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="Id" SortKeySelector="@(item => item.UserId)">
+        @orgUser.UserId
+    </GridColumn>
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="FirstName" SortKeySelector="@(item => item.FirstName)" IsDefaultSortColumn="true">
+        @orgUser.FirstName
+    </GridColumn>
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="LastName" SortKeySelector="@(item => item.LastName)">
+        @orgUser.LastName
+    </GridColumn>
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="Email" SortKeySelector="@(item => item.Email)">
+        @orgUser.Email
+    </GridColumn>
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="LoginType">
+        @orgUser.LoginType
+    </GridColumn>
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="EmailVerified">
+        @orgUser.EmailVerified
+    </GridColumn>
+    <GridColumn TItem="OrganizationUserInfo" Context="orgUser" HeaderText="IsActive">
+        @orgUser.IsActive
+    </GridColumn>
+</Grid>

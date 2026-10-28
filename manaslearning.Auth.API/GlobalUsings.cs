@@ -1,0 +1,1 @@
+﻿global using manaslearning.Auth.API;

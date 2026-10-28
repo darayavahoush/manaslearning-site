@@ -1,0 +1,77 @@
+﻿@page "/child-academic-problems/understanding-your-childs-difficulty-with-movement-and-coordination"
+@model manaslearning.UI.Pages.ChildAcademicProblems.MotorSkillsModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Understanding Your Child's Difficulty With Movement and Coordination";
+    ViewBag.MetaDescription = "The trouble with motor skills can make it hard for kids to use scissors, ride a bike, write, and do other tasks. It doesn’t mean that kids are lazy or not paying attention.";
+    ViewBag.MetaKeywords = "motor skills, motor coordination disorder, motor dyspraxia, cause of motor skills disorder, motor skills disorder symptoms, child has coordination difficulties, struggling with specific movements";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/14/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 motor-skills-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Children with Motor Difficulties</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Understanding Your Child's Difficulty With Movement and Coordination</h2>
+                            <p class="fs-1">
+                                This is a problem which is very difficult to understand by others, the children with this problem can range from a minor to major issues. The muscles in the body cannot follow or sometime understand the signals sent by the brain. It can range from some small muscles to the whole body also.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Problem in fine motor skill. Difficulty in holding a pencil or using scissors, tying shoelaces, putting buttons, aiming. Slow at dressing and in writing.</li>
+                                <li>Problem in gross motor skills, co-ordination, catching a ball or hitting a ball.</li>
+                                <li>Confusion between left and right, up and down, front and back.</li>
+                                <li>Difficulty riding a cycle. Bad in sports or avoids sports or Physical Education.</li>
+                                <li>Problem in judging distance, height, length and speed.</li>
+                                <li>Odd posture while walking. Problem in balancing. May constantly bump into objects and fall over.</li>
+                                <li>May be slow in giving response and have problems with comprehension. Rejected by peers, may prefer adult company.</li>
+                                <li>Sensitive to sound and touch, including high levels of noise, participating in group activity, wearing new clothes.</li>
+                                <li>Limited concentration and poor listening skills. Inability to remember more than two or three instructions at once.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

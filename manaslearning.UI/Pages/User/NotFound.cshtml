@@ -1,0 +1,19 @@
+﻿@page "/u/not-found"
+@model manaslearning.UI.Pages.User.NotFoundModel
+@{
+    Layout = "_LayoutForUser";
+    ViewData["Title"] = "Not found";
+}
+
+<section class="error-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h2 class="display-1 font-weight-bold text-grad">404!</h2>
+                <h3 class="mb-4">Page Not Found</h3>
+                <p>Ooops! The page you are looking for, couldn't be found.</p>
+                <a class="btn btn-sm btn-outline-light" href="@UrlConstants.USER_DASHBOARD">Back to home!</a>
+            </div>
+        </div>
+    </div>
+</section>

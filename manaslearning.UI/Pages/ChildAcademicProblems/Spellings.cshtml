@@ -1,0 +1,73 @@
+﻿@page "/child-academic-problems/understanding-your-childs-difficulties-with-spelling"
+@model manaslearning.UI.Pages.ChildAcademicProblems.SpellingsModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Spelling difficulties in children";
+    ViewBag.MetaDescription = "Children with spelling problems have a problem relating to sounds (phonics) with the alphabets (graphemes). Once the child gets confused with spelling, it isn't easy to comprehend that spelling. The spellings have to be learned for these children as it does not click automatically, which generally happens to other children.";
+    ViewBag.MetaKeywords = "Causes of spelling difficulties in children and adults, Spelling and Dyslexia, Causes of Trouble With Spelling, Spelling Problems: My Child Is Inconsistent With Spelling, Does Your Child Struggle With Spelling?";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/12/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 spelling-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Spelling Difficulties</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Differences That Cause Trouble With Spelling</h2>
+                            <p class="fs-1">
+                                Children with spelling problems have a problem relating to sounds (phonics) with the alphabets (graphemes). Once the child gets confused with spelling, it isn't easy to comprehend that spelling. The spellings have to be learned for these children as it does not click automatically, which generally happens to other children.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Lot of spelling mistakes.</li>
+                                <li>Difficulty in reading new or unknown words.</li>
+                                <li>Stammering while reading. Writes slowly because of spelling confusion.</li>
+                                <li>Confusion between similar sounding words and different spellings for the same word.</li>
+                                <li>Needs to by heart even common spellings.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

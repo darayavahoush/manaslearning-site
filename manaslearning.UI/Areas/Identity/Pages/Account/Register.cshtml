@@ -1,0 +1,108 @@
+﻿@page "/account/register"
+@model RegisterModel
+@{
+    Layout = "_LayoutForLoginLogout";
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        background: rgb(151,199,78);
+        background: linear-gradient(90deg, rgba(151,199,78,0.83) 0%, rgba(42,185,165,0.83) 50%), url("/images/login-bg.jpg") no-repeat top center;
+    }
+</style>
+<section class="p-0 d-flex align-items-center">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-5 mx-auto my-5">
+                <div class="row h-100 m-1">
+                    <div class="col-12 col-md-10 col-lg-9 col-xl-8 text-left mx-auto d-flex align-items-center bg-white p-3 border-radius-3">
+                        <div class="w-100">
+                            <div class="text-center mb-3">
+                                <a href="/">
+                                    <img src="~/images/logo/favicon/mstile-150x150.png" width="48" height="48" alt="MANAS Learning" />
+                                </a>
+                            </div>
+                            <h4 class="text-center">Sign up for your account!</h4>
+                            <hr />
+                            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <div class="form mt-4">
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">First Name</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.FirstName" class="form-control form-control-sm mb-1" placeholder="First Name" autocomplete="off">
+                                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">Last Name</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.LastName" class="form-control form-control-sm mb-1" placeholder="Last Name" autocomplete="off">
+                                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">Display Name</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.DisplayName" class="form-control form-control-sm mb-1" placeholder="Display Name" autocomplete="off">
+                                            <span asp-validation-for="Input.DisplayName" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">Email</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.Email" class="form-control form-control-sm mb-1" placeholder="Email" autocomplete="off">
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">Password</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.Password" class="form-control form-control-sm mb-1" placeholder="*********">
+                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <p class="text-left mb-2">Confirm Password</p>
+                                        <span class="form-group">
+                                            <input asp-for="Input.ConfirmPassword" class="form-control form-control-sm mb-1" placeholder="*********">
+                                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                        </span>
+                                    </div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="row align-items-center no-gutters m-0">
+                                        <div class="col-6 col-md-8"><span class="text-muted">Already on MANAS Learning? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login</a></span></div>
+                                        <div class="col-6 col-md-4 text-right"><button type="submit" class="btn btn-sm btn-dark">Register</button></div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="divider my-3"><span class="p-3"> OR </span></div>
+                            @if ((Model.ExternalLogins?.Count ?? 0) != 0)
+                            {
+                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                    <div class="d-flex d-inline">
+                                        @foreach (var provider in Model.ExternalLogins)
+                                        {
+                                            @if (provider.Name == "Google")
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-outline-danger w-100 my-2 mr-2" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="bi bi-google mr-2"></i> @provider.DisplayName</button>
+                                            }
+                                            else if (provider.Name == "Facebook")
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-primary-bootstrap w-100 my-2" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="bi bi-facebook mr-2"></i>@provider.DisplayName</button>
+                                            }
+                                        }
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,119 @@
+﻿@page "/u/student-classes"
+
+@using manaslearning.Models;
+@model manaslearning.UI.Pages.User.StudentClassesModel
+@{
+    ViewData["Title"] = "Classes";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-sm-5 pt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-1 order-md-2">
+                <div class="card card-sm">
+                    <div class="card-header card-header-table bg-light">
+                        <div>
+                            <button type="button" class="btn btn-primary btn-add-studentclass float-right">Add Class</button>
+                        </div>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <div class="table-responsive-sm">
+                            <table class="table table-hover table-studentclasses align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Class Name</th>
+                                        <th scope="col">Class Description</th>                                       
+                                        <th scope="col">Is Active</th>
+                                        <th scope="col" class="text-center width-5">Edit</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white">
+                                        <td colspan="7" class="text-center">
+                                            <div class="my-3">
+                                                <img class="img-add-studentclass cursor-pointer" src="/user/icons/add.svg" width="32" height="32" />
+                                            </div>
+                                            <div class="text-center mb-2">
+                                                Add classes to start.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input id="hfRecordId" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<!-- add student class modal -->
+<div class="modal fade" id="addStudentClassModal" tabindex="-1" aria-labelledby="addStudentClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addStudentClassModalLabel">Add Student Class</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-studentclass">
+                    <!-- Class Name -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-class-name" class="col-form-label float-left float-sm-right">Class Name:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control mb-0" maxlength="50" id="student-class-name">
+                            <small>Max. 50 characters allowed.</small>
+                        </div>
+                    </div>
+                    <!-- Class Description -->
+                    <div class="form-group row mb-0 mb-sm-3">
+                        <div class="col-sm-3">
+                            <label for="student-class-description" class="col-form-label float-left float-sm-right">Class Description:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control mb-0" maxlength="50" id="student-class-description">
+                            <small>Max. 256 characters allowed.</small>
+                        </div>
+                    </div>                    
+                    <!-- IsActive -->
+                    <div class="form-group row mb-0">
+                        <div class="offset-sm-3 col-sm-9">
+                            <div class="custom-control custom-checkbox mr-sm-2 mt-3">
+                                <input type="checkbox" class="custom-control-input" id="student-class-isactive" checked>
+                                <label class="custom-control-label" for="student-class-isactive">IsActive</label>
+                            </div>
+                        </div>
+                    </div>                                      
+                </form>
+                <div class="row mb-0 mb-sm-3 d-none" id="divErrorMessagesRow">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-9">
+                        <div id="divErrorMessage" class="alert alert-danger"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary btn-save-studentclass">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@page  "/u/licenses"
+
+@model manaslearning.UI.Pages.User.Subscription.LicensesModel
+@{
+    ViewData["Title"] = "Licenses";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Licenses</h2>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                @if (Model.Licenses != null && Model.Licenses.Any())
+                {
+                    <div class="mb-2">
+                        <div>Select a product to view and assign licenses.</div>
+                        <div class="mb-3"><a href="@UrlConstants.USER_PURCHASE_SERVICES">Go to Purchase services</a> to buy a license for new assessments.</div>
+                    </div>
+                }
+                <div class="card card-sm border-top-0">
+                    <div class="list-group list-group-flush">
+                        <div class="table-responsive-sm">
+                            <table class="table table-hover table-subscriptions align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Available licenses</th>
+                                        <th scope="col">Assigned licenses</th>
+                                        <th scope="col">Account type</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Licenses != null && Model.Licenses.Any())
+                                    {
+                                        foreach (var item in Model.Licenses)
+                                        {
+                                            <tr class="bg-white">
+                                                <td>@item.AssessmentName</td>
+                                                <td>@item.AvailableLicenses</td>
+                                                <td>@($"{item.UsedLicenses}/{item.AvailableLicenses + item.UsedLicenses}")</td>
+                                                <td>Individual</td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-xs" href="/u/catalog/n/@item.ItemOid">Buy Licenses</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr class="bg-white">
+                                            <td colspan="5" class="text-center">
+                                                @*<div class="my-3">
+                                                        <img class="img-buy-subscription cursor-pointer" src="/user/icons/add.svg" width="32" height="32" />
+                                                    </div>*@
+                                                <div class="mt-3">You do not have a license to access any of the assessments.</div>
+                                                <div class="mb-3"><a href="@UrlConstants.USER_PURCHASE_SERVICES">Go to Purchase services</a> to buy a license.</div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

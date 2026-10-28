@@ -1,0 +1,74 @@
+﻿@page "/child-academic-problems/understanding-your-childs-visual-perceptual-problems"
+@model manaslearning.UI.Pages.ChildAcademicProblems.ListeningSkillsModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Understanding Your Child’s Visual Perceptual Problems";
+    ViewBag.MetaDescription = "The children who have a problem in visual skills have difficulty understanding what they see. Read more here.";
+    ViewBag.MetaKeywords = "problem in visual skills, visual perception, what is visual perception, what are visual perceptual skills, visual perceptual problems in children, visual processing disorder";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/14/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 visual-skills-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Visual Perceptual Problems in Children</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Understanding Your Child's Visual Perceptual Problems</h2>
+                            <p class="fs-1">
+                                The children who have a problem in visual skills have difficulty understanding what they see. This makes it difficult to process the information that they see, sometimes slow and sometimes understand it wrong.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Difficulty in judging the distance.</li>
+                                <li>Confusion and problem in differentiating between similar looking words, and alphabets, shapes, colours, symbols and patterns.</li>
+                                <li>Prone to accidents, looks off-balanced and frequently hits into things.</li>
+                                <li>Problems or slow in reading, writing and maths but good in oral.</li>
+                                <li>Problem in remembering what they see and copying from board or book.</li>
+                                <li>Poor in hand eye coordination, sports, filling missing pieces of puzzle or information.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

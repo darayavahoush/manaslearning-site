@@ -1,0 +1,18 @@
+body {
+    font-size: .875rem;
+}
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+.content {
+    background-color: #f5f8fa;
+}
+
+.flex-stack {
+    justify-content: space-between;
+    align-items: center;
+}

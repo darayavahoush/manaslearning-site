@@ -1,0 +1,264 @@
+﻿@page "/about-us"
+@model manaslearning.UI.Pages.AboutModel
+@{
+    Layout = "_Layout_Main";
+    ViewBag.Title = "About Us";
+    ViewBag.MetaDescription = "We are sharing our ideology and preview of how we help children overcome their problems.";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- Theme Hero Banner -->
+<div class="hero-banner-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 pt-180 pb-80 md-pt-30 md-pb-60">
+                <h2 class="hero-heading font-recoleta pb-20 ">About MANAS</h2>
+                <p class="">Making learning fun and engaging </p>
+            </div>
+            <div class="col-sm-4 pb-40 pt-10 md-pt-10">
+                <img src="~/main/images/assets/about-banner-img.png" alt="About MANAS" class="illustration">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ML about -->
+<div class="ml-feature-section-ten pt-150 lg-pt-120 border-top">
+    <div class="container">
+        <div class="title-style-ten text-center pb-20 lg-pb-20">
+            <h2 class="title">We are the MANAS Learning!</h2>
+            <p>
+                This generation of children need constant entertainment and instant gratification. The learning
+                process needs to be fun, engaging, interesting, exciting, thought-provoking, play, art, and
+                therapy. Fun in learning is not only motivational, but it also makes it easy to remember(is a
+                very effective memory technique).
+            </p>
+        </div>
+    </div>
+</div>
+<!-- end about -->
+
+<!-- ML what we do -->
+<div class="ml-text-block-one mt-60 lg-mt-60">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xxl-6 col-lg-6 order-lg-first">
+                <div class="text-wrapper ps-xxl-5 pt-0 md-pb-40">
+
+                    <div class="title-style-one">
+                        <h2 class="title">What we <span>do</span> </h2>
+                    </div>
+                    <p class="meta-info-text text-sm">
+                        We help children overcome their weaknesses and succeed in
+                        life. We observe and analyze the children, their needs, their strengths and weaknesses
+                        and their learning patterns.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-lg-6 d-flex flex-column align-items-center">
+                <img src="~/main/images/assets/ml-what-we-do.png" width="60%" alt="MANAS Learning - what we do" class="illustration">
+            </div>
+        </div>
+    </div>
+</div> 
+<!-- ML  End what we do  -->
+
+<!-- ml How we do -->
+<div class="ml-text-block-one mt-60 lg-mt-60">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xxl-6 col-lg-6 order-lg-last">
+                <div class="text-wrapper ps-xxl-5 pt-0 md-pb-40">
+                    <div class="title-style-one">
+                        <h2 class="title">How we <span>do it</span> </h2>
+                    </div>
+                    <p class="meta-info-text text-sm">
+                        We have a big team of professionals from different fields,
+                        educational psychologists, teachers and learning disability specialists. We have
+                        developed a method of teaching which is individualized and child centric and based on
+                        learning patterns and on the theory of multiple intelligence. This method has been tried
+                        and tested and has a 98% success rate.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-lg-6 d-flex flex-column align-items-center">
+                <img src="~/main/images/assets/ml-how-we-do.png" width="60%" alt="MANAS Learning - how we do it" class="illustration">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ML End How we do -->
+
+<!-- ML Mision Vission -->
+<div class="ml-mission-vision mt-60 lg-mt-60 ">
+    <div class="contact-meta">
+        <div class="row gx-0 ">
+            <div class="col-xl-6  order-xl-last d-flex ">
+                <div class="ml-wrapper p-5 bg-light w-100">
+                    <div class="ml-mv">
+                        <div class="ml-mv-one">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <img src="~/main/images/assets/ml-mission-mg.png" alt="" class="tran3s">
+                            </div>
+                            <h4 class="title">MANAS Mission</h4>
+                            <p class="pe-xxl-5">
+                                to reach out to each and every child facing academic problems...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 order-xl-first d-flex">
+                <div class="ml-wrapper p-5 ml-mv-dark-bg  w-100">
+                    <div class="ml-mv">
+                        <div class="ml-mv-two">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <img src="~/main/images/assets/ml-vision-img.png" alt="" class="tran3s">
+                            </div>
+                            <h4 class="title">MANAS Vision</h4>
+                            <p class="">
+                                To help build an India where learning disability is no more a
+                                disability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ML End Mision Vission -->
+
+<!-- ML Statistics -->
+<div class="ml-feature-section-one dark-layout ">
+    <div class="bg-wrapper">
+        <div class="container">
+            <div class="counter-section-one mt-30 md-mt-30">
+                <div class="inner-container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 p-5" data-aos="fade-up">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">7</span>+</div>
+                                <p class="theme-mb-0">Years of experience in child & educational psychology</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 p-5" data-aos="fade-up" data-aos-delay="100">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">20</span>k+</div>
+                                <p class="theme-mb-0">Student assessed and counlled</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 p-5" data-aos="fade-up" data-aos-delay="200">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">1500</span>+</div>
+                                <p class="theme-mb-0">Students under remedial classes</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 p-5" data-aos="fade-up" data-aos-delay="300">
+                            <div class="counter-block-one text-center mb-45">
+                                <div class="main-count font-recoleta"><span class="counter">98</span>%</div>
+                                <p class="theme-mb-0">Success rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End ML Statistics -->
+
+<!-- Leadership -->
+<div class="team-section  ">
+    <div class="container">
+        <div class="title-style-nine text-center pb-4">
+            <h2 class="title pb-4">Meet our leadership team </h2>
+            @*<p class="text-md pt-30 p-5 lg-pt-20">
+                Lorum Ipsum dummy text here Lorum Ipsum dummy text hereLorum
+                Ipsum dummy text hereLorum Ipsum dummy text hereLorum Ipsum dummy text here
+            </p>*@
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8 offset-md-2">
+                <div class="team-section-inner team-wrapper p-5">
+                    <div class="col-xxl-2 col-lg-2 d-inline-block align-top">
+                        <img src="~/main/images/assets/tm-manasi.png" alt="">
+                    </div>
+                    <div class="col-xxl-9 col-lg-9 d-inline-block">
+                        <div class="name">Manasi Valluri <span>Founder & CEO</span></div>
+                        <div class="tm-collapse">
+                            <p class="collapse" id="collapseExample" aria-expanded="false">
+                                The concept of bringing together the best of teaching methods for learning difficulties to create MANAS Learning, was conceived by Ms. Manasi Valluri our founder. As a child and even now Manasi has difficulty with spellings which is a specific learning disability Dysorthographia. Seeing many children suffer due to lack of proper access to appropriate help, guidance and facilities; she created this platform to help create awareness, assess, identify, counsel and teach children with learning difficulties. The program, methodology and material are based on the works of many great scientist, educationalists and the tremendous research that has been done in the field of learning disability across the world. These methods are Indianized to help children overcome their difficulties. Manasi is a practicing psychologist, therapist and specializes in learning difficulties. She has worked with more than 2000 children. She feels blessed to help children fulfil their dreams and get back their self-confidence. She has been actively engaging the academic faculty of many schools to practice diverse teaching strategies.
+                            </p>
+                            <a role="button" class="collapsed show-more" data-toggle="collapse">+ Show More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<!-- ML End Leadership -->
+
+<!-- ML Talk to Experts  -->
+<div class="ml-text-block-eleven  lg-mt-120">
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 ms-auto ">
+                    <div class="text-wrapper">
+                        <div class="title-style-nine pt-40 pb-45 lg-pb-30">
+                            <h2 class="title">Talk to our experts</h2>
+                        </div>
+                        <p class="meta-info-text">We encourage parents and teachers to take the assessments of the child to understand their learning weakness.</p> 
+                        <p class="meta-info-text">Consult us to inspire a love for learning.</p>                        
+                        <a href="tel:(+91) 934-215-7217" class="theme-btn-four">Get Started Now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left-img-meta">
+            <img src="~/main/images/assets/calltoaction1.png" alt="">
+        </div>
+    </div>
+</div>
+<!-- ML End Talk to Experts  -->
+
+<!-- ML Subscribe -->
+@*<div class="fancy-banner-eight pt-100 pb-150  lg-pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-8 col-xl-9 col-lg-7 pb-60 m-auto">
+                <div class="title-style-two  white-vr text-center pe-xxl-2 ps-xxl-2">
+                    <h2 class="title">Join 60,000 subscribers who receieve free parenting news. Sign up now</h2>
+                </div>
+            </div>
+        </div>
+        <form action="#" class="m-auto ">
+            <input type="email" placeholder="Enter your email get started">
+            <button>Subscribe Now</button>
+        </form>
+    </div>
+</div>*@
+<!-- End ML Subscribe -->
+
+<script>
+    var showFullContent = false;
+    $(document).ready(function(){
+        $('a.show-more').click(function(){
+            showFullContent = !showFullContent;
+            let _collapse = $(this).siblings('.collapse')[0];
+            let $collapse = $(_collapse);
+            if(showFullContent){
+                $collapse.addClass('show');
+                $(this).html('- Show Less');
+            }
+            else{
+                $collapse.removeClass('show');
+                $(this).html('+ Show More');
+            }
+        });
+    });
+</script>

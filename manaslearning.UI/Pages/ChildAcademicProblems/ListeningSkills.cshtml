@@ -1,0 +1,73 @@
+﻿@page "/child-academic-problems/understanding-your-childs-trouble-with-listening"
+@model manaslearning.UI.Pages.ChildAcademicProblems.ListeningSkillsModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Understanding Your Child’s Trouble With Listening";
+    ViewBag.MetaDescription = "Does it seem like your child isn’t listening to you or doesn’t understand what you say? Learn about trouble with listening comprehension in kids.";
+    ViewBag.MetaKeywords = "why your child is not listening to you, child's trouble with listening, struggle with focus";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/14/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 listening-skills-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Listening Comprehension Difficulty in Children</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Understanding Your Child’s Trouble With Listening</h2>
+                            <p class="fs-1">
+                                When we talk about listening skills, children have problem in processing and understanding what they hear as a result it can affect their academics, their communication and also their response time.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Confusion in same sounding words like run-fun, back-bang.</li>
+                                <li>Getting distracted by outside noise or loud sounds.</li>
+                                <li>Not able to understand fully what they hear and asking to repeat what is said frequently.</li>
+                                <li>Takes little extra time to answer questions, gives irrelevant answers or hesitates to answer.</li>
+                                <li>Find it difficult to repeat what is said or express their feelings or tell a story. Weak in oral. Difficulty in verbal communication.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

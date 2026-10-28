@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id" content="400371600185-sf3fum3c9a0ftl2l26pl2j8ji5efi3th.apps.googleusercontent.com">
+    <title>@ViewBag.Title - MANAS Learning</title>
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta name="keywords" content="MANAS, Learning Disability, ADHD, Specific, Test, Testing, Nonverbal, Non Verbal, Math, Maths, Autism, Dyslexia, Cause, Language, Symptoms, Assessment, Adults, Cognitive, ICD 10, Hannah Hays, Intellectual, School Student, DSM 5, Scholarship, Specialist, Sense of Direction, Screening Process, IQ, EQ, IEP, Chennai, Tamil Nadu, India. LD, ld, remedial, classes, special education, resource room, psychology, child psychology,  orton, OG, child psychology, dysgraphia, dyscalculia, dyspraxia, Apd, auditory processing disorder, non verbal learning disabilities, executive function, visual perception disorder. And, autism, high functioning">
+    <meta itemprop="name" content="@ViewBag.Title">
+    <meta itemprop="description" content="@ViewBag.MetaDescription">
+    <meta itemprop="image" content="@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png">
+    <meta property="og:image" content="@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png">
+    <link rel="canonical" href="@ViewBag.Url">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="@ViewBag.Url">
+    <meta property="og:site_name" content="MANAS Learning">
+    <meta property="og:title" content="@ViewBag.Title">
+    <meta property="og:description" content="@ViewBag.MetaDescription">
+    <meta property="og:image" content="@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png">
+    <meta property="article:modified_time" content="@ViewBag.ModifiedDate">
+    <meta name="googlebot" content="code">
+    <meta name="robots" content="index, follow">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/logo/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/logo/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/logo/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/site.webmanifest">
+    <meta name="msapplication-config" content="~/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <!-- For Window Tab Color -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#202020">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#202020">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#202020">
+    <environment include="Development">
+        <link rel="stylesheet" type="text/css" href="~/main/fonts/recoleta/stylesheet.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/fonts/gordita/stylesheet.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/lib/bootstrap/css/bootstrap.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/css/navbar.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/css/framework.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/fonts/bootstrap-icons/font-css.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/fonts/font-awesome/css/all.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/lib/fancybox/dist/jquery.fancybox.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/lib/slick/slick.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/css/animate.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/css/custom-animation.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/lib/animated-headline-master/style.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/css/style.css" media="all">
+        <link rel="stylesheet" type="text/css" href="~/main/css/responsive.css" media="all">
+        <!--Global JS-->
+        <script src="~/lib/jquery/jquery.min.js"></script>
+    </environment>
+    <environment include="Production">
+        <link rel="stylesheet" href="~/css/main.min.css" asp-append-version="false" />
+        <!--Global JS-->
+        <script src="~/lib/jquery/jquery.min.js"></script>
+    </environment>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <partial name="_GoogleAnalytics" />
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "url": "@ViewBag.BaseAddress",
+        "logo": "@ViewBag.BaseAddress/images/logo/favicon/android-chrome-512x512.png",
+        "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "Chennai, Tamilnadu, India",
+        "postalCode": "600103",
+        "streetAddress": "Sapphire, Olympia Opaline, Navalur, OMR"
+        },
+        "telephone": "+91-934-215-7217",
+        "contactPoint" : [
+        { "@@type" : "ContactPoint",
+        "telephone" : "+91-934-215-7217",
+        "contactType" : "customer service"
+        } ]
+        }
+    </script>
+</head>
+<body>
+    <div class="main-page-wrapper">
+        <!-- Loading Transition -->
+        <section>
+            <div id="preloader">
+                <div id="ctn-preloader" class="ctn-preloader">
+                    <div class="animation-preloader">
+                        <div class="icon"><img src="images/preloader.svg" alt="Pre-loader"> </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sidebar Nav -->
+        <div class="offcanvas offcanvas-end sidebar-nav" tabindex="-1" id="offcanvasRight">
+            <div class="offcanvas-header">
+                <div class="logo"><a href="/"><img src="~/main/images/logo/manas-logo-1.png" alt="" width="300"></a></div>
+                <button type="button" class="close-btn tran3s" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="sidebar-nav-item">
+                <ul class="style-none">
+                    <li class="nav-item">
+                        <a href="@UrlConstants.PAGE_ABOUT_US">About MANAS?</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="@UrlConstants.PAGE_SERVICES">Services</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="@UrlConstants.PAGE_ASSESSMENTS">Assessments</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="@UrlConstants.PAGE_BLOG" target="_blank">Blog</a>
+                    </li>
+                    @*<li class="nav-item">
+                        <a href="@UrlConstants.PAGE_EXPERTS">Experts</a>
+                        </li>*@
+                    <li class="nav-item">
+                        <a href="@UrlConstants.SOCIAL_YOUTUBE_PAGE" target="_blank">Videos</a>
+                    </li>
+                    <li class="nav-item"><a href="@UrlConstants.PAGE_CONTACT_US">Contact</a></li>
+                </ul>
+            </div>
+            <div class="address-block">
+                <h4 class="title">Our Address</h4>
+                <p>Sapphire, Olympia Opaline, Navalur, OMR, Chennai, Tamilnadu, India - 600103.</p>
+                <p>call us at <br><a href="tel:(+91) 934-215-7217">(+91) 934-215-7217</a></p>
+                <a href="@UrlConstants.PAGE_ONLINE_ENQUIRY" class=" theme-btn-six ripple-btn">Online Enquiry</a>
+            </div>
+            <ul class="d-flex social-icon style-none mt-40">
+                <li><a href="@UrlConstants.SOCIAL_FACEBOOK_PAGE"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="@UrlConstants.SOCIAL_INSTGRAM_PAGE"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="@UrlConstants.SOCIAL_TWITTER_PAGE"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="@UrlConstants.SOCIAL_LINKEDIN_PAGE"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+        <!-- Search -->
+        @*<div class="offcanvas offcanvas-top theme-search-form justify-content-center" tabindex="-1" id="offcanvasTop">
+            <button type="button" class="close-btn tran3s" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+            <div class="form-wrapper">
+                <form action="#">
+                    <input type="text" placeholder="Search Keyword....">
+                    <button><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>*@
+        <!-- Main Menu -->
+        <header class="theme-main-menu sticky-menu theme-menu-one">
+            <div class="inner-content">
+                <div class="d-flex align-items-center justify-content-around">
+                    <div class="logo flex-grow-1"><a href="/"><img src="~/main/images/logo/manas-logo-1.png" alt="" width="250"></a></div>
+                    <nav class="navbar navbar-expand-lg ">
+                        <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@UrlConstants.PAGE_SERVICES" role="button" data-bs-auto-close="outside" aria-expanded="false">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@UrlConstants.PAGE_ASSESSMENTS" role="button" data-bs-auto-close="outside" aria-expanded="false">Assessments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@UrlConstants.PAGE_BLOG" role="button" data-bs-auto-close="outside" aria-expanded="false" target="_blank">Blog</a>
+                                </li>
+                                @*<li class="nav-item">
+                                    <a class="nav-link" href="@UrlConstants.PAGE_EXPERTS" role="button" data-bs-auto-close="outside" aria-expanded="false">Experts</a>
+                                    </li>*@
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@UrlConstants.PAGE_CONTACT_US" role="button" data-bs-auto-close="outside" aria-expanded="false">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@UrlConstants.PAGE_ONLINE_ENQUIRY" class="theme-btn-six ripple-btn">Online Enquiry</a>
+                                </li>
+                            </ul>
+                            <div class="mobile-content d-block d-lg-none">
+                                <form action="#" class="search-form">
+                                    <input type="text" placeholder="Search here..">
+                                    <button><i class="bi bi-search"></i></button>
+                                </form>
+
+                                <div class="address-block">
+                                    <h4 class="title">Our Address</h4>
+                                    <p>Sapphire, Olympia Opaline, Navalur, OMR, Chennai, Tamilnadu, India - 600103.</p>
+                                    <p>call us at <br><a href="tel:(+91) 934-215-7217">(+91) 934-215-7217</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="right-widget d-flex align-items-center">
+                        @*<partial name="_LoginPartial" />*@
+                        <a href="@UrlConstants.USER_DASHBOARD" class="d-flex align-items-center login-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg>
+                        </a>
+                        @*<button class="menu-search-btn tran3s" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="bi bi-search"></i></button>*@
+                        <button class="sidebar-nav-button d-none d-lg-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="~/main/images/icon/sidemenu.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+        <!-- Footer -->
+        <div class="ml-footer-three ">
+            <div class="container">
+                <div class=" align-items-center justify-content-between">
+                    <div class="logo text-center"><a href="@UrlConstants.PAGE_HOME"><img src="~/main/images/logo/manas-logo-1.png" alt=""></a></div>
+                    <ul class="style-none footer-nav d-flex flex-wrap justify-content-center pt-40 pb-60 md-pt-60 md-pb-60">
+                        <li><a href="@UrlConstants.PAGE_ABOUT_US">About MANAS?</a></li>
+                        <li><a href="@UrlConstants.PAGE_SERVICES">Services</a></li>
+                        <li><a href="@UrlConstants.PAGE_ASSESSMENTS">Assessments</a></li>
+                        <li><a href="@UrlConstants.PAGE_BLOG" target="_blank">Blog</a></li>
+                        <li><a href="@UrlConstants.SOCIAL_YOUTUBE_PAGE" target="_blank">Videos</a></li>
+                        @*<li><a href="#">FAQ's</a></li>*@
+                        @*<li><a href="#">Review Us</a></li>*@
+                        <li><a href="@UrlConstants.PAGE_CONTACT_US">Contact</a></li>
+                    </ul>
+                    <ul class="d-flex justify-content-center social-icon style-none">
+                        <li><a href="@UrlConstants.SOCIAL_FACEBOOK_PAGE"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="@UrlConstants.SOCIAL_INSTGRAM_PAGE"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="@UrlConstants.SOCIAL_TWITTER_PAGE"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="@UrlConstants.SOCIAL_LINKEDIN_PAGE"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ml-footer-one ">
+            <div class="bg-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xxl-11 m-auto">
+                            <div class="subscribe-area">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-12">
+                                        <p class="copyright text-left "><strong>@DateTime.Now.Year MANAS Learning. All rights reserved.</strong></p>
+                                        <p class="copyright text-left">Learning is a holistic procedure that comes with a variety of methods that arouse creative perception. In today’s modern age, children are more drawn towards entertaining modes of learning with constant gratification.</p>
+                                        <p class="copyright text-left">At MANAS Learning, we focus on specifically constructed models of education that include: fun and exciting games, modernized instruction, thought-provoking activities, customized sessions specific to every child.</p>
+                                        <p class="copyright text-left">Innovative learning not only motivates but also improves attention and retention among children. Our classes are a mixture of effectively nurturing art and logic sessions to inspire the strengths in children for efficient overall development.</p>
+                                        <p class="copyright text-left">Use of this website is subject to our <a class="mb-0" href="@UrlConstants.PAGE_TERMS_OF_SERVICE">Terms of Use</a> and <a class="mb-0" href="@UrlConstants.PAGE_PRIVACY_POLICY">Privacy Policy</a>.</p>
+                                        <p class="copyright text-left"><strong>Sapphire, Olympia Opaline, Navalur, OMR,<br> Chennai, Tamilnadu, India - 600103.</strong></p>
+                                        <p class="copyright text-left">Enquiry: <a class="mb-0" href="mailto:support@manaslearning.com">support@manaslearning.com</a> or <a class="mb-0" href="tel:(+91) 934-215-7217">(+91) 934-215-7217</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Authentication -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <environment include="Development">
+        <!--Global JS-->
+        <script src="~/main/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Slick Slider -->
+        <script src="~/main/lib/slick/slick.min.js"></script>
+        <!-- js Counter -->
+        <script src="~/main/lib/jquery.counterup.min.js"></script>
+        <script src="~/main/lib/jquery.waypoints.min.js"></script>
+        <!-- Fancybox -->
+        <script src="~/main/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+        <!-- Theme js -->
+        <script src="~/main/js/theme.js"></script>
+    </environment>
+    <environment include="Production">
+        <script src="~/js/main.min.js" asp-append-version="false"></script>
+        <script src="~/main/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </environment>
+    <!-- Messenger -->
+    <partial name="_FreshChatMessengerScript" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

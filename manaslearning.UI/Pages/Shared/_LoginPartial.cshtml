@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using manaslearning.Models
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<li class="nav-item dropdown">
+    @{
+        var displayName = "";
+        var email = "";
+        if (User != null && User.Identity != null)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            displayName = claimsIdentity.Claims.FirstOrDefault<Claim>(c => c.Type == CustomClaimTypes.DisplayName)?.Value;
+            email = claimsIdentity.Claims.FirstOrDefault<Claim>(c => c.Type == ClaimTypes.Email)?.Value;
+        }
+    }
+    <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+        @if (!string.IsNullOrWhiteSpace(@displayName))
+        {
+            <li>
+                <span class="dropdown-item">Hi, @displayName</span>
+            </li>
+        }
+        <li>
+            <span class="dropdown-item text-lowercase">@email</span>
+        </li>
+        <li>
+            <a class="dropdown-item" href="@UrlConstants.USER_DASHBOARD"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        </li>
+        <li>
+            <form id="logout_form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/login", new { area = "" })" method="post">
+                <a class="dropdown-item" href="javascript:void(0);" onclick="document.getElementById('logout_form').submit();"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            </form>
+        </li>
+    </ul>
+</li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" href="/login" id="consultMenu" aria-haspopup="true" aria-expanded="false">Login</a>
+    </li>
+}

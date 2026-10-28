@@ -1,0 +1,193 @@
+﻿@page "/global-users"
+@using BlazorBootstrap
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+@inherits ParentComponentBase
+
+<PageTitle>Manage Users</PageTitle>
+
+<div class="toolbar mb-4">
+    <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between align-items-center">
+        <!--begin::Info-->
+        <BreadcrumbWithTitle />
+        <!--end::Info-->
+        <!--begin::Actions-->
+        <div class="d-flex align-items-center flex-nowrap text-nowrap py-1">
+            <button class="btn btn-sm btn-primary" type="button" @onclick="(async () => { await ShowBulkUploadAsync(); })"><i class="bi bi-plus"></i> Add Bulk Users</button>
+        </div>
+        <!--end::Actions-->
+    </div>
+</div>
+
+<!-- Users -->
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Organization</th>
+                <th scope="col">Login Type</th>
+                <th scope="col">Email Verified</th>
+                <th scope="col">Is Active</th>
+                <th scope="col"><i class="bi bi-robot"></i></th>
+                <th scope="col">Login Provider</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (isUploadInProgress)
+            {
+                <tr>
+                    <td colspan="11">
+                        <div class="text-center my-3">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+            else if (this.Users != null && this.Users.Any())
+            {
+                var i = 1;
+                @foreach (var item in this.Users)
+                {
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Email</td>
+                        <td>@item.OrganizationName</td>
+                        <td>@item.LoginType.ToString()</td>
+                        <td class="text-center">
+                            @if (item.EmailVerified)
+                            {
+                                <i class="bi bi-patch-check-fill text-primary"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-patch-check-fill text-secondary"></i>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (true)
+                            {
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-check-circle-fill text-danger"></i>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (item.IsSystemCreated)
+                            {
+                                <i class="bi bi-check-circle-fill" title="System Generated Account"></i>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (!string.IsNullOrWhiteSpace(item.LoginProvider) && item.LoginProvider == "Google")
+                            {
+                                <i class="bi bi-google text-danger" title="Google Login"></i>
+                            }
+                            else
+                            {
+                                @item.LoginProvider
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (item.IsActive && item.IsSystemCreated && string.IsNullOrWhiteSpace(item.LoginProvider))
+                            {
+                                <Button Color="ButtonColor.Danger" Size="Size.Small" @onclick="(async() => { await ShowResetPasswordAsync(item.Email); })">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </Button>
+                            }
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+            else
+            {
+                <tr><td colspan="11">No users found.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Bulk users canvas -->
+<Offcanvas @ref="uploadOffcanvas" Title="Create Bulk Users" Placement="Placement.End">
+    <BodyTemplate>
+        <CreateBulkUsers Completed="OnCompletedAsync" />
+    </BodyTemplate>
+</Offcanvas>
+
+<!-- Reset Password -->
+<Offcanvas @ref="resetPasswordOffcanvas"
+           Title="Reset Password"
+           Placement="Placement.End"
+           OnHidden="OnResetPasswordOffcanvasClose">
+    <BodyTemplate>
+        @if (isResetInProgress)
+        {
+            <div class="text-center">
+                <div class="spinner-border spinner-border-sm" role="status">
+                </div>
+                <div>Resetting password...</div>
+            </div>
+        }
+        else if (resetPasswordState == Models.ResetPasswordState.None)
+        {
+            <div>Are you sure you want to reset password for <strong>@resetEmail</strong>?</div>
+            <div class="my-4">This will create a new password.</div>
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end mb-3">
+                <button class="btn btn-secondary me-md-2" type="button" @onclick="(async () => { await HideResetPasswordAsync(); })">Cancel</button>
+                <button class="btn btn-primary" type="button" @onclick="(async () => { await ResetPasswordAsync(resetEmail); })">Proceed</button>
+            </div>
+        }
+        else if (resetPasswordState == Models.ResetPasswordState.Generated)
+        {
+            <div>
+                <h5><i class="bi bi-check-circle-fill text-success"></i> Password has been reset.</h5>
+            </div>
+            <div>
+                You've successfully rest the password for this user.
+            </div>
+            <div class="table-responsive mt-2 mb-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">User</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@resetEmail</td>
+                            <td>@resetPassword</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end mb-3">
+                <button class="btn btn-secondary" type="button" @onclick="(async () => { await HideResetPasswordAsync(); })">Close</button>
+            </div>
+        }
+        else
+        {
+            <div>
+                <h5><i class="bi bi-exclamation-triangle-fill text-danger"></i> Password reset failed.</h5>
+            </div>
+            <div class="mt-2 mb-4">
+                An error occurred while resetting the password.
+            </div>
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end mb-3">
+                <button class="btn btn-secondary" type="button" @onclick="(async () => { await HideResetPasswordAsync(); })">Close</button>
+            </div>
+        }
+    </BodyTemplate>
+</Offcanvas>

@@ -1,0 +1,156 @@
+﻿@page "/contact-us"
+@model manaslearning.UI.Pages.ContactModel
+@{
+    Layout = "_LayoutForPages";
+    ViewBag.Title = "Contact Us - For Families with Disabled Children | MANAS Learning";
+    ViewBag.MetaDescription = "Complete this form to contact the Learning Disability Helpline and one of our advisors will get back to you soon.";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- Banner innerpage -->
+<div class="text-center bg-overlay-dark-4" style="background:url('/images/bg/05.jpg') no-repeat; background-size: cover; background-position: center center;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h6 class="display-6 mt-9 mb-0">Call us at <a href="tel:+919342157217" class="text-white">(+91) 934-215-7217</a></h6>
+                <h1 class="font-weight-bold display-4 display-md-1 mb-2 mb-md-n4">Contact Us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- contact -->
+<section class="contact-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 mx-auto">
+                <div class="title text-center">
+                    <h2>How can we assist you?</h2>
+                    <p>MANAS Learning customer support is available free of charge. Connection charges can vary when calling from outside the area, abroad or from a mobile phone.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-3 mb-5">
+                <div class="contact-box h-100 bg-overlay-dark-7 px-3 py-4" style="background:url('/images/contact-us/01.jpg') no-repeat; background-size: cover; background-position: center center; ">
+                    <!-- Phone -->
+                    <div class="contact-info all-text-white">
+                        <div class="contact-box-icon"><i class="ti-map-alt"></i></div>
+                        <h5 class="mb-2">Address</h5>
+                        <p>Sapphire, Olympia Opaline, Navalur, OMR, Chennai, Tamilnadu, India - 600103.</p>
+                    </div>
+                    <!-- Email -->
+                    <div class="contact-info all-text-white">
+                        <div class="contact-box-icon"><i class="ti-email"></i></div>
+                        <h5 class="mb-2">E-mail</h5>
+                        <p><a href="mailto:support@manaslearning.com">support@manaslearning.com</a></p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="contact-info all-text-white">
+                        <div class="contact-box-icon"><i class="ti-headphone-alt"></i></div>
+                        <h5 class="mb-2">Phone</h5>
+                        <p><a href="tel:+919342157217">(+91) 934-215-7217</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- google map -->
+            <div class="col-md-3 mb-5">
+                <div class="h-100">
+                    <div class="contact-map overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6173.174017522778!2d80.22830294592977!3d12.845938422363194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4f4870830b4654ec!2sSapphire%20Block!5e0!3m2!1sen!2sin!4v1593880153539!5m2!1sen!2sin" width="270" height="451" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- contact form -->
+            <div class="col-md-6">
+                <div class="h-100">
+                    @*<h3>Have a project? Let's make something great together!</h3>*@
+                    <p>Get in touch with us to see how we can help your child</p>
+                    <form class="contact-form" id="contact-form" name="contactform" method="post" action="/api/contact">
+                        <!-- Start main form -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- name -->
+                                <div class="form-group">
+                                    <input id="txtContactName" name="name" type="text" class="form-control" placeholder="Name">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid name.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- email -->
+                                <div class="form-group">
+                                    <input id="txtContactEmail" name="email" type="email" class="form-control" placeholder="E-mail">
+                                    <div class="invalid-feedback">
+                                        Please enter a vaild e-mail address.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <!-- Subject -->
+                                <div class="form-group">
+                                    <input id="txtContactSubject" name="subject" type="text" class="form-control" placeholder="Subject">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid subject.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <!-- Message -->
+                                <div class="form-group">
+                                    <textarea id="txtContactMessage" name="message" cols="40" rows="6" class="form-control" placeholder="Message"></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid message.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- submit button -->
+                            <div id="btnSendMessage" class="col-md-12 text-center">
+                                <button class="btn btn-dark btn-block">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                        <!-- End main form -->
+                        <!-- Start form message -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success contact-msg" style="display: none" role="alert">
+                                    Your message was sent successfully.
+                                    @*<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>*@
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End form message -->
+                        @Html.AntiForgeryToken()
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- contact -->
+<!-- more-info -->
+@*<section class="pt-0">
+    <div class="container ">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 text-center">
+                <h5 class="mb-1"> Join us on Chat</h5>
+                <p>If you have technical questions, chat live with developers in our <a href="#">live chat</a></p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5 class="mb-1"> General communication</h5>
+                <p>For general queries, <br /> please email <a href="mailto:support@manaslearning.com">support@manaslearning.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>*@
+<script>
+    var siteKey = '@Model.ReCaptchaSiteKey';
+</script>
+<!-- reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js?render=@Model.ReCaptchaSiteKey"></script>

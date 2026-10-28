@@ -1,0 +1,74 @@
+﻿@page "/child-academic-problems/understanding-your-childs-nonverbal-learning-problem"
+@model manaslearning.UI.Pages.ChildAcademicProblems.NonverbalSkillsModel
+@{
+    Layout = "~/Pages/Shared/_LayoutForPages.cshtml";
+    ViewBag.Title = "Understanding Your Child's Nonverbal Learning Problem";
+    ViewBag.MetaDescription = "Some children can read and write but can't understand the hidden meaning of what they read. These children have difficulty in understanding body language, tone of voice and facial expressions. All these problems can cause issues in socialising, sensitivity, communication etc.";
+    ViewBag.MetaKeywords = "nonverbal learning disabilities, symptoms of nonverbal learning disabilities, understanding body language, tone of voice, facial expressions";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("10/14/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<article>
+    <!-- Banner innerpage -->
+    <div class="innerpage-banner center bg-overlay-dark-7 nonverbal-page-banner-background-image">
+        <div class="container">
+            <div class="row all-text-white">
+                <div class="col-md-12 text-left">
+                    <div class="hero-wrapper">
+                        <div class="hero-container pt-4 pb-3">
+                            <div class="hero-button">
+                                <a class="btn btn-sm btn-white btn-round-home" href="/child-academic-problems"><i class="fa fa-angle-left"></i>Child Academic Problems</a>
+                            </div>
+                            <div class="hero-content">
+                                <header>
+                                    <h1 class="innerpage-title">Children with Nonverbal Learning Problem</h1>
+                                </header>
+                                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3 py-md-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="divider"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic Description -->
+    <section class="pt-0 pb-3 text-dark">
+        <div class="container article">
+            <div class="row">
+                <!-- accordion gradient -->
+                <div class="col-md-12">
+                    <main>
+                        <div>
+                            <h2 class="text-primary display-8">Understanding Your Child's Nonverbal Learning Problem</h2>
+                            <p class="fs-1">
+                                This is a problem which is very difficult to understand by others, the children with this problem can range from a minor to major issues. The muscles in the body cannot follow or sometime understand the signals sent by the brain. It can range from some small muscles to the whole body also.
+                            </p>
+                            <h2 class="text-primary display-8">Signs</h2>
+                            <ul class="mb-3" type="disc">
+                                <li>Poor in making friends or maintaining friendships and more dependent on parents.</li>
+                                <li>Can pay attention and remember information but doesn’t get the point or importance.</li>
+                                <li>Can’t understand others expression, poor in social skills, don’t understand social cues and obligations.</li>
+                                <li>Difficulty in understanding reading comprehension and math word problems.</li>
+                                <li>Scared of new situations and trouble adjusting to change.</li>
+                                <li>Could be physically awkward and uncoordinated, messy handwriting.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<!-- Other topics -->
+<aside>
+    @await Component.InvokeAsync("ChildAcademicProblems")
+</aside>

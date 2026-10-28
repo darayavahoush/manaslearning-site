@@ -1,0 +1,58 @@
+﻿@page "/cancellation-and-refund-policy"
+@model manaslearning.UI.Pages.CancellationAndRefundPolicyModel
+
+@{
+    Layout = "_LayoutForPages";
+    ViewBag.Title = "Cancellation and Refund Policy";
+    ViewBag.MetaDescription = "Cancellation and Refund Policy";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/09/2021", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- Page content-->
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Content-->
+        <div class="col-lg-12 py-4 mb-2 mb-sm-0 pb-sm-5">
+            <div class="py-4">
+                <h2>Cancellation and Refund Policy</h2>
+            </div>
+            <!-- Version & Last Updated -->
+            <div class="row position-relative no-gutters align-items-center border-top border-bottom mb-4">
+                <div class="col-md-12 py-3 pr-md-3">
+                    <div class="d-flex justify-content-md-start">
+                        <div class="media media-ie-fix align-items-center mr-grid-gutter">
+                            <div class="media-body pl-2">
+                                <h6 class="nav-heading mb-1">Version 1.0</h6>
+                                <div class="text-nowrap">
+                                    <div class="meta-link font-size-xs">Last Updated: <i class="fe-calendar mr-1 mt-n1"></i>&nbsp;September 09, 2021</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content -->
+            <p class="text-justify">All our customers are very important to us, that's why GAV Square Educational and Healthcare Solutions Pvt. Ltd (&quot;Company&quot;) has created the following Cancellation and Refund Policy to let You know how we handle the refunds for the services ordered and bought on our website https://manaslearning.com/ (&quot;Website&quot;).</p>
+            <p class="text-justify">The terms &quot;You,&quot; &quot;Your,&quot; and &quot;Yours&quot; refer to the entity/ person/ organization using our Website. When this policy mentions &quot;we,&quot; &quot;us,&quot; and &quot;our,&quot; it refers to the Company and its subsidiaries or /and affiliates. The term &quot;services&quot; refers to any assessment/ test bought on our Website by You.</p>
+            
+            <h3 class="h5 mb-3">1. CANCELLATION POLICY</h3>
+            <p class="pl-3 text-justify font-weight-bold">What can be cancelled?</p>
+            <p class="pl-3 text-justify">Any service licenses brought and unused can be cancelled within five days of the purchase date.</p>
+            <p class="pl-3 text-justify font-weight-bold">What information is to be shared for the cancellation of service?</p>
+            <p class="pl-3 text-justify">
+                The following information needs to be shared to cancel a service and request a refund of the same:
+            </p>
+            <ul class="pl-5 mb-4" style="list-style-type:disc">
+                <li>Registered email/phone number</li>
+                <li>The order number is shown on the orders page</li>
+            </ul>
+
+            <h3 class="h5">2. REFUND POLICY</h3>
+            <p class="pl-3 text-justify font-weight-bold">How long it takes to receive your refund?</p>
+            <p class="pl-3 text-justify">A refund will be authorised by the same method that the payment was made. Depending on your financial institution, refunds can take up to 7 business days to be credited to your original payment method. In all cases, we have the right to suspend the refund if the services are used.</p>
+            <p class="pl-3 text-justify">For any questions regarding the Cancellation or Refund Policy or any requests regarding the refunds and cancellation, please get in touch with us by email <a href="mailto:support@manaslearning.com">support@manaslearning.com</a>, phone <a href="tel:+919342157217">(+91) 934-215-7217</a>.</p>
+        </div>
+    </div>
+</div>

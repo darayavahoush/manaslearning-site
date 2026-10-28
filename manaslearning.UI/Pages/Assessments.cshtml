@@ -1,0 +1,130 @@
+﻿@page "/assessments/old"
+@using manaslearning.UI.Models
+@model manaslearning.UI.Pages.AssessmentsModel
+@{
+    Layout = "_LayoutForPages";
+    ViewBag.Title = "Assessments Old";
+    ViewBag.MetaDescription = "The assessments page provides an overview of different assessments and their features. ";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- banner inner page -->
+<div class="innerpage-banner center bg-overlay-dark-7 py-7" style="background:url('/images/assessments/01.jpg') no-repeat; background-size:cover; background-position: 30% 30%;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title">Assessments</h1>
+                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                @*<nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active"><a href="/"><i class="ti-home"></i> Home</a></li>
+                            <li class="breadcrumb-item">Pricing</li>
+                        </ol>
+                    </nav>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pricing -->
+<section class="pricing-page pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 offset-lg-1 col-lg-10 mb-0 mb-md-5 text-center">
+                <div class="p-0 text-center text-md-left">
+                    <p class="text-center text-dark fs-1">
+                        Lot of children do not learn because they are not inspired enough and there are other children who do have various problems in learning. These assessment tests are for the parents and teachers to identify, if the child actually has a problem.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- pricing item -->
+            <div class="offset-md-2 col-md-4 mb-5">
+                <div class="pricing-box card h-100">
+                    <h5>Free Assessment</h5>
+                    <div class="divider mt-4 mb-4"></div>
+                        <ul class="list-group list-group-borderless list-group-icon-primary-bg mb-4">
+                            <li class="list-group-item"><i class="fa fa-check"></i>Basic self tests</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i>Instant result</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i>Email Support</li>
+                        </ul>
+                    <a class="btn btn-outline-light mt-auto" href="/free-assessments">Free Assessment</a>
+                </div>
+            </div>
+            <!-- pricing item -->
+            <div class="col-md-4 mb-5">
+                <div class="pricing-box card h-100 shadow no-border box">
+                    <div class="ribbon"><span>POPULAR</span></div>
+                    <h5>Paid Assessment</h5>
+                    <div class="divider mt-4 mb-4"></div>
+                        <ul class="list-group list-group-borderless list-group-icon-primary-bg mb-4">
+                            <li class="list-group-item"><i class="fa fa-check"></i>In detail assessments</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i>Experts support</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i>Detailed reports</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i>Email Support</li>
+                        </ul>
+                    <a class="btn btn-grad mt-auto" href="@UrlConstants.PAID_ASSESSMENTS">Paid Assessments</a>
+                </div>
+            </div>            
+        </div>
+        <!-- pricing enterprise -->
+        <div class="row">
+            <div class="col-sm-12 mt-2 mt-md-4">
+                <div class="text-center">
+                    <h4>We offer special services to schools!</h4>
+                    <a class="btn btn-outline-light mt-4" href="mailto:sales@manaslearning.com">Contact Sales!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- faq -->
+@*<section class="bg-dark-grad pb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-center mx-auto mb-5">
+                <h2 class="text-white">Frequently asked question</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="pr-md-4">
+                    <h5 class="text-white">How does the 30-day free trial work?</h5>
+                    <p class="text-white-50">Go ahead, kick the tires. You have full access to all the features of wizixo Standard for 30 days. After 30 days you will need to provide a credit card to continue using the Standard features.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="pl-md-4">
+                    <h5 class="text-white">How can I upgrade from Free to Premium plans?</h5>
+                    <p class="text-white-50">MANAS Learning's Free plan is free for unlimited users. To upgrade to the Standard plan, log into your account and enter a valid credit card.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="pr-md-4">
+                    <h5 class="text-white">What payment options do you accept?</h5>
+                    <p class="text-white-50">We accept MasterCard, Visa, and American Express. For customers purchasing an annual subscription, we also accept bank transfers or checks.</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="pl-md-4">
+                    <h5 class="text-white">What should I do if I miss my delivery?</h5>
+                    <p class="text-white-50">We make 3 attempts on 3 continuing business days. In case you miss the delivery, give us a call on (251) 854-6308 or contact us at help@wizixo.com</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="pr-md-4">
+                    <h5 class="text-white">How can I get a refund in case I cancel my plan?</h5>
+                    <p class="text-white-50">The refund is provided as per with our cancellation policy. The refund can be credited to the source of payment (Example: debit card, credit card, net banking).</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="pl-md-4">
+                    <h5 class="text-white">How does the discount work?</h5>
+                    <p class="text-white-50">We email you a discount code for 300% off any subscription for one year once you verify your email. Once you get your code, just enter it into the promo code area on your billing page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@

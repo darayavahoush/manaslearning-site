@@ -1,0 +1,208 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<!--[if mso]>
+<style type="text/css">
+body, table, td, .mobile-text {
+font-family:Arial, Helvetica, sans-serif !important;
+}
+</style>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+	
+	<style>
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,900,700,500,300,100);
+body{padding: 0; margin:0; background-color: #eeeeee; font-family: 'Roboto', sans-serif; }
+a {text-decoration: underline; color: #00a63f;font-size: 0.8em;  word-break:     break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens:    auto;
+    hyphens:         auto;}		
+.invocienumber{text-align: right}
+.invoice_text{font-size: 1.5em;color: #444; font-weight: bold}
+.invoice_num{font-size: 1.5em;color: #444; font-weight: bold}
+.invoice_datetext{font-size: 0.8em;color: #666;line-height: 1.4em;}
+.message{font-size: 0.9em;color: #555;line-height: 1.4em;}		
+.clientinfo {display: inline-block;vertical-align: middle;}		
+.supplier{margin-bottom: 12px;color: #444;font-size: 1.05em; font-weight: bold}
+.address{margin-bottom: 5px;color: #555;font-size: 0.85em; }		
+.gst{text-align: right;margin-bottom: 5px;color: #555;font-size: 0.85em;line-height: 1.8em; padding: 15px 0;}		
+table{border-collapse: collapse;}
+.list-item{border-bottom: 1px solid #cccaca;font-size: 0.80em;}	
+.tabletitle th {font-size: 0.8em;padding: 5px 0px; border-bottom: 2px solid #ddd;}
+		.tabletitle th:nth-child(1) { text-align: left;}
+.tabletitle th:nth-child(2) { text-align: center;}
+.tabletitle th:nth-child(3) { text-align: center;}
+.tabletitle th:nth-child(4) { text-align: center;}
+.tabletitle th:nth-child(5) { text-align: center;}
+.tabletitle th:nth-child(6) { text-align: right;}
+.item{width: 50%;}
+
+/*
+.list-item td:nth-child(2) {
+    text-align: left;
+}
+*/
+.total-row th, .total-row td {font-weight: 700;font-size: .90em; border: 0 none;}
+.table-main {width: 100%}
+.total-row{font-size: 1.05em;color: #000;line-height: 1.9em;}
+		
+		
+@media screen and (max-width:700px){
+		
+table[class=innercontent], tr[class=innercontent], td[class=innercontent], img[class=innercontent]
+{width: 100% !important; height: auto;	}
+
+.invocienumber{text-align: left; padding: 12px 0}
+.invoice_text{font-size: 1.1em;color: #444; font-weight: bold}
+.invoice_num{font-size: 1.1em;color: #444; font-weight: bold}
+.invoice_datetext{font-size: 0.8em;color: #666;line-height: 1.4em;}
+.gst{text-align: left;margin-bottom: 5px;color: #555;font-size: 0.85em;}	
+/*==================== Table ====================*/
+ .table-main {border: 0 none; }  
+ .table-main thead {border: none; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden;
+        padding: 0; position: absolute;  width: 1px;    }
+  .table-main tr {  border-bottom: 2px solid #eee;   display: block;
+        margin-bottom: 20px;
+      }
+      .table-main td {
+        font-weight: 700;
+        display: block;
+        max-width: none;
+        position: relative;padding-right: 5px;
+        border: 1px solid #cccaca;
+        text-align: right;
+      }
+		
+      .table-main td:before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+		  
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+	[data-label]::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+		  
+        font-weight: normal;
+        text-transform: uppercase;
+      } <![endif]-->
+	thead{display: none;}
+    .total-row th {
+        display: none;
+    }
+    .total-row td {
+        text-align: right;
+    }
+	.list-item td {
+    text-align: right;
+}	
+	#table {
+        white-space: nowrap;
+        overflow: auto;
+    }
+	
+	.tabletitle th:nth-child(2) { text-align: center;}
+.tabletitle th:nth-child(3) { text-align: center;}
+.tabletitle th:nth-child(4) { text-align: center;}
+.tabletitle th:nth-child(5) { text-align: center;}
+.tabletitle th:nth-child(6) { text-align: right;}
+		}
+	</style>
+</head>
+
+<body>
+	
+	<!-- start main table -->
+	<table width="700" align="center" border="0" cellspacing="0" cellpadding="0" class="innercontent">
+  <tbody>
+	  <!-- start logo -->
+    <tr>
+		
+      <td style="padding: 15px 20px; text-align: center; background-color: #fff; border-bottom: 2px solid #00a63f;">
+		<img style="width:200px" src="https://i.ibb.co/mq265Pq/manasl.png">
+		 
+		</td>
+    </tr>
+	   <!-- end logo -->
+	  
+	  <!-- start banner -->
+    <tr>
+      <td style="padding: 35px 20px 15px 20px; background-color: #fff; ">
+		
+        
+        <span class="message">Hello  <span id="invoice_num"><strong> <#= _signupModel?.Name #></strong></span> </span><br><br>
+      
+        <span class="message">Congrats on signing up for MANAS Learning! In order to activate your account please click the button below to verify your email address:
+ </span>
+		</td>
+    </tr>
+	   <!-- end banner -->
+	  
+	  <!-- title and description -->
+	  <tr>
+		
+      <td style="padding: 35px 20px; background-color: #fff; text-align: center; "><a style="background-color: #4cbd89; padding: 10px 15px; color: #fff; text-decoration: none; font-weight: bold;" href="<#= _signupModel?.ActivationUrl #>">Activate Account</a></td>
+    </tr>
+	  
+	  <tr>
+	    <td style="background-color: #ffffff; padding: 10px 20px 10px 20px; "> <span class="message"> If the button above doesn't work, paste this into your browser: </span><br><br>
+			
+</td></tr>
+	  
+	   <tr>
+	    <td style="background-color: #ffffff; padding: 10px 20px 10px 20px;">
+			 <a href="<#= _signupModel?.ActivationUrl #>"><#= _signupModel?.ActivationUrl #></a>
+
+			
+</td></tr>
+	  <!-- start colums -->
+	  <tr><td style="background-color: #ffffff; padding: 10px 20px 35px 20px; font-family: sans-serif; font-size: 13px; line-height: 22px;"><p>If you have any questions about this receipt, simply reply to this email or reach out to our <a href="mailto:support@manaslearning.com">support team</a> for help.
+         </p><br>
+		  
+		  <p><strong>Thank You</strong>,<br>
+The MANAS Learning Team</p>
+		  </td></tr>
+	  <!-- end colums -->
+	  
+	  <tr>
+        <td style="font-family:sans-serif; font-size: 11px; line-height: 18px; padding: 30px; color: #777; background-color: #f5f5f5; text-align: center">
+            <p> © <#= DateTime.Now.Year #> <a href="https://manaslearning.com/">MANAS Learning</a>. All rights reserved.</p>
+            <p> Operated By: <strong><#= Company?.CompanyName #></strong></p>
+            <p> <#= _signupModel?.Company?.CompanyAddress?.Address1 #>, <#= _signupModel?.Company?.CompanyAddress?.Address2 #>, <#= _signupModel?.Company?.CompanyAddress?.Address3 #>, <#= _signupModel?.Company?.CompanyAddress?.City #>, <#= _signupModel?.Company?.CompanyAddress?.State #>, <#= _signupModel?.Company?.CompanyAddress?.Country #> - <#= _signupModel?.Company?.CompanyAddress?.ZipCode #>.</p>
+            <p>
+                Support:
+                <span class="email"><a href="mailto:<#= _signupModel?.Company.SupportEmail #>"><#= _signupModel?.Company.SupportEmail #></a> | <#= _signupModel?.Company.ContactNo #></span>
+            </p>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+	<!-- start main table -->
+</body>
+</html>

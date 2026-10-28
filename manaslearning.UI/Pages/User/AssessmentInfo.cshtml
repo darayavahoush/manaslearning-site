@@ -1,0 +1,76 @@
+﻿@page "/u/assessments/{name}/{id}/info"
+
+@using manaslearning.Models;
+@model manaslearning.UI.Pages.User.AssessmentInfoModel
+@{
+    ViewData["Title"] = "Assessment Info";
+    Layout = "~/Pages/Shared/_LayoutForUser.cshtml";
+}
+
+<!-- Breadcrumb -->
+@await Component.InvokeAsync(
+    "Breadcrumb",
+    @Model.BreadcrumbViewModel
+)
+
+<!-- Page content -->
+<section class="py-3">
+    <div class="container">
+        <div class="border border-dotted p-4 p-sm-5 border-radius-3 mb-2">
+            <div class="px-0 px-sm-1">
+                <h3 class="mb-4">Assessment Instructions</h3>
+                <p class="m-0">@Model.AssessmentInfo.Instructions</p>
+                <div class="custom-control custom-checkbox mr-sm-2 mt-3">
+                    <input type="checkbox" class="custom-control-input" id="chkAssessmentAgreement">
+                    <label class="custom-control-label" for="chkAssessmentAgreement">I have read and accept <a href="/terms-of-service" target="_blank">MANAS Learning terms of service</a></label>
+                </div>
+            </div>
+            @*<div class="mt-4 text-center">
+                    <button class="btn btn-primary mb-0 mr-3" id="btnContinue" disabled>Continue</button>
+                </div>*@
+        </div>
+        <div class="border border-dotted p-4 p-sm-5 border-radius-3 select-child-section" style="display:none;">
+            <div class="form-group">
+                <label>Select a child for assessment</label>
+                <select class="select-students custom-select select-big mb-3">
+                    <option value="-1" selected>Select  a child</option>
+                    @if (Model.Students != null)
+                    {
+                        foreach (var student in Model.Students)
+                        {
+                            <option value="@student.StudentId">@student.StudentName</option>
+                        }
+                    }
+                </select>
+                @if (Model.Students != null || Model.Students.Count() == 0)
+                {
+                    <small class="text-danger">
+                        <strong class="mr-1">Note:</strong>Please add students before you start the assessment.
+                    </small>
+                }
+            </div>
+            <div class="form-group">
+                <label>Select a language</label>
+                <select class="select-languages custom-select select-big mb-3">
+                    @if (Model.AssessmentLanguages != null)
+                    {
+                        foreach (var language in Model.AssessmentLanguages)
+                        {
+                            if (language.LanguageId != 5) // 5: English
+                            {
+                                <option value="@language.LanguageId">@language.LanguageName</option>
+                            }
+                            else
+                            {
+                                <option value="@language.LanguageId" selected>@language.LanguageName</option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+            <div class="mt-4 text-center">
+                <button class="btn btn-outline-light mb-0 btn-start-assessmnet" data-id="@Model.AssessmentInfo.GuidId.ToString()">Start Assessment</button>
+            </div>
+        </div>
+    </div>
+</section>

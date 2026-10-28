@@ -1,0 +1,209 @@
+﻿@page "/services"
+@model manaslearning.UI.Pages.ServicesModel
+@{
+    Layout = "_Layout_Main";
+    ViewBag.Title = "Childrens Learning Disability and Behaviour Support Services | MANAS Learning";
+    ViewBag.MetaDescription = "MANAS Learning provides Learning Disability & Behaviour Support Services for children and teenagers with learning difficulties. Our serivces includes Resource Room, Counsellor, Teacher Training, Assessment and Classes!";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- START: Hero -->
+<div class="hero-banner-two  ">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 pt-180 pb-80  md-pt-30 md-pb-60">
+                <h2 class="hero-heading font-recoleta pb-20 ">Services</h2>
+                <p class="">Cater to every learning need through comprehensive courses and counseling </p>
+            </div>
+            <div class="col-sm-4 pb-40 pt-10 ">
+                <img src="main/images/assets/services-banner-img.png" alt="Services" class="illustration">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Hero -->
+<!-- START: Service Intro -->
+<div class="ml-service-section pt-40 pb-40 lg-pt-40 border-top">
+    <div class="container">
+        <div class="title-style-ten  lg-pb-10">
+            <p>
+                MANAS Learning provides a range of counseling and teaching methodologies personally-suited to target the needs of an individual. Our educators and psychological experts are qualified professionals aimed at providing explicit learning resources, therapies, training, and various teaching aids.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- END: Service Intro -->
+<!-- START: Parents section -->
+<div class="ml-service-section-on box-layout pt-60 lg-pt-60 lg-pb-60 ">
+    <div class="bg-wrapper">
+        <div class="container">
+            <div class="row">
+
+                <div class="title-style-one pb-30 lg-pb-10 lg-pb-10">
+                    <div class="upper-title">What we do</div>
+                    <h2 class="title"> <span>Parents</span> service.</h2>
+                    <p class="meta-info-text text-md">
+                        Home is a child's first school and in the current scenario, learning from home has gained rapid importance. Be it the basic knowledge, additional help with school, or studying anything new, stimulate quality learning. Understand your child's learning disabilities or differences, strengths, and weaknesses and provide personalized courses with our live expert classes and services.
+                    </p>
+                </div>
+
+                <div class="col-lg-12 ms-auto aos-init aos-animate" data-aos="fade-left">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6  ">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/parent-icon-1.svg" alt="Tests / Assessments" class="tran3s">
+                                </div>
+                                <h4 class="title">Tests / Assessments</h4>
+                                <p>
+                                    Find basic and comprehensive professional assessments with instant results. Get easy-to-follow online tests to learn the academic abilities, learning disorders, and skill-based potentials of your child.
+                                </p>
+                                <!-- <a href="#" class="arrow-icon"> <img src="images/icon/icon_08.svg" alt=""
+                                        class="tran3s"></a> -->
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/parent-icon-2.svg" alt="Classes" class="tran3s">
+                                </div>
+                                <h4 class="title">Classes</h4>
+                                <p>
+                                    Get individualized online classes to build a stronger foundation. Break free from monotonous generalized classrooms with fun and exciting learning methods.
+                                </p>
+
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/parent-icon-3.svg" alt="Consultation" class="tran3s">
+                                </div>
+                                <h4 class="title">Consultation</h4>
+                                <p>
+                                    Support physical, mental, and emotional aspects of your child's development with our experts. Book your consultation online and get on a call.
+                                </p>
+
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/parent-icon-4.svg" alt="Therapy" class="tran3s">
+                                </div>
+                                <h4 class="title">Therapy</h4>
+                                <p>
+                                    A child with neuro divergence may need therapeutic support. We extend a range of therapies from Speech therapy, Occupational therapy, Behavioural therapy, to techniques to increase attention span, brain gym, memory enhancement, and so on. These methods are effectively planned and carried out to suit the child's requirements.
+                                </p>
+
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.bg-wrapper -->
+</div>
+<!-- END: Parents section  -->
+<!-- START: School section -->
+<div class="ml-service-section-two box-layout pt-60 lg-pt-60 lg-pb-60">
+    <div class="bg-wrapper">
+        <div class="container">
+            <div class="row">
+
+                <div class="title-style-one pb-30 lg-pb-10 lg-pb-10">
+                    <div class="upper-title">What we do</div>
+                    <h2 class="title"> <span>Schools</span> service.</h2>
+                    <p class="meta-info-text text-md">
+                        Schools are the primary educational institutions. With evolving needs and NEP 2020, inclusivity and psychological services are made mandatory by educational boards in schools. We are here to help refine your systems to serve children based on their specific learning disabilities and neuro divergence. Our team of expert psychologists and teachers present many guiding services, making sure that no student misses out on learning.
+                    </p>
+                </div>
+
+                <div class="col-lg-12 ms-auto aos-init aos-animate" data-aos="fade-left">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/school-icon-1.svg" alt="Assessments" class="tran3s">
+                                </div>
+                                <h4 class="title">Assessments</h4>
+                                <p>
+                                    Psychologically-curated assessments to target unique learning disabilities among kids. Easy-to-follow online tests with instant results, and expert advice.
+                                </p>
+                                <!-- <a href="#" class="arrow-icon"> <img src="images/icon/icon_08.svg" alt=""
+                                        class="tran3s"></a> -->
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one h-400">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/school-icon-2.svg" alt="Teacher Training" class="tran3s">
+                                </div>
+                                <h4 class="title">Teacher Training</h4>
+                                <p>
+                                    We direct the teachers to understand the different learning disabilities faced by children. Scientifically-comprehensive training programs built to empower teachers and encourage improved learning.
+                                </p>
+
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/school-icon-3.svg" alt="School Counsellor" class="tran3s">
+                                </div>
+                                <h4 class="title">School Counsellor</h4>
+                                <p>
+                                    Counseling is a must in all educational institutions. We provide qualified full-time and part-time counsellors and psychologists to foster student development.
+                                </p>
+
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card-style-one">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <img src="main/images/assets/school-icon-4.svg" alt="Resource Rooms" class="tran3s">
+                                </div>
+                                <h4 class="title">Resource Rooms</h4>
+                                <p>
+                                    Provide explicit remedial teaching through activities surpassing conventional classrooms. Make education inclusive for all students with advanced materials, aids, and management assistance.
+                                </p>
+
+                            </div> <!-- /.card-style-one -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.bg-wrapper -->
+</div>
+<!-- END: School section -->
+<!-- START: Talk to Experts -->
+<div class="ml-text-block-eleven  lg-mt-10">
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 ms-auto ">
+                    <div class="text-wrapper">
+                        <div class="title-style-nine pt-40 pb-45 lg-pb-30">
+                            <h2 class="title">Talk to our experts</h2>
+                        </div>
+                        <p class="meta-info-text">
+                            To bring out the best in your child, patience, empathy, and
+                            acceptance are the key. Conversations with our experts can help you understand your
+                            child better and provide the best-curated programs and support that your child
+                            needs.
+                        </p>
+                        <p class="meta-info-text"> Consult us to inspire a love for learning. </p>
+                        <a href="tel:(+91) 934-215-7217" class="theme-btn-four">Get Started Now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left-img-meta">
+            <img src="main/images/assets/calltoaction1.png" alt="Talk to our experts">
+        </div>
+    </div>
+</div>
+<!-- END: Talk to Experts -->

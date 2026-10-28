@@ -1,0 +1,19 @@
+﻿@page "/unauthorized"
+@model manaslearning.UI.Pages.UnauthorizedModel
+@{
+    ViewData["Title"] = "Licenses";
+    Layout = "~/Pages/Shared/_LayoutForLoginLogout.cshtml";
+}
+
+<section class="py-3 py-sm-3 pb-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h2 class="display-1 font-weight-bold text-grad">401!</h2>
+                <h3 class="mb-4">NOT AUTHORIZED</h3>
+                <p>Sorry, your are not authorized to access this page.</p>
+                <a class="btn btn-sm btn-outline-light" href="/">Back to home!</a>
+            </div>
+        </div>
+    </div>
+</section>

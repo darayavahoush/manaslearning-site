@@ -1,0 +1,98 @@
+﻿@page "/assessments"
+@model manaslearning.UI.Pages.PaidAssessmentsModel
+@{
+    Layout = "_LayoutForPages";
+    ViewBag.Title = "Assessments";
+    ViewBag.MetaDescription = "The assessments page provides an overview of different assessments and their features. ";
+    ViewBag.BaseAddress = Request.Path == "/" ? Request.GetDisplayUrl() : $"{Request.GetDisplayUrl().Replace(Request.Path, "")}";
+    ViewBag.Url = Url.PageLink();
+    ViewBag.ModifiedDate = (DateTime.ParseExact("09/26/2020", "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString());
+}
+
+<!-- banner inner page -->
+<div class="innerpage-banner center bg-overlay-dark-7 py-7 mb-3" style="background:url('/images/assessments/01.jpg') no-repeat; background-size:cover; background-position: 30% 30%;">
+    <div class="container">
+        <div class="row all-text-white">
+            <div class="col-md-12 align-self-center">
+                <h1 class="innerpage-title">Assessments</h1>
+                @*<h6 class="subtitle">We transform your perception into an excellent website</h6>*@
+                @*<nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active"><a href="/"><i class="ti-home"></i> Home</a></li>
+                            <li class="breadcrumb-item">Pricing</li>
+                        </ol>
+                    </nav>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page content -->
+<section class="py-3 py-sm-3 pb-1 section-assessments">
+    <div class="container">
+        @*<div class="row">
+            <div class="col-sm-12">
+                <h2>Purchase services</h2>
+            </div>
+        </div>*@
+        <div class="row pt-0">
+            @if (Model.Assessments != null)
+            {
+                foreach (var assessment in Model.Assessments)
+                {
+                    <div class="col-md-4 mt-4">
+                        <div class="feature-box card f-style-1 h-100">
+                            <div class="feature-box-icon pt-2 pt-sm-0">
+                                <img class="w-100" src="~/images/@assessment.ImageName" alt="@assessment.Name" />
+                            </div>
+                            <h3 class="feature-box-title">@assessment.Name</h3>
+                            <p class="feature-box-desc mb-3">@assessment.Description</p>
+                            <div class="mt-auto">
+                                <p class="text-right font-weight-bolder mb-0">₹@(assessment.ItemPrice.ToString("F2"))</p>
+                                <p class="text-right" style="font-size:12px;">/ assessment / user</p>
+                                <button type="button" class="btn btn-sm btn-link btn-light" data-toggle="modal" data-target="#modal-@assessment.Code.ToLower()"> Read More</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal-@assessment.Code.ToLower()" tabindex="-1" aria-labelledby="ADHD" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">@assessment.Name</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>@assessment.Description</p>
+                                                @if (assessment.Symptoms != null && assessment.Symptoms.Any())
+                                                {
+                                                    <h5>Symptoms:</h5>
+                                                    <ul class="list-group list-group-borderless list-group-icon-primary-bg pt-2 pb-3">
+                                                        @foreach (var symptom in assessment.Symptoms)
+                                                        {
+                                                            <li class="list-group-item"><i class="fa fa-check"></i> @symptom</li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (assessment.HasLicense)
+                                {
+                                    <a class="btn btn-primary btn-sm float-right" href="@UrlConstants.USER_ASSESSMENTS/@assessment.MetaUrl/@assessment.GuidId.ToString()/info"> Start Assessment </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-primary btn-sm float-right" href="/u/catalog/n/@assessment.ItemOid"> Buy Licenses </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
