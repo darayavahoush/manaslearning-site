@@ -4,10 +4,11 @@ import path from 'node:path'
 
 export type ConsultType = {id: string; title: string; description: string; durationMins: number; bufferMins: number; priceINR: number; minNoticeHours: number; maxDaysAhead: number; active: boolean}
 export type Staff = {id: string; name: string; email: string; role: string; active: boolean; consultTypeIds: string[]; weeklyHours: {day: number; start: string; end: string}[]; leave: {from: string; to: string}[]}
-export type Booking = {id: string; typeId: string; staffId: string; startAt: string; endAt: string; blockEnd: number; status: string; parentName: string; email: string; phone: string; childName: string; childAge: string; concern: string; createdAt: string}
+export type Booking = {id: string; typeId: string; staffId: string; startAt: string; endAt: string; blockEnd: number; status: string; parentName: string; email: string; phone: string; childName: string; childAge: string; concern: string; createdAt: string; confirmToken?: string; expiresAt?: number}
 export type DB = {consultTypes: ConsultType[]; staff: Staff[]; bookings: Booking[]}
 
-const FILE = path.join(process.cwd(), 'data', 'db.json')
+const DATA_DIR = process.env.DATA_DIR || path.join(process.cwd(), 'data')
+const FILE = path.join(DATA_DIR, 'db.json')
 const hours = [1, 2, 3, 4, 5, 6].map((day) => ({day, start: '10:00', end: '17:00'}))
 const seed: DB = {
   consultTypes: [

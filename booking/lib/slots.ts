@@ -17,7 +17,7 @@ function staffSlots(s: Staff, t: ConsultType, date: string) {
 
 export function isFree(db: DB, s: Staff, t: ConsultType, st: number) {
   const blockEnd = st + (t.durationMins + t.bufferMins) * 60000
-  return !db.bookings.some((b) => b.staffId === s.id && b.status !== 'cancelled' && st < b.blockEnd && blockEnd > Date.parse(b.startAt))
+  return !db.bookings.some((b) => b.staffId === s.id && b.status !== 'cancelled' && !(b.status === 'pending_email' && (b.expiresAt ?? 0) < Date.now()) && st < b.blockEnd && blockEnd > Date.parse(b.startAt))
 }
 
 export function getSlots(db: DB, t: ConsultType, date: string, now = Date.now()) {
