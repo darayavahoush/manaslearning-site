@@ -65,6 +65,7 @@ export default function Team() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-patrick text-4xl text-primary">Team calendar</h1>
         <div className="flex items-center gap-2 text-sm">
+          <a href="/team/availability" className="rounded-full bg-primary px-4 py-2 text-white">Availability</a>
           <button onClick={() => setWeek(addDays(week, -7))} className="rounded-full bg-cream-dark px-4 py-2 text-text-brown">←</button>
           <span className="min-w-40 text-center text-text-brown">{week && `${label(week)} – ${label(addDays(week, 6))}`}</span>
           <button onClick={() => setWeek(addDays(week, 7))} className="rounded-full bg-cream-dark px-4 py-2 text-text-brown">→</button>
