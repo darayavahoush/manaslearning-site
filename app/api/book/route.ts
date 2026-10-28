@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   const staffId = slot.staffIds[0]
   const paid = t.priceINR > 0
   const booking = {
-    id: `booking-${staffId}-${st}`, typeId: t.id, staffId,
+    id: `booking-${staffId}-${st}-${Date.now().toString(36)}`, typeId: t.id, staffId,
     startAt: new Date(st).toISOString(), endAt: new Date(st + t.durationMins * 60000).toISOString(),
     blockEnd: st + (t.durationMins + t.bufferMins) * 60000,
     status: paid ? 'pending_payment' : 'confirmed',
