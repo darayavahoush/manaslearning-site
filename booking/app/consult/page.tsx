@@ -1,6 +1,7 @@
 'use client'
 import {useEffect, useState} from 'react'
 import type {FormEvent, ReactNode} from 'react'
+import {Leaf} from '../Decor'
 
 type T = {id: string; title: string; description: string; durationMins: number; priceINR: number}
 type S = {startAt: string; label: string}
@@ -11,9 +12,11 @@ const shiftMonth = (m: string, n: number) => { const [y, mo] = m.split('-').map(
 const t12 = (hm: string) => { const [h, m] = hm.split(':').map(Number); return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}` }
 const input = 'w-full rounded-xl border border-cream-dark bg-cream px-4 py-3 text-sm outline-none transition focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20'
 
-function Step({n, title, children}: {n: number; title: string; children: ReactNode}) {
+function Step({n, title, leaf, children}: {n: number; title: string; leaf?: 'left' | 'right'; children: ReactNode}) {
   return (
-    <section className="rounded-3xl bg-white p-5 shadow-[0_4px_24px_rgba(118,49,10,0.08)] sm:p-7">
+    <section className="relative rounded-3xl bg-white p-5 shadow-[0_4px_24px_rgba(118,49,10,0.08)] sm:p-7">
+      {leaf === 'right' && <Leaf className="-top-6 right-6 w-9 sm:w-12" rotate={8} />}
+      {leaf === 'left' && <Leaf className="-top-6 left-6 w-9 sm:w-12" rotate={-8} flip />}
       <div className="mb-4 flex items-center gap-3">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">{n}</span>
         <h2 className="font-patrick text-2xl text-text-brown">{title}</h2>
@@ -89,8 +92,13 @@ export default function Consult() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-amber/25 via-cream to-background px-5 pb-10 pt-12 text-center">
-        <h1 className="font-patrick text-5xl text-primary sm:text-6xl">Book a consultation</h1>
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber/25 via-cream to-background px-5 pb-10 pt-12 text-center">
+        <Leaf className="bottom-0 left-0 w-16 sm:w-24" rotate={-6} />
+        <Leaf className="bottom-0 right-0 w-14 sm:w-20" rotate={6} flip />
+        <span className="relative inline-block px-8 py-2">
+          <img src="/decor/brush-yellow.webp" alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full select-none object-fill opacity-70" />
+          <h1 className="relative font-patrick text-5xl text-primary sm:text-6xl">Book a consultation</h1>
+        </span>
         <p className="mx-auto mt-3 max-w-xl text-text-brown">Talk to our team about your child’s learning journey. Choose a session, pick a time that suits you, and confirm by email.</p>
         <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs font-medium text-text-brown">
           {['1. Choose a session', '2. Pick a time', '3. Confirm by email'].map((x) => <span key={x} className="rounded-full bg-white/80 px-4 py-1.5 shadow-sm">{x}</span>)}
@@ -98,10 +106,11 @@ export default function Consult() {
       </section>
 
       <main className="mx-auto -mt-2 grid max-w-4xl gap-6 px-5 pb-8">
-        <Step n={1} title="Choose a session">
+        <Step n={1} title="Choose a session" leaf="right">
           <div className="grid gap-3 sm:grid-cols-3">
             {types.map((x) => (
               <button key={x.id} onClick={() => setT(x)} className={`rounded-2xl border-2 p-4 text-left transition ${t?.id === x.id ? 'border-primary bg-primary/5 shadow-md' : 'border-cream-dark bg-cream hover:border-amber'}`}>
+                <img src={`/decor/${x.id.replace(/-/g, '_')}.webp`} alt="" className="mb-3 h-24 w-full rounded-xl object-cover" onError={(e) => { e.currentTarget.style.display = 'none' }} />
                 <div className="font-semibold text-text-brown">{x.title}</div>
                 <div className="mt-1 text-xs text-brown-light">{x.durationMins} min · <span className="font-semibold text-card-green">{x.priceINR ? `₹${x.priceINR}` : 'Free'}</span></div>
                 {x.description && <p className="mt-2 line-clamp-3 text-xs text-brown-light">{x.description}</p>}
@@ -110,7 +119,7 @@ export default function Consult() {
           </div>
         </Step>
 
-        <Step n={2} title="Pick a day and time">
+        <Step n={2} title="Pick a day and time" leaf="left">
           <p className="-mt-2 mb-4 text-xs text-brown-light">All times are India time (IST).</p>
           <div className="grid gap-6 md:grid-cols-[1.2fr_1fr]">
             <div>
