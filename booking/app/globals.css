@@ -32,4 +32,17 @@ input, textarea, button { font-family: inherit; }
   50% { transform: scaleX(var(--fx, 1)) rotate(calc(var(--r, 0deg) + 6deg)); }
 }
 .leaf-sway { transform-origin: bottom center; transform: scaleX(var(--fx, 1)) rotate(var(--r, 0deg)); animation: leaf-sway 6s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .leaf-sway { animation: none; } }
+
+
+/* falling leaves */
+@keyframes leaf-fall {
+  0%   { transform: translate3d(0, -12vh, 0) rotate(0deg); opacity: 0; }
+  8%   { opacity: .9; }
+  25%  { transform: translate3d(var(--sway), 22vh, 0) rotate(calc(var(--spin) * .25)); }
+  50%  { transform: translate3d(calc(var(--sway) * -.6), 52vh, 0) rotate(calc(var(--spin) * .5)); }
+  75%  { transform: translate3d(calc(var(--sway) * .8), 80vh, 0) rotate(calc(var(--spin) * .75)); }
+  92%  { opacity: .9; }
+  100% { transform: translate3d(calc(var(--sway) * -.3), 112vh, 0) rotate(var(--spin)); opacity: 0; }
+}
+.leaf-fall { animation: leaf-fall linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .leaf-fall { animation-duration: 30s !important; } }
