@@ -17,7 +17,7 @@ export async function sendInvites(b: Booking, t: ConsultType, s: Staff, kind: 'c
 
   const html = `<div style="background:#fffaec;padding:24px;font-family:Arial,Helvetica,sans-serif;color:#222">
   <div style="max-width:560px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #f5f0e1">
-    <div style="background:#f16524;color:#fff;padding:20px 24px;font-size:22px;font-weight:bold">Manas Learning</div>
+    <div style="background:#f47522;color:#fff;padding:20px 24px;font-size:22px;font-weight:bold">Manas Learning</div>
     <div style="padding:24px">
       <h2 style="margin:0 0 12px;color:#76310a">${cancelled ? 'Your consultation was cancelled' : 'Your consultation is confirmed'}</h2>
       <p>Hi ${h(b.parentName)},</p>
@@ -25,7 +25,7 @@ export async function sendInvites(b: Booking, t: ConsultType, s: Staff, kind: 'c
         <tr><td style="color:#96654a">Session</td><td><b>${h(t.title)}</b></td></tr>
         <tr><td style="color:#96654a">With</td><td>${h(s.name)}${s.role ? ', ' + h(s.role) : ''}</td></tr>
         <tr><td style="color:#96654a">When</td><td>${date}, ${time} IST (${t.durationMins} min)</td></tr>
-        ${!cancelled && url ? `<tr><td style="color:#96654a">Join</td><td><a href="${h(url)}" style="color:#f16524">${h(url)}</a></td></tr>` : ''}
+        ${!cancelled && url ? `<tr><td style="color:#96654a">Join</td><td><a href="${h(url)}" style="color:#f47522">${h(url)}</a></td></tr>` : ''}
       </table>
       <p style="font-size:13px;color:#96654a">${cancelled ? 'The event has been removed from your calendar. You can book a new time any time.' : 'A calendar invite is attached. Accept it to add this to your calendar. Please join a couple of minutes early.'}</p>
     </div>
@@ -55,12 +55,12 @@ export async function sendConfirmLink(b: Booking, t: ConsultType, link: string) 
   const subject = `Please confirm your ${t.title} on ${date}`
   const html = `<div style="background:#fffaec;padding:24px;font-family:Arial,Helvetica,sans-serif;color:#222">
   <div style="max-width:560px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #f5f0e1">
-    <div style="background:#f16524;color:#fff;padding:20px 24px;font-size:22px;font-weight:bold">Manas Learning</div>
+    <div style="background:#f47522;color:#fff;padding:20px 24px;font-size:22px;font-weight:bold">Manas Learning</div>
     <div style="padding:24px">
       <h2 style="margin:0 0 12px;color:#76310a">One more step</h2>
       <p>Hi ${h(b.parentName)}, please confirm your email to lock in this time:</p>
       <p style="background:#fdf8ee;border-radius:12px;padding:12px"><b>${h(t.title)}</b><br>${date}, ${time} IST (${t.durationMins} min)</p>
-      <p style="text-align:center;margin:28px 0"><a href="${h(link)}" style="display:inline-block;background:#f16524;color:#fff;padding:12px 28px;border-radius:999px;text-decoration:none;font-weight:bold">Confirm my booking</a></p>
+      <p style="text-align:center;margin:28px 0"><a href="${h(link)}" style="display:inline-block;background:#f47522;color:#fff;padding:12px 28px;border-radius:999px;text-decoration:none;font-weight:bold">Confirm my booking</a></p>
       <p style="font-size:13px;color:#96654a">We are holding this time for 15 minutes. If you didn’t request it, ignore this email and nothing will be booked.</p>
     </div>
   </div></div>`
