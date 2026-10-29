@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import {Poppins, Patrick_Hand} from 'next/font/google'
 import './globals.css'
 import {Year} from './Year'
+import {Leaf} from './Decor'
 
 const poppins = Poppins({subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-poppins'})
 const patrick = Patrick_Hand({subsets: ['latin'], weight: '400', variable: '--font-patrick'})
@@ -42,7 +43,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
         {children}
 
-        <footer className="mt-16 w-full bg-card-yellow/30">
+        <footer className="relative mt-16 w-full bg-card-yellow/30">
+          <Leaf className="-top-10 left-4 w-12 md:left-10 md:w-16" rotate={-5} />
+          <Leaf className="-top-9 right-4 w-10 md:right-10 md:w-14" rotate={5} flip />
           <div className="container mx-auto px-4 py-10 md:px-6 md:py-14 lg:px-8">
             <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-16">
               <div className="space-y-6 lg:max-w-md">
